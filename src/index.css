@@ -11,7 +11,7 @@
 
 /* Custom Breathing Emerald Green Dot Pattern Grid Overlay */
 .animated-dot-bg {
-  background-image: radial-gradient(rgba(16, 185, 129, 0.16) 2px, transparent 2px);
+  background-image: radial-gradient(rgba(16, 185, 129, 0.18) 2px, transparent 2px);
   background-size: 32px 32px;
   animation: breatheDotGrid 12s infinite ease-in-out;
 }
@@ -33,15 +33,15 @@
 
 /* Custom Emerald Glow Effects */
 .glow-emerald {
-  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.5);
 }
 
-/* Glassmorphism containers */
+/* Glassmorphism containers with high transparency to let particles shine through */
 .glass-panel {
-  background: rgba(10, 14, 32, 0.70);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  background: rgba(7, 11, 28, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(16, 185, 129, 0.25);
 }
 
 /* Custom Scrollbar */

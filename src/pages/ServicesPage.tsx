@@ -45,7 +45,7 @@ export default function ServicesPage() {
       
       {/* Services Header */}
       <div className="text-center max-w-3xl mx-auto">
-        <span className="px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-extrabold uppercase tracking-wider">
+        <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-extrabold uppercase tracking-wider">
           Our Capabilities
         </span>
         <h1 className="text-4xl sm:text-6xl font-black text-white mt-4 tracking-tight uppercase font-sans">
@@ -61,13 +61,13 @@ export default function ServicesPage() {
         {services.map((srv, idx) => {
           const Icon = srv.icon;
           return (
-            <div key={idx} className="p-8 rounded-3xl glass-panel border border-white/15 hover:border-red-500/40 transition-all duration-300 flex flex-col justify-between group">
+            <div key={idx} className="p-8 rounded-3xl glass-panel border border-emerald-500/15 hover:border-emerald-400/50 transition-all duration-300 flex flex-col justify-between group">
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-500 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-red-400 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
                     {srv.highlight}
                   </span>
                 </div>
@@ -79,7 +79,7 @@ export default function ServicesPage() {
 
               <a
                 href="/#quote"
-                className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-extrabold uppercase tracking-wider text-red-400 group-hover:text-white transition-colors"
+                className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-extrabold uppercase tracking-wider text-emerald-400 group-hover:text-white transition-colors"
               >
                 <span>Request Rate Quote</span>
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
