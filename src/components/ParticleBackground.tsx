@@ -44,131 +44,73 @@ export default function ParticleBackground() {
       vy: number;
       size: number;
       baseOpacity: number;
-      angle: number;
-      speed: number;
       color: string;
-      glowColor: string;
     }
 
     const dots: Dot[] = [];
-    const maxDots = 150;
-
-    // Palette: Deep Sky Blue, Cyan, Electric Blue on Light Sky background
-    const colorPalette = [
-      { color: 'rgba(2, 132, 199, ', glow: '#0284c7' },   // Deep Sky Blue
-      { color: 'rgba(14, 165, 233, ', glow: '#0ea5e9' },  // Sky Blue
-      { color: 'rgba(6, 182, 212, ', glow: '#06b6d4' },   // Cyan
-      { color: 'rgba(3, 105, 161, ', glow: '#0369a1' },   // Ocean Blue
-    ];
+    const maxDots = 100; // Total floating green particles
 
     for (let i = 0; i < maxDots; i++) {
-      const paletteItem = colorPalette[i % colorPalette.length];
-      const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 0.7 + 0.4;
-
       dots.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        size: Math.random() * 3.5 + 1.5,
-        baseOpacity: Math.random() * 0.65 + 0.35,
-        angle,
-        speed,
-        color: paletteItem.color,
-        glowColor: paletteItem.glow,
+        vx: (Math.random() - 0.5) * 0.45, // Elegant floating speed
+        vy: (Math.random() - 0.5) * 0.45,
+        size: Math.random() * 2.0 + 0.8,
+        baseOpacity: Math.random() * 0.5 + 0.25,
+        color: 'rgba(16, 185, 129, ', // Emerald green color
       });
     }
-
-    let globalRotationAngle = 0;
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Light Sky Blue Radial Gradient Background
+      // Deep dark blue-black radial background gradient
       const bgGrad = ctx.createRadialGradient(
         width / 2,
         height / 2,
-        40,
+        20,
         width / 2,
         height / 2,
         Math.max(width, height) * 0.95
       );
-      bgGrad.addColorStop(0, '#f0f9ff'); // Very bright sky tint center
-      bgGrad.addColorStop(0.5, '#e0f2fe'); // Light sky blue
-      bgGrad.addColorStop(1, '#bae6fd'); // Soft sky blue edge
+      bgGrad.addColorStop(0, '#090b24');
+      bgGrad.addColorStop(1, '#05060f');
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, width, height);
 
-      globalRotationAngle += 0.003;
-
-      // Draw spinning sky-blue ring
-      ctx.save();
-      ctx.translate(width / 2, height / 2);
-      ctx.rotate(globalRotationAngle);
-      ctx.beginPath();
-      ctx.arc(0, 0, Math.min(width, height) * 0.35, 0, Math.PI * 2);
-      ctx.strokeStyle = 'rgba(2, 132, 199, 0.12)';
-      ctx.lineWidth = 2;
-      ctx.setLineDash([15, 25]);
-      ctx.stroke();
-      ctx.restore();
-
       // Render & Move Dots
       dots.forEach((dot) => {
-        dot.angle += 0.006;
-        dot.x += dot.vx + Math.cos(dot.angle) * 0.5;
-        dot.y += dot.vy + Math.sin(dot.angle) * 0.5;
+        dot.x += dot.vx;
+        dot.y += dot.vy;
 
         // Mouse Repulsion Effect
         if (mouse.active) {
           const dx = dot.x - mouse.x;
           const dy = dot.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          const limitDist = 200;
+          const limitDist = 140;
           if (dist < limitDist) {
             const force = (limitDist - dist) / limitDist;
-            dot.x += (dx / dist) * force * 2.8;
-            dot.y += (dy / dist) * force * 2.8;
+            dot.x += (dx / dist) * force * 1.5;
+            dot.y += (dy / dist) * force * 1.5;
           }
         }
 
-        // Screen loop
+        // Screen wrap-around for smooth endless movement
         if (dot.x < 0) dot.x = width;
         if (dot.x > width) dot.x = 0;
         if (dot.y < 0) dot.y = height;
         if (dot.y > height) dot.y = 0;
 
-        // Draw dot
+        // Draw particle dot
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
         ctx.fillStyle = `${dot.color}${dot.baseOpacity})`;
-        ctx.shadowColor = dot.glowColor;
-        ctx.shadowBlur = 10;
         ctx.fill();
-        ctx.shadowBlur = 0;
       });
 
-      // Interconnecting lines
-      for (let i = 0; i < dots.length; i++) {
-        for (let j = i + 1; j < dots.length; j++) {
-          const dx = dots[i].x - dots[j].x;
-          const dy = dots[i].y - dots[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(dots[i].x, dots[i].y);
-            ctx.lineTo(dots[j].x, dots[j].y);
-            const lineOpacity = (1 - dist / 120) * 0.25;
-            ctx.strokeStyle = `rgba(2, 132, 199, ${lineOpacity})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Interactive Mouse Sky Blue Spotlight Overlay
+      // Interactive Mouse Green Light Glow Overlay
       if (mouse.active) {
         ctx.beginPath();
         const cursorGlow = ctx.createRadialGradient(
@@ -177,13 +119,13 @@ export default function ParticleBackground() {
           0,
           mouse.x,
           mouse.y,
-          200
+          110
         );
-        cursorGlow.addColorStop(0, 'rgba(56, 189, 248, 0.35)');
-        cursorGlow.addColorStop(0.5, 'rgba(2, 132, 199, 0.15)');
-        cursorGlow.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        cursorGlow.addColorStop(0, 'rgba(16, 185, 129, 0.12)');
+        cursorGlow.addColorStop(0.5, 'rgba(16, 185, 129, 0.03)');
+        cursorGlow.addColorStop(1, 'rgba(16, 185, 129, 0)');
         ctx.fillStyle = cursorGlow;
-        ctx.arc(mouse.x, mouse.y, 200, 0, Math.PI * 2);
+        ctx.arc(mouse.x, mouse.y, 110, 0, Math.PI * 2);
         ctx.fill();
       }
 

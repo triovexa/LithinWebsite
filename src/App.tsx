@@ -12,23 +12,23 @@ import FleetPage from './pages/FleetPage';
 export default function App() {
   return (
     <Router>
-      <div className="relative min-h-screen text-slate-900 bg-[#e0f2fe] selection:bg-sky-500 selection:text-white animated-dot-bg">
+      <div className="relative min-h-screen text-white bg-[#05060f] selection:bg-emerald-500 selection:text-white animated-dot-bg">
         {/* Toast Notification Container */}
         <Toaster
           position="top-right"
           toastOptions={{
             duration: 4000,
             style: {
-              background: '#ffffff',
-              color: '#0f172a',
-              border: '1px solid rgba(186, 230, 253, 0.8)',
+              background: '#0a0d24',
+              color: '#ffffff',
+              border: '1px solid rgba(16, 185, 129, 0.3)',
               borderRadius: '12px',
               fontSize: '13px',
-              boxShadow: '0 10px 25px -5px rgba(2, 132, 199, 0.2)',
+              boxShadow: '0 10px 25px -5px rgba(16, 185, 129, 0.25)',
             },
             success: {
               iconTheme: {
-                primary: '#0284c7',
+                primary: '#10b981',
                 secondary: '#ffffff',
               },
             },
@@ -41,7 +41,7 @@ export default function App() {
           }}
         />
 
-        {/* Interactive Dynamic Particle Background */}
+        {/* Interactive Dynamic Emerald Green Particle Background */}
         <ParticleBackground />
 
         {/* Top Navigation Header */}

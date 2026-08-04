@@ -72,52 +72,52 @@ export default function TrackingSection() {
 
   return (
     <section id="tracking" className="my-16 scroll-mt-24">
-      <div className="p-8 sm:p-12 rounded-3xl glass-panel border border-sky-300 shadow-xl relative overflow-hidden bg-white/90">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-sky-200/50 blur-[100px] rounded-full pointer-events-none" />
+      <div className="p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 shadow-2xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none" />
 
         <div className="max-w-2xl mx-auto text-center">
-          <span className="px-4 py-1.5 rounded-full bg-sky-100 border border-sky-300 text-[#0284c7] text-xs font-bold uppercase tracking-wider">
+          <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
             Shipment Status Tracking
           </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
             Track Your Consignment Status
           </h2>
-          <p className="text-slate-600 mt-2 text-sm sm:text-base">
+          <p className="text-gray-400 mt-2 text-sm sm:text-base">
             Enter your LR (Lorry Receipt) or Booking reference number to view status updates.
           </p>
 
           <form onSubmit={handleTrack} className="mt-8 flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
             <div className="relative flex-1">
-              <Search className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
+              <Search className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 placeholder="Enter LR Number (e.g. LR001)"
                 value={lrNumber}
                 onChange={(e) => setLrNumber(e.target.value)}
-                className="w-full pl-12 pr-4 py-3.5 bg-slate-50 border border-sky-300 rounded-full text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0284c7] transition-colors text-sm font-medium"
+                className="w-full pl-12 pr-4 py-3.5 bg-[#030614] border border-emerald-500/20 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-emerald-400 transition-colors text-sm font-medium"
               />
             </div>
             <button
               type="submit"
-              className="px-8 py-3.5 bg-[#0284c7] hover:bg-[#0369a1] text-white font-extrabold rounded-full shadow-md transition-all text-sm shrink-0 uppercase tracking-wider"
+              className="px-8 py-3.5 bg-[#10b981] hover:bg-emerald-600 text-white font-extrabold rounded-full shadow-lg shadow-emerald-500/30 transition-all text-sm shrink-0 uppercase tracking-wider"
             >
               Track Shipment
             </button>
           </form>
           
-          <div className="flex items-center justify-center gap-4 mt-3 text-xs text-slate-500">
+          <div className="flex items-center justify-center gap-4 mt-3 text-xs text-gray-400">
             <span>Try sample LR numbers:</span>
             <button
               type="button"
               onClick={() => { setLrNumber('LR001'); }}
-              className="underline text-[#0284c7] hover:text-[#0369a1] font-bold"
+              className="underline text-emerald-400 hover:text-white font-bold"
             >
               LR001
             </button>
             <button
               type="button"
               onClick={() => { setLrNumber('LR002'); }}
-              className="underline text-[#0284c7] hover:text-[#0369a1] font-bold"
+              className="underline text-emerald-400 hover:text-white font-bold"
             >
               LR002
             </button>
@@ -125,19 +125,19 @@ export default function TrackingSection() {
         </div>
 
         {trackingResult && (
-          <div className="mt-10 pt-8 border-t border-sky-200 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-300">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 bg-sky-50 p-5 rounded-2xl border border-sky-200 text-xs">
+          <div className="mt-10 pt-8 border-t border-white/10 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-300">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 bg-[#050b1e]/80 p-5 rounded-2xl border border-emerald-500/20 text-xs">
               <div>
-                <span className="text-slate-500 block mb-1">LR / Consignment No:</span>
-                <span className="text-sm font-black text-slate-900 tracking-wider">{trackingResult.lrNumber}</span>
+                <span className="text-gray-400 block mb-1">LR / Consignment No:</span>
+                <span className="text-sm font-black text-white tracking-wider">{trackingResult.lrNumber}</span>
               </div>
               <div>
-                <span className="text-slate-500 block mb-1">Assigned Vehicle:</span>
-                <span className="text-sm font-semibold text-slate-800">{trackingResult.vehicle}</span>
+                <span className="text-gray-400 block mb-1">Assigned Vehicle:</span>
+                <span className="text-sm font-semibold text-gray-200">{trackingResult.vehicle}</span>
               </div>
               <div>
-                <span className="text-slate-500 block mb-1">Estimated Arrival:</span>
-                <span className="text-sm font-bold text-[#0284c7]">{trackingResult.estimatedDelivery}</span>
+                <span className="text-gray-400 block mb-1">Estimated Arrival:</span>
+                <span className="text-sm font-bold text-emerald-400">{trackingResult.estimatedDelivery}</span>
               </div>
             </div>
 
@@ -151,10 +151,10 @@ export default function TrackingSection() {
                     <div
                       className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all ${
                         isCompleted
-                          ? 'bg-sky-100 border-[#0284c7] text-[#0284c7] shadow-md'
+                          ? 'bg-emerald-500/20 border-emerald-400 text-emerald-400 shadow-lg shadow-emerald-500/20'
                           : isCurrent
-                          ? 'bg-cyan-100 border-cyan-500 text-cyan-700 animate-pulse'
-                          : 'bg-slate-100 border-slate-300 text-slate-400'
+                          ? 'bg-teal-500/20 border-teal-400 text-teal-300 animate-pulse'
+                          : 'bg-white/5 border-white/15 text-gray-600'
                       }`}
                     >
                       {isCompleted ? (
@@ -165,8 +165,8 @@ export default function TrackingSection() {
                         <Clock className="w-5 h-5" />
                       )}
                     </div>
-                    <span className="text-xs font-bold text-slate-900 mt-3">{step.label}</span>
-                    <span className="text-[10px] text-slate-500 mt-1">{step.date}</span>
+                    <span className="text-xs font-bold text-white mt-3">{step.label}</span>
+                    <span className="text-[10px] text-gray-400 mt-1">{step.date}</span>
                   </div>
                 );
               })}

@@ -91,49 +91,51 @@ export default function HomePage() {
   return (
     <div className="relative min-h-screen pt-24 pb-16 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col gap-16">
 
-      {/* 1. HERO SECTION - Light Sky Glass Container */}
-      <section className="relative overflow-hidden rounded-3xl border border-sky-300 bg-white/70 backdrop-blur-md shadow-xl min-h-[84vh] flex flex-col justify-between p-6 sm:p-12">
+      {/* 1. HERO SECTION - Glass reveal background particle canvas */}
+      <section className="relative overflow-hidden rounded-3xl border border-emerald-500/20 bg-slate-950/20 backdrop-blur-sm shadow-2xl min-h-[84vh] flex flex-col justify-between p-6 sm:p-12">
         
-        {/* Freight Truck Visual Overlay */}
+        {/* Real-World Freight Container Visual Overlay */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1920&q=80"
             alt="Commercial Freight Container Truck"
-            className="w-full h-full object-cover opacity-20 mix-blend-multiply scale-105"
+            className="w-full h-full object-cover opacity-25 mix-blend-screen scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#e0f2fe]/90 via-[#bae6fd]/60 to-[#e0f2fe]/80 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#05060f]/80 via-[#071329]/50 to-[#05060f]/70 pointer-events-none" />
         </div>
 
         {/* Hero Top Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center pt-4">
           
-          {/* Left Column: Deep Navy Bold Headline */}
+          {/* Left Column: Emerald Green Palette Headline & Button */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.05] tracking-tight uppercase font-sans">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight uppercase font-sans">
               WE KEEP YOUR <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0284c7] via-[#0369a1] to-[#0ea5e9]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-emerald-400 to-teal-300">
                 SUPPLY CHAIN
               </span> <br />
               MOVING
             </h1>
 
-            <p className="text-sm sm:text-base text-slate-700 max-w-xl font-normal leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-200 max-w-xl font-normal leading-relaxed">
               From local to global shipments, our seamless logistics solutions ensure on-time, secure, and hassle-free delivery for your business cargo.
             </p>
 
-            {/* Two-Tone Sky Blue CTA Button: [ >> | Learn More Now ] */}
+            {/* Two-Tone Emerald CTA Button: [ >> | Learn More Now ] */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
                 href="#services"
-                className="flex items-center rounded-xl overflow-hidden shadow-md shadow-sky-500/20 border border-sky-400/30 hover:scale-105 transition-all group"
+                className="flex items-center rounded-xl overflow-hidden shadow-xl shadow-emerald-500/30 border border-emerald-400/30 hover:scale-105 transition-all group"
               >
-                <div className="px-3.5 py-3 bg-[#0284c7] text-white flex items-center justify-center border-r border-sky-600">
+                {/* Left White Square */}
+                <div className="px-3.5 py-3 bg-white text-emerald-600 flex items-center justify-center border-r border-slate-200">
                   <div className="flex -space-x-1 font-black text-sm">
                     <span>›</span>
                     <span>›</span>
                   </div>
                 </div>
-                <span className="px-5 py-3 bg-[#0369a1] text-white text-xs font-black uppercase tracking-wider group-hover:bg-[#0284c7] transition-colors">
+                {/* Right Emerald Button */}
+                <span className="px-5 py-3 bg-[#10b981] text-white text-xs font-black uppercase tracking-wider group-hover:bg-emerald-600 transition-colors">
                   Learn More Now
                 </span>
               </a>
@@ -142,7 +144,7 @@ export default function HomePage() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition-all"
+                className="flex items-center gap-2 px-6 py-3 bg-emerald-600/90 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg transition-all"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>WhatsApp Us</span>
@@ -150,9 +152,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right Column: Floating Quick Track Card */}
+          {/* Right Column: Floating Quick Track/Quote Card */}
           <div className="lg:col-span-5 relative">
-            <div className="bg-white text-slate-900 p-6 sm:p-7 rounded-2xl shadow-xl border border-sky-200">
+            <div className="bg-white text-slate-900 p-6 sm:p-7 rounded-2xl shadow-2xl border border-slate-200">
               
               {/* Card Tabs */}
               <div className="flex items-center gap-6 border-b border-slate-200 pb-3 mb-5">
@@ -161,7 +163,7 @@ export default function HomePage() {
                   onClick={() => setHeroTab('tracking')}
                   className={`text-xs font-black uppercase tracking-wider pb-1 transition-colors ${
                     heroTab === 'tracking'
-                      ? 'text-[#0284c7] border-b-2 border-[#0284c7]'
+                      ? 'text-emerald-600 border-b-2 border-emerald-600'
                       : 'text-slate-500 hover:text-slate-800'
                   }`}
                 >
@@ -173,7 +175,7 @@ export default function HomePage() {
                   onClick={() => setHeroTab('ship')}
                   className={`text-xs font-black uppercase tracking-wider pb-1 transition-colors ${
                     heroTab === 'ship'
-                      ? 'text-[#0284c7] border-b-2 border-[#0284c7]'
+                      ? 'text-emerald-600 border-b-2 border-emerald-600'
                       : 'text-slate-500 hover:text-slate-800'
                   }`}
                 >
@@ -189,21 +191,21 @@ export default function HomePage() {
                       placeholder="Type your tracking number here..."
                       value={heroTrackingInput}
                       onChange={(e) => setHeroTrackingInput(e.target.value)}
-                      className="w-full px-4 py-3.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 text-xs font-medium focus:outline-none focus:border-[#0284c7]"
+                      className="w-full px-4 py-3.5 bg-slate-100 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 text-xs font-medium focus:outline-none focus:border-emerald-500"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 bg-[#0284c7] hover:bg-[#0369a1] text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition-colors flex items-center justify-center gap-2"
+                    className="w-full py-3.5 bg-[#10b981] hover:bg-emerald-600 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/30 transition-colors flex items-center justify-center gap-2"
                   >
                     <Search className="w-4 h-4" />
                     <span>Track Now</span>
                   </button>
 
                   <div className="flex items-center justify-between text-[11px] text-slate-500 font-medium pt-2 border-t border-slate-100">
-                    <a href="#tracking" className="hover:text-[#0284c7] font-bold">Multiple Tracking Numbers</a>
-                    <a href="#faq" className="hover:text-[#0284c7] font-bold">Need Help?</a>
+                    <a href="#tracking" className="hover:text-emerald-600 font-bold">Multiple Tracking Numbers</a>
+                    <a href="#faq" className="hover:text-emerald-600 font-bold">Need Help?</a>
                   </div>
 
                   {/* App Store / Google Play Badges */}
@@ -221,7 +223,7 @@ export default function HomePage() {
                   <p className="text-slate-600 font-medium">Request an immediate cargo rate estimation for your shipment route.</p>
                   <a
                     href="#quote"
-                    className="w-full py-3.5 bg-[#0284c7] hover:bg-[#0369a1] text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md text-center block"
+                    className="w-full py-3.5 bg-[#10b981] hover:bg-emerald-600 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg text-center block"
                   >
                     Go to Quote Form
                   </a>
@@ -233,26 +235,26 @@ export default function HomePage() {
 
         </div>
 
-        {/* Hero Bottom Glass Bar */}
-        <div className="mt-12 pt-6 border-t border-sky-300 grid grid-cols-2 lg:grid-cols-4 gap-6 bg-white/70 backdrop-blur-md p-6 rounded-2xl border border-sky-200">
-          <div className="border-r border-sky-200 pr-4">
-            <span className="text-2xl sm:text-3xl font-black text-slate-900 font-sans tracking-tight block">2000+</span>
-            <span className="text-[11px] font-bold text-[#0284c7] uppercase tracking-wider mt-0.5 block">Satisfied Clients</span>
+        {/* Hero Bottom Glass Bar: 4 Column Stats Row */}
+        <div className="mt-12 pt-6 border-t border-emerald-500/20 grid grid-cols-2 lg:grid-cols-4 gap-6 bg-[#080d24]/70 backdrop-blur-md p-6 rounded-2xl border border-emerald-500/15">
+          <div className="border-r border-white/10 pr-4">
+            <span className="text-2xl sm:text-3xl font-black text-white font-sans tracking-tight block">2000+</span>
+            <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider mt-0.5 block">Satisfied Clients</span>
           </div>
 
-          <div className="border-r border-sky-200 pr-4">
-            <span className="text-2xl sm:text-3xl font-black text-slate-900 font-sans tracking-tight block">99.8%</span>
-            <span className="text-[11px] font-bold text-[#0284c7] uppercase tracking-wider mt-0.5 block">On-Time Delivery Rate</span>
+          <div className="border-r border-white/10 pr-4">
+            <span className="text-2xl sm:text-3xl font-black text-white font-sans tracking-tight block">99.8%</span>
+            <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider mt-0.5 block">On-Time Delivery Rate</span>
           </div>
 
-          <div className="border-r border-sky-200 pr-4">
-            <span className="text-2xl sm:text-3xl font-black text-slate-900 font-sans tracking-tight block">150+</span>
-            <span className="text-[11px] font-bold text-[#0284c7] uppercase tracking-wider mt-0.5 block">Cities & Corridors Served</span>
+          <div className="border-r border-white/10 pr-4">
+            <span className="text-2xl sm:text-3xl font-black text-white font-sans tracking-tight block">150+</span>
+            <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider mt-0.5 block">Cities & Corridors Served</span>
           </div>
 
           <div>
-            <span className="text-2xl sm:text-3xl font-black text-slate-900 font-sans tracking-tight block">24/7</span>
-            <span className="text-[11px] font-bold text-[#0284c7] uppercase tracking-wider mt-0.5 block">Customer Support Desk</span>
+            <span className="text-2xl sm:text-3xl font-black text-white font-sans tracking-tight block">24/7</span>
+            <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider mt-0.5 block">Customer Support Desk</span>
           </div>
         </div>
 
@@ -260,42 +262,42 @@ export default function HomePage() {
 
       {/* 2. ABOUT LITHIN TRANSPORT */}
       <section className="scroll-mt-24" id="about">
-        <div className="p-8 sm:p-12 rounded-3xl glass-panel border border-sky-200 shadow-xl flex flex-col gap-10">
+        <div className="p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 shadow-xl flex flex-col gap-10">
           <div className="max-w-3xl">
-            <span className="px-4 py-1.5 rounded-full bg-sky-100 border border-sky-300 text-[#0284c7] text-xs font-bold uppercase tracking-wider">
+            <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
               About Lithin Transport
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-4 tracking-tight">
               Who We Are
             </h2>
-            <p className="text-slate-700 mt-3 text-base sm:text-lg leading-relaxed">
+            <p className="text-gray-300 mt-3 text-base sm:text-lg leading-relaxed">
               Lithin Transport is committed to providing reliable, safe, and efficient transportation solutions for businesses and customers.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl bg-sky-50/80 border border-sky-200 flex flex-col gap-2">
-              <Award className="w-7 h-7 text-[#0284c7] mb-2" />
-              <h3 className="text-base font-bold text-slate-900">Company Experience</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">Proven track record in freight handling and industrial cargo management across South India.</p>
+            <div className="p-6 rounded-2xl bg-[#081229] border border-emerald-500/15 flex flex-col gap-2">
+              <Award className="w-7 h-7 text-emerald-400 mb-2" />
+              <h3 className="text-base font-bold text-white">Company Experience</h3>
+              <p className="text-xs text-gray-400 leading-relaxed">Proven track record in freight handling and industrial cargo management across South India.</p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-sky-50/80 border border-sky-200 flex flex-col gap-2">
-              <Navigation className="w-7 h-7 text-cyan-600 mb-2" />
-              <h3 className="text-base font-bold text-slate-900">Service Coverage</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">Extensive transport network linking major manufacturing corridors and commercial ports.</p>
+            <div className="p-6 rounded-2xl bg-[#081229] border border-emerald-500/15 flex flex-col gap-2">
+              <Navigation className="w-7 h-7 text-teal-400 mb-2" />
+              <h3 className="text-base font-bold text-white">Service Coverage</h3>
+              <p className="text-xs text-gray-400 leading-relaxed">Extensive transport network linking major manufacturing corridors and commercial ports.</p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-sky-50/80 border border-sky-200 flex flex-col gap-2">
-              <Users className="w-7 h-7 text-emerald-600 mb-2" />
-              <h3 className="text-base font-bold text-slate-900">Customer Satisfaction</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">Dedicated logistics managers ensuring customized customer care and prompt updates.</p>
+            <div className="p-6 rounded-2xl bg-[#081229] border border-emerald-500/15 flex flex-col gap-2">
+              <Users className="w-7 h-7 text-emerald-400 mb-2" />
+              <h3 className="text-base font-bold text-white">Customer Satisfaction</h3>
+              <p className="text-xs text-gray-400 leading-relaxed">Dedicated logistics managers ensuring customized customer care and prompt updates.</p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-sky-50/80 border border-sky-200 flex flex-col gap-2">
-              <ShieldCheck className="w-7 h-7 text-[#0284c7] mb-2" />
-              <h3 className="text-base font-bold text-slate-900">Safety Commitment</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">Routine vehicle inspections, double-driver long haul rotations, and certified cargo lashing.</p>
+            <div className="p-6 rounded-2xl bg-[#081229] border border-emerald-500/15 flex flex-col gap-2">
+              <ShieldCheck className="w-7 h-7 text-emerald-300 mb-2" />
+              <h3 className="text-base font-bold text-white">Safety Commitment</h3>
+              <p className="text-xs text-gray-400 leading-relaxed">Routine vehicle inspections, double-driver long haul rotations, and certified cargo lashing.</p>
             </div>
           </div>
         </div>
@@ -304,10 +306,10 @@ export default function HomePage() {
       {/* 3. OUR SERVICES */}
       <section className="scroll-mt-24" id="services">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="px-4 py-1.5 rounded-full bg-sky-100 border border-sky-300 text-[#0284c7] text-xs font-bold uppercase tracking-wider">
+          <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
             Core Capabilities
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
             Our Transport Services
           </h2>
         </div>
@@ -321,15 +323,15 @@ export default function HomePage() {
             { title: "Local Transportation", desc: "Fast and dependable intra-city and intra-regional goods delivery within localized commercial zones." },
             { title: "Customized Transport Solutions", desc: "Flexible transport arrangements tailored specifically to client schedule, cargo weight, and vehicle type." }
           ].map((srv, idx) => (
-            <div key={idx} className="p-8 rounded-3xl glass-panel border border-sky-200 hover:border-[#0284c7] transition-all duration-300 flex flex-col justify-between group">
+            <div key={idx} className="p-8 rounded-3xl glass-panel border border-emerald-500/15 hover:border-emerald-400/50 transition-all duration-300 flex flex-col justify-between group">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-sky-100 border border-sky-300 flex items-center justify-center text-[#0284c7] mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
                   <Truck className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{srv.title}</h3>
-                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">{srv.desc}</p>
+                <h3 className="text-xl font-bold text-white mb-3">{srv.title}</h3>
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6">{srv.desc}</p>
               </div>
-              <a href="#quote" className="text-xs font-bold uppercase tracking-wider text-[#0284c7] hover:text-[#0369a1] flex items-center gap-1">
+              <a href="#quote" className="text-xs font-bold uppercase tracking-wider text-emerald-400 hover:text-white flex items-center gap-1">
                 <span>Request Rate Estimate</span>
                 <span className="font-bold text-sm">›</span>
               </a>
@@ -339,12 +341,12 @@ export default function HomePage() {
       </section>
 
       {/* 4. WHY CHOOSE LITHIN TRANSPORT */}
-      <section className="p-8 sm:p-12 rounded-3xl glass-panel border border-sky-200 bg-gradient-to-br from-white to-sky-50">
+      <section className="p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 bg-gradient-to-br from-[#081329] to-[#040817]">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="px-4 py-1.5 rounded-full bg-sky-100 border border-sky-300 text-[#0284c7] text-xs font-bold uppercase tracking-wider">
+          <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
             Operational Advantages
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
             Why Choose Lithin Transport?
           </h2>
         </div>
@@ -358,13 +360,13 @@ export default function HomePage() {
             { title: "Reliable Fleet", desc: "Routinely serviced commercial vehicles ensuring dependable long-haul trips." },
             { title: "Customer Support", desc: "Accessible assistance for booking inquiries, route updates, and documentation." }
           ].map((item, idx) => (
-            <div key={idx} className="p-6 rounded-2xl bg-white border border-sky-200 flex items-start gap-4 shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-sky-100 border border-sky-300 flex items-center justify-center text-[#0284c7] shrink-0">
+            <div key={idx} className="p-6 rounded-2xl bg-[#060c21] border border-emerald-500/15 flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-base font-bold text-slate-900">{item.title}</h4>
-                <p className="text-xs text-slate-600 mt-1 leading-relaxed">{item.desc}</p>
+                <h4 className="text-base font-bold text-white">{item.title}</h4>
+                <p className="text-xs text-gray-400 mt-1 leading-relaxed">{item.desc}</p>
               </div>
             </div>
           ))}
@@ -374,38 +376,38 @@ export default function HomePage() {
       {/* 5. FLEET SECTION */}
       <section className="scroll-mt-24" id="fleet">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="px-4 py-1.5 rounded-full bg-sky-100 border border-sky-300 text-[#0284c7] text-xs font-bold uppercase tracking-wider">
+          <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
             Our Vehicle Lineup
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
             Our Fleet Specifications
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {fleetData.map((v, idx) => (
-            <div key={idx} className="p-7 rounded-3xl glass-panel border border-sky-200 hover:border-[#0284c7] transition-all flex flex-col justify-between shadow-md">
+            <div key={idx} className="p-7 rounded-3xl glass-panel border border-emerald-500/15 hover:border-emerald-400/50 transition-all flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 bg-sky-100 border border-sky-300 text-[#0284c7] text-xs font-bold uppercase rounded-full">
+                  <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase rounded-full">
                     Capacity: {v.capacity}
                   </span>
-                  <Truck className="w-6 h-6 text-[#0284c7]" />
+                  <Truck className="w-6 h-6 text-emerald-400" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{v.title}</h3>
-                <p className="text-xs text-slate-700 font-medium mb-4">
-                  <strong className="text-slate-900">Suitable For:</strong> {v.suitableFor}
+                <h3 className="text-xl font-bold text-white mb-2">{v.title}</h3>
+                <p className="text-xs text-gray-300 font-medium mb-4">
+                  <strong className="text-white">Suitable For:</strong> {v.suitableFor}
                 </p>
-                <div className="flex flex-col gap-2 pt-3 border-t border-sky-100">
+                <div className="flex flex-col gap-2 pt-3 border-t border-white/10">
                   {v.specs.map((s, sIdx) => (
-                    <div key={sIdx} className="flex items-center gap-2 text-xs text-slate-600">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <div key={sIdx} className="flex items-center gap-2 text-xs text-gray-400">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                       <span>{s}</span>
                     </div>
                   ))}
                 </div>
               </div>
-              <a href="#quote" className="mt-6 w-full py-2.5 bg-[#0284c7] hover:bg-[#0369a1] text-white font-extrabold text-xs uppercase tracking-wider rounded-xl text-center shadow-md block">
+              <a href="#quote" className="mt-6 w-full py-2.5 bg-[#10b981] hover:bg-emerald-600 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl text-center shadow-md block">
                 Book This Vehicle
               </a>
             </div>
@@ -414,12 +416,12 @@ export default function HomePage() {
       </section>
 
       {/* 6. HOW IT WORKS */}
-      <section className="p-8 sm:p-12 rounded-3xl glass-panel border border-sky-200">
+      <section className="p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="px-4 py-1.5 rounded-full bg-sky-100 border border-sky-300 text-[#0284c7] text-xs font-bold uppercase tracking-wider">
+          <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
             Simplified Process
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
             How It Works
           </h2>
         </div>
@@ -431,10 +433,10 @@ export default function HomePage() {
             { step: "03", title: "Shipment Pickup", desc: "Vehicle is assigned and positioned at your pickup site." },
             { step: "04", title: "Safe Delivery", desc: "Cargo is safely transported and delivered to destination." }
           ].map((item, idx) => (
-            <div key={idx} className="p-6 rounded-2xl bg-white border border-sky-200 flex flex-col gap-3 relative shadow-sm">
-              <span className="text-3xl font-black text-[#0284c7]/30 font-mono">{item.step}</span>
-              <h3 className="text-base font-bold text-slate-900">{item.title}</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
+            <div key={idx} className="p-6 rounded-2xl bg-[#060c21] border border-emerald-500/15 flex flex-col gap-3 relative">
+              <span className="text-3xl font-black text-emerald-400/40 font-mono">{item.step}</span>
+              <h3 className="text-base font-bold text-white">{item.title}</h3>
+              <p className="text-xs text-gray-400 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -442,18 +444,18 @@ export default function HomePage() {
 
       {/* 7. SERVICE COVERAGE */}
       <section className="scroll-mt-24" id="coverage">
-        <div className="p-8 sm:p-12 rounded-3xl glass-panel border border-sky-200 text-center">
-          <span className="px-4 py-1.5 rounded-full bg-sky-100 border border-sky-300 text-[#0284c7] text-xs font-bold uppercase tracking-wider">
+        <div className="p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 text-center">
+          <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
             Network Operations
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
             Our Service Areas & Key Corridors
           </h2>
 
           <div className="flex flex-wrap justify-center gap-3 mt-8 max-w-3xl mx-auto">
             {["Chennai", "Bangalore", "Coimbatore", "Madurai", "Trichy", "Salem", "Hyderabad", "Kerala"].map((city, idx) => (
-              <div key={idx} className="px-5 py-3 rounded-full bg-white border border-sky-300 text-slate-900 font-bold text-sm flex items-center gap-2 shadow-md">
-                <MapPin className="w-4 h-4 text-[#0284c7]" />
+              <div key={idx} className="px-5 py-3 rounded-full bg-[#081229] border border-emerald-500/20 text-white font-bold text-sm flex items-center gap-2 shadow-md">
+                <MapPin className="w-4 h-4 text-emerald-400" />
                 <span>{city}</span>
               </div>
             ))}
@@ -470,27 +472,27 @@ export default function HomePage() {
       {/* 10. FAQ SECTION */}
       <section className="scroll-mt-24" id="faq">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="px-4 py-1.5 rounded-full bg-sky-100 border border-sky-300 text-[#0284c7] text-xs font-bold uppercase tracking-wider">
+          <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
             Got Questions?
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
             Frequently Asked Questions
           </h2>
         </div>
 
         <div className="max-w-3xl mx-auto flex flex-col gap-4">
           {faqList.map((faq, idx) => (
-            <div key={idx} className="p-6 rounded-2xl glass-panel border border-sky-200">
+            <div key={idx} className="p-6 rounded-2xl glass-panel border border-emerald-500/15">
               <button
                 type="button"
                 onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
-                className="w-full flex items-center justify-between text-left font-bold text-slate-900 text-base"
+                className="w-full flex items-center justify-between text-left font-bold text-white text-base"
               >
                 <span>{faq.q}</span>
-                <ChevronDown className={`w-5 h-5 text-[#0284c7] transition-transform ${activeFaq === idx ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-5 h-5 text-emerald-400 transition-transform ${activeFaq === idx ? 'rotate-180' : ''}`} />
               </button>
               {activeFaq === idx && (
-                <p className="mt-3 pt-3 border-t border-slate-200 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <p className="mt-3 pt-3 border-t border-white/10 text-xs sm:text-sm text-gray-300 leading-relaxed">
                   {faq.a}
                 </p>
               )}
@@ -501,29 +503,29 @@ export default function HomePage() {
 
       {/* 11. CONTACT US SECTION */}
       <section className="scroll-mt-24" id="contact">
-        <div className="p-8 sm:p-12 rounded-3xl glass-panel border border-sky-200 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div className="p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div>
-            <span className="px-4 py-1.5 rounded-full bg-sky-100 border border-sky-300 text-[#0284c7] text-xs font-bold uppercase tracking-wider">
+            <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
               Get In Touch
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-4 tracking-tight">
               Contact Lithin Transport
             </h2>
-            <p className="text-slate-700 mt-3 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-300 mt-3 text-sm sm:text-base leading-relaxed">
               Reach out to our logistics hub for booking inquiries, transport quotes, or customer support.
             </p>
 
-            <div className="flex flex-col gap-4 mt-6 text-sm text-slate-700">
+            <div className="flex flex-col gap-4 mt-6 text-sm text-gray-300">
               <div className="flex items-center gap-3">
-                <PhoneCall className="w-5 h-5 text-[#0284c7]" />
+                <PhoneCall className="w-5 h-5 text-emerald-400" />
                 <span>Phone: +91 98765 43210</span>
               </div>
               <div className="flex items-center gap-3">
-                <FileText className="w-5 h-5 text-[#0284c7]" />
+                <FileText className="w-5 h-5 text-emerald-400" />
                 <span>Email: support@lithintransport.com</span>
               </div>
               <div className="flex items-center gap-3">
-                <MapPin className="w-5 h-5 text-[#0284c7]" />
+                <MapPin className="w-5 h-5 text-emerald-400" />
                 <span>Office Address: Industrial Estate Hub, Guindy, Chennai, Tamil Nadu - 600032</span>
               </div>
             </div>
@@ -531,7 +533,7 @@ export default function HomePage() {
             <div className="flex flex-wrap items-center gap-3 mt-8">
               <a
                 href="tel:+919876543210"
-                className="px-6 py-3 bg-[#0284c7] text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-md"
+                className="px-6 py-3 bg-[#10b981] text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-lg"
               >
                 Call Now
               </a>
@@ -539,17 +541,17 @@ export default function HomePage() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-md"
+                className="px-6 py-3 bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-lg"
               >
                 WhatsApp Now
               </a>
             </div>
           </div>
 
-          <div className="relative rounded-2xl overflow-hidden bg-sky-50 border border-sky-200 p-8 flex flex-col justify-center items-center text-center min-h-[250px] shadow-sm">
-            <Truck className="w-16 h-16 text-[#0284c7] mb-4 animate-bounce" />
-            <h3 className="text-xl font-bold text-slate-900">24/7 Logistics Control Room</h3>
-            <p className="text-xs text-slate-600 mt-2">Active highway dispatch & driver communication desk.</p>
+          <div className="relative rounded-2xl overflow-hidden bg-[#060c21] border border-emerald-500/20 p-8 flex flex-col justify-center items-center text-center min-h-[250px]">
+            <Truck className="w-16 h-16 text-emerald-400 mb-4 animate-bounce" />
+            <h3 className="text-xl font-bold text-white">24/7 Logistics Control Room</h3>
+            <p className="text-xs text-gray-400 mt-2">Active highway dispatch & driver communication desk.</p>
           </div>
         </div>
       </section>
