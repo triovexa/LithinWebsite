@@ -90,17 +90,17 @@ export default function HomePage() {
 
           {/* Right Column: High-Quality Truck Visual & Quick Track Card */}
           <div className="lg:col-span-5 relative">
-            <div className="bg-white text-slate-900 p-6 sm:p-7 rounded-2xl shadow-2xl border border-slate-200">
+            <div className="glass-card p-6 sm:p-7 border border-white/10 shadow-glass text-slate-200">
               
               {/* Card Tabs */}
-              <div className="flex items-center gap-6 border-b border-slate-200 pb-3 mb-5">
+              <div className="flex items-center gap-6 border-b border-white/10 pb-3 mb-5">
                 <button
                   type="button"
                   onClick={() => setHeroTab('tracking')}
-                  className={`text-xs font-black uppercase tracking-wider pb-1 transition-colors ${
+                  className={`text-xs font-bold uppercase tracking-wider pb-1 transition-colors ${
                     heroTab === 'tracking'
-                      ? 'text-emerald-600 border-b-2 border-emerald-600'
-                      : 'text-slate-500 hover:text-slate-800'
+                      ? 'text-emerald-400 border-b-2 border-emerald-400'
+                      : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
                   Tracking Order
@@ -109,10 +109,10 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={() => setHeroTab('ship')}
-                  className={`text-xs font-black uppercase tracking-wider pb-1 transition-colors ${
+                  className={`text-xs font-bold uppercase tracking-wider pb-1 transition-colors ${
                     heroTab === 'ship'
-                      ? 'text-emerald-600 border-b-2 border-emerald-600'
-                      : 'text-slate-500 hover:text-slate-800'
+                      ? 'text-emerald-400 border-b-2 border-emerald-400'
+                      : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
                   Ship Order / Quote
@@ -127,39 +127,39 @@ export default function HomePage() {
                       placeholder="Type your tracking number here..."
                       value={heroTrackingInput}
                       onChange={(e) => setHeroTrackingInput(e.target.value)}
-                      className="w-full px-4 py-3.5 bg-slate-100 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 text-xs font-medium focus:outline-none focus:border-emerald-500"
+                      className="input-field"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 bg-[#10b981] hover:bg-emerald-600 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/30 transition-colors flex items-center justify-center gap-2"
+                    className="btn-primary w-full py-3.5 flex items-center justify-center gap-2 text-xs font-extrabold uppercase tracking-wider cursor-pointer"
                   >
                     <Search className="w-4 h-4" />
                     <span>Track Now</span>
                   </button>
 
-                  <div className="flex items-center justify-between text-[11px] text-slate-500 font-medium pt-2 border-t border-slate-100">
-                    <a href="/services#tracking" className="hover:text-emerald-600 font-bold">Multiple Tracking Numbers</a>
-                    <a href="/about#faq" className="hover:text-emerald-600 font-bold">Need Help?</a>
+                  <div className="flex items-center justify-between text-[11px] text-slate-400 font-medium pt-2 border-t border-white/10">
+                    <a href="/services#tracking" className="hover:text-emerald-400 font-semibold">Multiple Tracking Numbers</a>
+                    <a href="/about#faq" className="hover:text-emerald-400 font-semibold">Need Help?</a>
                   </div>
 
                   {/* App Store / Google Play Badges */}
-                  <div className="flex items-center gap-2 pt-3 border-t border-slate-100">
-                    <div className="flex-1 bg-slate-900 text-white p-2 rounded-lg flex items-center justify-center gap-2 text-[10px] font-bold cursor-pointer hover:bg-slate-800">
+                  <div className="flex items-center gap-2 pt-3 border-t border-white/10">
+                    <div className="flex-1 bg-[#0c0e25] border border-white/10 text-slate-200 p-2.5 rounded-xl flex items-center justify-center gap-2 text-[10px] font-bold cursor-pointer hover:bg-white/5 transition-colors">
                       <span>▶ GET IT ON Google Play</span>
                     </div>
-                    <div className="flex-1 bg-slate-900 text-white p-2 rounded-lg flex items-center justify-center gap-2 text-[10px] font-bold cursor-pointer hover:bg-slate-800">
+                    <div className="flex-1 bg-[#0c0e25] border border-white/10 text-slate-200 p-2.5 rounded-xl flex items-center justify-center gap-2 text-[10px] font-bold cursor-pointer hover:bg-white/5 transition-colors">
                       <span> Download on App Store</span>
                     </div>
                   </div>
                 </form>
               ) : (
                 <div className="flex flex-col gap-3 text-xs">
-                  <p className="text-slate-600 font-medium">Request an immediate cargo rate estimation for your shipment route.</p>
+                  <p className="text-slate-300 font-medium">Request an immediate cargo rate estimation for your shipment route.</p>
                   <a
                     href="/services#quote"
-                    className="w-full py-3.5 bg-[#10b981] hover:bg-emerald-600 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg text-center block"
+                    className="btn-primary w-full py-3.5 text-center text-xs font-extrabold uppercase tracking-wider block"
                   >
                     Go to Quote Form
                   </a>

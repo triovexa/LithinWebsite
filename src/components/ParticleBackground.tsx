@@ -6,7 +6,6 @@ export default function ParticleBackground() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -14,7 +13,7 @@ export default function ParticleBackground() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Mouse position tracker
+    // Mouse tracker
     const mouse = { x: width / 2, y: height / 2, active: false };
 
     const handleResize = () => {
@@ -45,46 +44,48 @@ export default function ParticleBackground() {
       size: number;
       baseOpacity: number;
       color: string;
+      pulseSpeed: number;
+      pulseOffset: number;
     }
 
     const dots: Dot[] = [];
-    const maxDots = 100; // Total floating green particles
+    const maxDots = 100; // 100 particles is clean and premium without clutter
 
     for (let i = 0; i < maxDots; i++) {
       dots.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.45, // Elegant floating speed
-        vy: (Math.random() - 0.5) * 0.45,
-        size: Math.random() * 2.0 + 0.8,
-        baseOpacity: Math.random() * 0.5 + 0.25,
-        color: 'rgba(16, 185, 129, ', // Emerald green color
+        vx: (Math.random() - 0.5) * 0.5, // slow, elegant floating drift matching AGS
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 2.2 + 0.8,
+        baseOpacity: Math.random() * 0.5 + 0.25, // elegant opacity blend
+        color: Math.random() > 0.35 ? 'rgba(16, 185, 129, ' : 'rgba(52, 211, 153, ', // emerald green base
+        pulseSpeed: Math.random() * 0.02 + 0.008,
+        pulseOffset: Math.random() * Math.PI * 2,
       });
     }
 
+    let time = 0;
     const render = () => {
+      time += 0.015;
       ctx.clearRect(0, 0, width, height);
 
-      // Deep dark blue-black radial background gradient
+      // Deep space radial background matching AGS
       const bgGrad = ctx.createRadialGradient(
-        width / 2,
-        height / 2,
-        20,
-        width / 2,
-        height / 2,
-        Math.max(width, height) * 0.95
+        width / 2, height / 2, 20,
+        width / 2, height / 2, Math.max(width, height) * 0.95
       );
       bgGrad.addColorStop(0, '#090b24');
       bgGrad.addColorStop(1, '#05060f');
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, width, height);
 
-      // Render & Move Dots
       dots.forEach((dot) => {
+        // Update positions
         dot.x += dot.vx;
         dot.y += dot.vy;
 
-        // Mouse Repulsion Effect
+        // Interactive mouse repulsion
         if (mouse.active) {
           const dx = dot.x - mouse.x;
           const dy = dot.y - mouse.y;
@@ -97,35 +98,40 @@ export default function ParticleBackground() {
           }
         }
 
-        // Screen wrap-around for smooth endless movement
+        // Screen wrap-around
         if (dot.x < 0) dot.x = width;
         if (dot.x > width) dot.x = 0;
         if (dot.y < 0) dot.y = height;
         if (dot.y > height) dot.y = 0;
 
-        // Draw particle dot
+        // Smooth pulse opacity
+        const opacity = Math.min(
+          1,
+          Math.max(0.15, dot.baseOpacity + Math.sin(time * dot.pulseSpeed * 10 + dot.pulseOffset) * 0.2)
+        );
+
+        // Draw green particle
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
-        ctx.fillStyle = `${dot.color}${dot.baseOpacity})`;
+        ctx.fillStyle = `${dot.color}${opacity})`;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = 'rgba(16, 185, 129, 0.5)';
         ctx.fill();
+        ctx.shadowBlur = 0;
       });
 
-      // Interactive Mouse Green Light Glow Overlay
+      // Interactive cursor glow overlay
       if (mouse.active) {
         ctx.beginPath();
         const cursorGlow = ctx.createRadialGradient(
-          mouse.x,
-          mouse.y,
-          0,
-          mouse.x,
-          mouse.y,
-          110
+          mouse.x, mouse.y, 0,
+          mouse.x, mouse.y, 120
         );
         cursorGlow.addColorStop(0, 'rgba(16, 185, 129, 0.12)');
         cursorGlow.addColorStop(0.5, 'rgba(16, 185, 129, 0.03)');
         cursorGlow.addColorStop(1, 'rgba(16, 185, 129, 0)');
         ctx.fillStyle = cursorGlow;
-        ctx.arc(mouse.x, mouse.y, 110, 0, Math.PI * 2);
+        ctx.arc(mouse.x, mouse.y, 120, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -142,10 +148,7 @@ export default function ParticleBackground() {
     };
   }, []);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 w-full h-full -z-10 pointer-events-none"
-    />
-  );
+  return <canvas ref={canvasRef} className="fixed inset-0 w-full h-full -z-10 pointer-events-none" />;
 }
+
+
