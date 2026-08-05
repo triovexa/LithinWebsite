@@ -1,114 +1,87 @@
-import { ShieldCheck, Award, Users, Target, CheckCircle2, ChevronRight, MessageCircle } from 'lucide-react';
+import { Award, Navigation, Users, ShieldCheck } from 'lucide-react';
 
 export default function AboutPage() {
-  const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent("Hi Lithin Transport, I would like to know more about your transportation services.")}`;
-
   return (
-    <div className="relative min-h-screen pt-28 pb-16 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col gap-14">
+    <div className="relative min-h-screen pt-28 pb-16 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col gap-12">
       
       {/* Page Header */}
       <div className="text-center max-w-3xl mx-auto">
         <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-extrabold uppercase tracking-wider">
-          Who We Are
+          Company Overview
         </span>
         <h1 className="text-4xl sm:text-6xl font-black text-white mt-4 tracking-tight uppercase font-sans">
-          Pioneering Supply Chain & Transport Excellence
+          Who We Are
         </h1>
-        <p className="text-gray-300 mt-4 text-base sm:text-lg leading-relaxed font-normal">
-          Lithin Transport has grown into one of South India’s most trusted commercial haulage, freight logistics, and enterprise supply chain partners.
+        <p className="text-gray-200 mt-4 text-base sm:text-xl leading-relaxed font-medium">
+          Lithin Transport is committed to providing reliable, safe, and efficient transportation solutions for businesses and customers.
         </p>
       </div>
 
-      {/* Core Values Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="p-8 rounded-3xl glass-panel border border-emerald-500/20 flex flex-col gap-4 hover:border-emerald-400/60 transition-all">
+      {/* 4 Feature Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="p-7 rounded-3xl glass-panel border border-emerald-500/15 flex flex-col gap-4 hover:border-emerald-400/50 transition-all">
           <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
-            <Target className="w-6 h-6" />
-          </div>
-          <h3 className="text-xl font-bold text-white uppercase tracking-wide">Our Mission</h3>
-          <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-            To provide fast, reliable, and cost-effective transport solutions leveraging state-of-the-art telematics and dedicated driver safety programs.
-          </p>
-        </div>
-
-        <div className="p-8 rounded-3xl glass-panel border border-emerald-500/20 flex flex-col gap-4 hover:border-emerald-400/60 transition-all">
-          <div className="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400">
             <Award className="w-6 h-6" />
           </div>
-          <h3 className="text-xl font-bold text-white uppercase tracking-wide">10+ Years Legacy</h3>
-          <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-            Over a decade of continuous transport service, building strong relationships with enterprise manufacturers and regional distributors alike.
+          <h3 className="text-lg font-bold text-white uppercase tracking-wide">Company Experience</h3>
+          <p className="text-xs text-gray-400 leading-relaxed">
+            Proven track record in freight handling and industrial cargo management across South India.
           </p>
         </div>
 
-        <div className="p-8 rounded-3xl glass-panel border border-emerald-500/20 flex flex-col gap-4 hover:border-emerald-400/60 transition-all">
+        <div className="p-7 rounded-3xl glass-panel border border-emerald-500/15 flex flex-col gap-4 hover:border-emerald-400/50 transition-all">
+          <div className="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400">
+            <Navigation className="w-6 h-6" />
+          </div>
+          <h3 className="text-lg font-bold text-white uppercase tracking-wide">Service Coverage</h3>
+          <p className="text-xs text-gray-400 leading-relaxed">
+            Extensive transport network linking major manufacturing corridors and commercial ports.
+          </p>
+        </div>
+
+        <div className="p-7 rounded-3xl glass-panel border border-emerald-500/15 flex flex-col gap-4 hover:border-emerald-400/50 transition-all">
           <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
             <Users className="w-6 h-6" />
           </div>
-          <h3 className="text-xl font-bold text-white uppercase tracking-wide">Dedicated Team</h3>
-          <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-            Over 500+ trained highway drivers, logistics managers, and fleet maintenance engineers ensuring 24/7 seamless operations.
+          <h3 className="text-lg font-bold text-white uppercase tracking-wide">Customer Satisfaction</h3>
+          <p className="text-xs text-gray-400 leading-relaxed">
+            Dedicated logistics managers ensuring customized customer care and prompt updates.
+          </p>
+        </div>
+
+        <div className="p-7 rounded-3xl glass-panel border border-emerald-500/15 flex flex-col gap-4 hover:border-emerald-400/50 transition-all">
+          <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-300">
+            <ShieldCheck className="w-6 h-6" />
+          </div>
+          <h3 className="text-lg font-bold text-white uppercase tracking-wide">Safety Commitment</h3>
+          <p className="text-xs text-gray-400 leading-relaxed">
+            Routine vehicle inspections, double-driver long haul rotations, and certified cargo lashing.
           </p>
         </div>
       </div>
 
-      {/* Milestones / Certification */}
-      <div className="p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-gradient-to-br from-[#081329] to-[#040817]">
-        <div>
-          <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-400 block mb-2">Safety Standard</span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">
-            Built on Safety, Transparency & On-Time Performance
-          </h2>
-          <p className="text-gray-300 mt-3 text-xs sm:text-sm leading-relaxed">
-            We adhere strictly to commercial transport regulations and driver safety protocols. Every vehicle in our heavy fleet undergoes multi-point vehicle health inspection before departure.
-          </p>
-
-          <div className="flex flex-col gap-3 mt-6">
-            {[
-              "100% Insured Cargo Transport Coverage",
-              "GPS Satellite Telematics & Automated Alerts",
-              "Multi-Axle Trailers & Overdimensional Cargo Movers",
-              "Customized Monthly B2B Transport SLA Contracts",
-            ].map((item, idx) => (
-              <div key={idx} className="flex items-center gap-3 text-xs font-semibold text-gray-200">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>{item}</span>
-              </div>
-            ))}
+      {/* Numbers Section */}
+      <div className="p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 bg-gradient-to-r from-[#081329] via-[#050b1e] to-[#081329] shadow-xl">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center divide-x divide-white/10">
+          <div className="px-4">
+            <span className="text-4xl sm:text-6xl font-black text-white font-sans tracking-tight block">10+</span>
+            <span className="text-xs font-extrabold text-emerald-400 uppercase tracking-widest mt-2 block">Years Experience</span>
           </div>
 
-          <div className="flex items-center gap-4 mt-8">
-            <a
-              href="/#quote"
-              className="flex items-center bg-[#10b981] hover:bg-emerald-600 text-white rounded-xl overflow-hidden shadow-lg shadow-emerald-500/30 transition-all hover:scale-105 group border border-emerald-400/30"
-            >
-              <div className="px-3 py-2.5 bg-black/20 flex items-center justify-center border-r border-white/10">
-                <div className="flex -space-x-1">
-                  <ChevronRight className="w-4 h-4 text-white" />
-                  <ChevronRight className="w-4 h-4 text-white -ml-2" />
-                </div>
-              </div>
-              <span className="px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider">
-                Get a Quote
-              </span>
-            </a>
-
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg transition-all"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>WhatsApp Us</span>
-            </a>
+          <div className="px-4">
+            <span className="text-4xl sm:text-6xl font-black text-white font-sans tracking-tight block">500+</span>
+            <span className="text-xs font-extrabold text-emerald-400 uppercase tracking-widest mt-2 block">Successful Trips</span>
           </div>
-        </div>
 
-        <div className="relative rounded-2xl overflow-hidden bg-[#060c21] border border-emerald-500/20 p-8 flex flex-col items-center justify-center text-center min-h-[260px]">
-          <ShieldCheck className="w-16 h-16 text-emerald-400 mb-3 animate-pulse" />
-          <span className="text-3xl font-black text-white font-sans tracking-wide">ISO 9001:2015</span>
-          <span className="text-xs uppercase tracking-widest text-emerald-400 font-bold mt-1">Certified Freight Transport Enterprise</span>
+          <div className="px-4">
+            <span className="text-4xl sm:text-6xl font-black text-white font-sans tracking-tight block">100+</span>
+            <span className="text-xs font-extrabold text-emerald-400 uppercase tracking-widest mt-2 block">Happy Customers</span>
+          </div>
+
+          <div className="px-4">
+            <span className="text-4xl sm:text-6xl font-black text-white font-sans tracking-tight block">24/7</span>
+            <span className="text-xs font-extrabold text-emerald-400 uppercase tracking-widest mt-2 block">Support</span>
+          </div>
         </div>
       </div>
 

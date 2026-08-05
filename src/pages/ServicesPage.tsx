@@ -1,40 +1,40 @@
-import { Truck, Shield, Clock, MapPin, ChevronRight } from 'lucide-react';
+import { Truck, MapPin, Shield, Package, Factory, HardHat, ChevronRight } from 'lucide-react';
 
 export default function ServicesPage() {
   const services = [
     {
       title: "Full Truck Load (FTL)",
-      description: "Dedicated multi-axle and containerized trucks for large industrial volume shipments with direct point-to-point delivery.",
+      description: "Large shipments requiring dedicated vehicle transportation.",
       icon: Truck,
-      highlight: "Direct Route Dispatch"
+      highlight: "Dedicated Route Fleet"
     },
     {
       title: "Part Load Transportation",
-      description: "Consolidated freight solutions designed for cost efficiency without sacrificing delivery timelines or cargo security.",
-      icon: MapPin,
+      description: "For smaller shipments and cost-effective transport.",
+      icon: Package,
       highlight: "Cost-Effective Freight"
     },
     {
       title: "Industrial Goods Transport",
-      description: "Specialized haulage for industrial machinery, steel coils, factory equipment, and raw manufacturing materials.",
-      icon: Shield,
-      highlight: "Heavy Capacity Transport"
+      description: "Machinery, equipment and industrial materials transportation.",
+      icon: Factory,
+      highlight: "Heavy Duty Haulage"
     },
     {
       title: "Heavy & Project Cargo",
-      description: "Specialized low-bed trailers and hydraulic axles designed for oversized machinery and construction equipment.",
-      icon: Clock,
-      highlight: "Permit & Escort Ready"
+      description: "Large and heavy cargo transportation solutions.",
+      icon: HardHat,
+      highlight: "Oversized Load Ready"
     },
     {
       title: "Local Transportation",
-      description: "Fast and dependable intra-city and intra-regional goods delivery within localized commercial zones.",
-      icon: Truck,
-      highlight: "Rapid City Delivery"
+      description: "Reliable transportation within local and regional locations.",
+      icon: MapPin,
+      highlight: "Rapid Zone Express"
     },
     {
       title: "Customized Transport Solutions",
-      description: "Flexible transport arrangements tailored specifically to client schedule, cargo weight, and vehicle type.",
+      description: "Transport solutions based on specific customer requirements.",
       icon: Shield,
       highlight: "B2B Customized SLA"
     }
@@ -49,10 +49,10 @@ export default function ServicesPage() {
           Our Capabilities
         </span>
         <h1 className="text-4xl sm:text-6xl font-black text-white mt-4 tracking-tight uppercase font-sans">
-          Comprehensive Transport & Logistics
+          Our Services
         </h1>
         <p className="text-gray-300 mt-4 text-base sm:text-lg leading-relaxed font-normal">
-          Tailored transport solutions engineered to keep your enterprise supply chain moving with precision.
+          Tailored commercial transport solutions engineered to keep your enterprise supply chain moving with precision.
         </p>
       </div>
 
