@@ -18,16 +18,27 @@ export default function Navbar() {
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent px-4 sm:px-8 py-4 transition-all duration-300">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         
-        {/* Left: Lithin Transport LT Logo from Public Folder */}
+        {/* Left: Official Lithin Logo Image in a Circular Metallic Glow Badge */}
         <RouterLink to="/" className="flex items-center gap-3 group">
-          <img
-            src="/logo.png"
-            alt="Lithin Transport"
-            className="h-10 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = '/logo-tab.png';
-            }}
-          />
+          <div className="w-11 h-11 rounded-full p-1 bg-[#060b1e]/90 border-2 border-emerald-400/60 shadow-[0_0_20px_rgba(16,185,129,0.4)] flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform group-hover:border-emerald-300">
+            <img
+              src="/logo.png"
+              alt="Lithin Transport Logo"
+              className="w-full h-full object-contain rounded-full"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = '/logo-tab.png';
+              }}
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xl font-black tracking-widest text-white uppercase font-sans leading-none flex items-center gap-1">
+              LITHIN
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block" />
+            </span>
+            <span className="text-[9px] font-extrabold tracking-[0.25em] text-emerald-400 uppercase mt-1">
+              LOGISTICS & TRANSPORT
+            </span>
+          </div>
         </RouterLink>
 
         {/* Center: Navigation Links */}
