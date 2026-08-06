@@ -1,4 +1,4 @@
-import { Truck, Phone, Mail, MapPin } from 'lucide-react';
+import { Truck, Phone, Mail, MapPin, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -19,8 +19,12 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-xs text-gray-300 leading-relaxed">
-              Technology-driven logistics and freight transport solutions delivering speed, safety, and reliability across India.
+              ISO 9001:2015 certified commercial logistics and heavy freight transport solutions delivering speed, safety, and reliability across India.
             </p>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase rounded-full w-fit">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>Licensed Interstate Freight Carrier</span>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -29,21 +33,18 @@ export default function Footer() {
             <Link to="/" className="text-xs text-gray-300 hover:text-emerald-300 transition-colors">Home</Link>
             <Link to="/about" className="text-xs text-gray-300 hover:text-emerald-300 transition-colors">About Us</Link>
             <Link to="/services" className="text-xs text-gray-300 hover:text-emerald-300 transition-colors">Services</Link>
-            <Link to="/fleet" className="text-xs text-gray-300 hover:text-emerald-300 transition-colors">Fleet</Link>
+            <Link to="/gallery" className="text-xs text-gray-300 hover:text-emerald-300 transition-colors">Gallery</Link>
+            <a href="/#quote" className="text-xs text-gray-300 hover:text-emerald-300 transition-colors">Rate Estimator</a>
           </div>
 
-          {/* Team Scope Notice */}
+          {/* Commercial Services */}
           <div className="flex flex-col gap-2">
-            <h4 className="text-sm font-extrabold text-white mb-2 uppercase tracking-wider text-emerald-400">Project Ownership</h4>
-            <p className="text-xs text-gray-300">
-              <strong className="text-white">Selvamani:</strong> Core Architecture & Pages (Home, About, Services, Fleet)
-            </p>
-            <p className="text-xs text-gray-300">
-              <strong className="text-white">Navin:</strong> UI/UX, Firebase & Deployment
-            </p>
-            <p className="text-xs text-gray-300">
-              <strong className="text-white">Munik:</strong> Functional Features & Admin
-            </p>
+            <h4 className="text-sm font-extrabold text-white mb-2 uppercase tracking-wider text-emerald-400">Freight Solutions</h4>
+            <Link to="/services" className="text-xs text-gray-300 hover:text-emerald-300 transition-colors">Full Truck Load (FTL)</Link>
+            <Link to="/services" className="text-xs text-gray-300 hover:text-emerald-300 transition-colors">Part Load Cargo (PTL)</Link>
+            <Link to="/services" className="text-xs text-gray-300 hover:text-emerald-300 transition-colors">Heavy Machinery Transport</Link>
+            <Link to="/services" className="text-xs text-gray-300 hover:text-emerald-300 transition-colors">Sealed Container Fleet</Link>
+            <Link to="/services" className="text-xs text-gray-300 hover:text-emerald-300 transition-colors">Warehousing & Hub Logistics</Link>
           </div>
 
           {/* Contact info */}
@@ -66,8 +67,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
-          <span>&copy; {new Date().getFullYear()} Lithin Transport Logistics. All rights reserved.</span>
-          <span>Designed & Built by Selvamani (Frontend Architecture Team)</span>
+          <span>&copy; {new Date().getFullYear()} Lithin Transport Logistics Ltd. All rights reserved.</span>
+          <span>Nationwide Commercial Transport & Supply Chain Network</span>
         </div>
       </div>
     </footer>

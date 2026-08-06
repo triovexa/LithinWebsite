@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link as RouterLink, useLocation as useRouteLocation } from 'react-router-dom';
-import { Phone, Menu, X } from 'lucide-react';
+import { Phone, Menu, X, Truck, ChevronsRight } from 'lucide-react';
 
 export default function Navbar() {
   const location = useRouteLocation();
@@ -8,23 +8,20 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'HOME', path: '/' },
-    { name: 'SHIPPING', path: '/services' },
-    { name: 'FLEET', path: '/fleet' },
-    { name: 'TRACKING', path: '/#tracking' },
-    { name: 'SUPPORT', path: '/#contact' },
+    { name: 'SERVICES', path: '/services' },
+    { name: 'GALLERY', path: '/gallery' },
+    { name: 'ABOUT US', path: '/about' },
+    { name: 'CONTACT', path: '/#contact' },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#060817]/90 backdrop-blur-xl border-b border-emerald-500/20 px-4 sm:px-8 py-3.5 shadow-xl">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         
-        {/* Left: Emerald Arrow Emblem & Lithin Logistics Brand Logo */}
+        {/* Left: Emerald Brand Emblem & Lithin Logistics Brand Logo */}
         <RouterLink to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-teal-500 to-emerald-400 flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:scale-105 transition-transform">
-            <div className="flex -space-x-1 font-black text-white text-lg tracking-tighter">
-              <span>▶</span>
-              <span className="text-emerald-200">▶</span>
-            </div>
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-teal-500 to-emerald-400 flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:scale-105 transition-transform text-white">
+            <Truck className="w-5 h-5" />
           </div>
           <div className="flex flex-col">
             <span className="text-xl font-black tracking-widest text-white uppercase font-sans leading-none">
@@ -56,7 +53,7 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right: Phone Pill & Two-Tone Button [ >> | Get Started Now ] */}
+        {/* Right: Phone Pill & Two-Tone CTA Button */}
         <div className="hidden md:flex items-center gap-3">
           {/* Phone Number Pill */}
           <a
@@ -67,17 +64,14 @@ export default function Navbar() {
             <span>+91 98765 43210</span>
           </a>
 
-          {/* Two-Tone Emerald CTA Button: [ >> | Get Started Now ] */}
+          {/* Two-Tone Emerald CTA Button */}
           <a
             href="#quote"
             className="flex items-center rounded-xl overflow-hidden shadow-xl shadow-emerald-500/30 hover:scale-105 transition-all group border border-emerald-400/30"
           >
             {/* Left Emerald Box */}
-            <div className="px-3 py-2.5 bg-[#10b981] flex items-center justify-center border-r border-emerald-600">
-              <div className="flex -space-x-1 text-white font-black text-xs">
-                <span>›</span>
-                <span>›</span>
-              </div>
+            <div className="px-3 py-2.5 bg-[#10b981] flex items-center justify-center border-r border-emerald-600 text-white">
+              <ChevronsRight className="w-4 h-4" />
             </div>
             {/* Right White Box */}
             <span className="px-4 py-2.5 bg-white text-slate-900 text-xs font-black uppercase tracking-wider group-hover:bg-slate-100 transition-colors">
