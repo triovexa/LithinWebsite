@@ -91,45 +91,45 @@ export default function HomePage() {
 
         </div>
 
-        {/* Hero Bottom Bar: 4 Quick Highlights */}
-        <div className="mt-12 pt-6 border-t border-emerald-500/20 grid grid-cols-2 lg:grid-cols-4 gap-6 bg-[#080d24]/70 backdrop-blur-md p-6 rounded-2xl border border-emerald-500/15">
-          <div className="flex items-center gap-3.5 border-r border-white/10 pr-4">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
-              <Truck className="w-5 h-5" />
+        {/* Hero Bottom Bar: 4 Quick Highlights - 3D Metallic Glowing Badges */}
+        <div className="mt-12 pt-6 border-t border-emerald-500/30 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 bg-slate-950/40 backdrop-blur-md p-6 rounded-2xl border border-emerald-500/25 shadow-xl">
+          <div className="flex items-center gap-4 border-r border-white/10 pr-4 group">
+            <div className="relative w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
+              <Truck className="w-6 h-6 text-emerald-300 stroke-[2.2]" />
             </div>
             <div>
-              <span className="text-sm font-black text-white uppercase tracking-wide block">Reliable Transport</span>
-              <span className="text-[11px] text-gray-400 font-medium block">Dedicated Fleet Operations</span>
+              <span className="text-sm font-black text-white uppercase tracking-wide block font-sans">Reliable Transport</span>
+              <span className="text-[11px] text-emerald-400 font-semibold block">Dedicated Fleet Operations</span>
             </div>
           </div>
 
-          <div className="flex items-center gap-3.5 border-r border-white/10 pr-4">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
-              <Clock className="w-5 h-5" />
+          <div className="flex items-center gap-4 border-r border-white/10 pr-4 group">
+            <div className="relative w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
+              <Clock className="w-6 h-6 text-emerald-300 stroke-[2.2]" />
             </div>
             <div>
-              <span className="text-sm font-black text-white uppercase tracking-wide block">On-Time Delivery</span>
-              <span className="text-[11px] text-gray-400 font-medium block">Strict Transit Scheduling</span>
+              <span className="text-sm font-black text-white uppercase tracking-wide block font-sans">On-Time Delivery</span>
+              <span className="text-[11px] text-emerald-400 font-semibold block">Strict Transit Scheduling</span>
             </div>
           </div>
 
-          <div className="flex items-center gap-3.5 border-r border-white/10 pr-4">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
-              <Lock className="w-5 h-5" />
+          <div className="flex items-center gap-4 border-r border-white/10 pr-4 group">
+            <div className="relative w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
+              <Lock className="w-6 h-6 text-emerald-300 stroke-[2.2]" />
             </div>
             <div>
-              <span className="text-sm font-black text-white uppercase tracking-wide block">Safe & Secure</span>
-              <span className="text-[11px] text-gray-400 font-medium block">Certified Cargo Lashing</span>
+              <span className="text-sm font-black text-white uppercase tracking-wide block font-sans">Safe & Secure</span>
+              <span className="text-[11px] text-emerald-400 font-semibold block">Certified Cargo Lashing</span>
             </div>
           </div>
 
-          <div className="flex items-center gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
-              <Phone className="w-5 h-5" />
+          <div className="flex items-center gap-4 group">
+            <div className="relative w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
+              <Phone className="w-6 h-6 text-emerald-300 stroke-[2.2]" />
             </div>
             <div>
-              <span className="text-sm font-black text-white uppercase tracking-wide block">24/7 Support</span>
-              <span className="text-[11px] text-gray-400 font-medium block">Highway Dispatch Desk</span>
+              <span className="text-sm font-black text-white uppercase tracking-wide block font-sans">24/7 Support</span>
+              <span className="text-[11px] text-emerald-400 font-semibold block">Highway Dispatch Desk</span>
             </div>
           </div>
         </div>

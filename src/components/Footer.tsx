@@ -1,4 +1,4 @@
-import { Truck, Phone, Mail, MapPin, ShieldCheck } from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -9,13 +9,25 @@ export default function Footer() {
           
           {/* Brand Col */}
           <div className="md:col-span-1 flex flex-col gap-4">
-            <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-teal-500 to-emerald-400 flex items-center justify-center text-white shadow-lg shadow-emerald-500/30">
-                <Truck className="w-5 h-5" />
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="w-11 h-11 rounded-full p-1 bg-[#060b1e]/90 border-2 border-emerald-400/60 shadow-[0_0_20px_rgba(16,185,129,0.4)] flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform group-hover:border-emerald-300">
+                <img
+                  src="/logo.png"
+                  alt="Lithin Transport Logo"
+                  className="w-full h-full object-contain rounded-full"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/logo-tab.png';
+                  }}
+                />
               </div>
               <div className="flex flex-col">
-                <span className="text-base font-black text-white uppercase tracking-widest">LITHIN</span>
-                <span className="text-[9px] font-extrabold text-emerald-400 uppercase tracking-widest -mt-0.5">LOGISTICS & TRANSPORT</span>
+                <span className="text-base font-black text-white uppercase tracking-widest font-sans leading-none flex items-center gap-1">
+                  LITHIN
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block" />
+                </span>
+                <span className="text-[9px] font-extrabold text-emerald-400 uppercase tracking-widest mt-0.5">
+                  LOGISTICS & TRANSPORT
+                </span>
               </div>
             </Link>
             <p className="text-xs text-gray-300 leading-relaxed">
