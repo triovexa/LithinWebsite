@@ -12,7 +12,7 @@ import GalleryPage from './pages/GalleryPage';
 export default function App() {
   return (
     <Router>
-      <div className="relative min-h-screen text-white bg-[#05060f] selection:bg-emerald-500 selection:text-white animated-dot-bg">
+      <div className="relative min-h-screen text-slate-200 bg-transparent selection:bg-emerald-500 selection:text-white overflow-x-hidden">
         {/* Toast Notification Container */}
         <Toaster
           position="top-right"
