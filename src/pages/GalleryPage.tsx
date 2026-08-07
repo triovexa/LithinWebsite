@@ -105,7 +105,7 @@ export default function GalleryPage() {
 
   return (
     <div className="relative min-h-screen pt-28 pb-16 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col gap-12">
-      
+
       {/* Gallery Header */}
       <div className="text-center max-w-3xl mx-auto">
         <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-extrabold uppercase tracking-wider">
@@ -131,11 +131,10 @@ export default function GalleryPage() {
           <button
             key={filter.id}
             onClick={() => setActiveFilter(filter.id as any)}
-            className={`px-5 py-2.5 rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all duration-200 ${
-              activeFilter === filter.id
-                ? 'bg-[#10b981] text-white shadow-lg shadow-emerald-500/30 scale-105'
-                : 'bg-[#0c1328] hover:bg-[#121c3b] border border-emerald-500/20 text-gray-300 hover:text-white'
-            }`}
+            className={`px-5 py-2.5 rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all duration-200 ${activeFilter === filter.id
+              ? 'bg-[#10b981] text-white shadow-lg shadow-emerald-500/30 scale-105'
+              : 'bg-[#0c1328] hover:bg-[#121c3b] border border-emerald-500/20 text-gray-300 hover:text-white'
+              }`}
           >
             {filter.label}
           </button>
@@ -157,7 +156,7 @@ export default function GalleryPage() {
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-85 group-hover:opacity-100"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#05060f] via-transparent to-transparent opacity-80" />
-              
+
               {/* Category Badge */}
               <span className="absolute top-4 left-4 px-3 py-1 bg-emerald-500/90 text-white text-[11px] font-extrabold uppercase rounded-full shadow-md backdrop-blur-sm">
                 {item.categoryLabel}
@@ -195,52 +194,35 @@ export default function GalleryPage() {
         ))}
       </div>
 
-      {/* Stats Counter Section - 3D Metallic Glowing Glass Badges */}
-      <div className="mt-8 p-6 sm:p-10 rounded-3xl bg-slate-950/40 backdrop-blur-md border border-emerald-500/30 shadow-2xl grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-        
-        <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-900/50 border border-emerald-500/20 hover:border-emerald-400/50 transition-all group hover:-translate-y-1 shadow-lg">
-          <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_25px_rgba(16,185,129,0.35)] flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-all duration-300 mb-3">
-            <div className="absolute inset-0 rounded-2xl bg-emerald-500/20 blur-md group-hover:bg-emerald-400/40 transition-all" />
-            <Truck className="w-7 h-7 text-emerald-300 relative z-10 stroke-[2.2] group-hover:rotate-6 transition-transform" />
-          </div>
-          <span className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-200 to-teal-300 block font-sans tracking-tight">150+</span>
-          <span className="text-[11px] font-black text-emerald-400 uppercase tracking-widest mt-1 block">Heavy Fleet Trucks</span>
+      {/* Stats Counter Section */}
+      <div className="mt-8 p-8 rounded-3xl bg-gradient-to-r from-[#070b1e] via-[#09152b] to-[#070b1e] border border-emerald-500/20 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <Truck className="w-7 h-7 text-emerald-400 mx-auto mb-2" />
+          <span className="text-3xl sm:text-4xl font-black text-white block font-sans">150+</span>
+          <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-1 block">Heavy Fleet Trucks</span>
         </div>
-
-        <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-900/50 border border-emerald-500/20 hover:border-emerald-400/50 transition-all group hover:-translate-y-1 shadow-lg">
-          <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_25px_rgba(16,185,129,0.35)] flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-all duration-300 mb-3">
-            <div className="absolute inset-0 rounded-2xl bg-emerald-500/20 blur-md group-hover:bg-emerald-400/40 transition-all" />
-            <Warehouse className="w-7 h-7 text-emerald-300 relative z-10 stroke-[2.2] group-hover:scale-110 transition-transform" />
-          </div>
-          <span className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-200 to-teal-300 block font-sans tracking-tight">25+</span>
-          <span className="text-[11px] font-black text-emerald-400 uppercase tracking-widest mt-1 block">Logistics Hubs</span>
+        <div>
+          <Warehouse className="w-7 h-7 text-emerald-400 mx-auto mb-2" />
+          <span className="text-3xl sm:text-4xl font-black text-white block font-sans">25+</span>
+          <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-1 block">Logistics Hubs</span>
         </div>
-
-        <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-900/50 border border-emerald-500/20 hover:border-emerald-400/50 transition-all group hover:-translate-y-1 shadow-lg">
-          <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_25px_rgba(16,185,129,0.35)] flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-all duration-300 mb-3">
-            <div className="absolute inset-0 rounded-2xl bg-emerald-500/20 blur-md group-hover:bg-emerald-400/40 transition-all" />
-            <Package className="w-7 h-7 text-emerald-300 relative z-10 stroke-[2.2] group-hover:rotate-12 transition-transform" />
-          </div>
-          <span className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-200 to-teal-300 block font-sans tracking-tight">500k+</span>
-          <span className="text-[11px] font-black text-emerald-400 uppercase tracking-widest mt-1 block">Tons Delivered</span>
+        <div>
+          <Package className="w-7 h-7 text-emerald-400 mx-auto mb-2" />
+          <span className="text-3xl sm:text-4xl font-black text-white block font-sans">500k+</span>
+          <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-1 block">Tons Delivered</span>
         </div>
-
-        <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-900/50 border border-emerald-500/20 hover:border-emerald-400/50 transition-all group hover:-translate-y-1 shadow-lg">
-          <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_25px_rgba(16,185,129,0.35)] flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-all duration-300 mb-3">
-            <div className="absolute inset-0 rounded-2xl bg-emerald-500/20 blur-md group-hover:bg-emerald-400/40 transition-all" />
-            <ShieldCheck className="w-7 h-7 text-emerald-300 relative z-10 stroke-[2.2] group-hover:scale-110 transition-transform" />
-          </div>
-          <span className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-200 to-teal-300 block font-sans tracking-tight">99.8%</span>
-          <span className="text-[11px] font-black text-emerald-400 uppercase tracking-widest mt-1 block">Safe Transit Rate</span>
+        <div>
+          <ShieldCheck className="w-7 h-7 text-emerald-400 mx-auto mb-2" />
+          <span className="text-3xl sm:text-4xl font-black text-white block font-sans">99.8%</span>
+          <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-1 block">Safe Transit Rate</span>
         </div>
-
       </div>
 
       {/* Lightbox / Enlarged View Modal */}
       {selectedImage && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
           <div className="relative max-w-4xl w-full bg-[#0a0d24] border border-emerald-500/30 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
-            
+
             {/* Modal Close Button */}
             <button
               onClick={() => setSelectedImage(null)}

@@ -65,10 +65,55 @@ export default function ParticleBackground() {
       });
     }
 
+    const getHeroVideoRect = () => {
+      const hero = document.getElementById('hero-video-section') || document.querySelector('video');
+      if (!hero) return null;
+      const rect = hero.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) return rect;
+      return null;
+    };
+
+    const isPointInHeroVideo = (x: number, y: number, rect: DOMRect | null) => {
+      if (!rect) return false;
+      return (
+        x >= rect.left - 5 &&
+        x <= rect.right + 5 &&
+        y >= rect.top - 5 &&
+        y <= rect.bottom + 5
+      );
+    };
+
+    const isLineIntersectingHeroVideo = (
+      x1: number,
+      y1: number,
+      x2: number,
+      y2: number,
+      rect: DOMRect | null
+    ) => {
+      if (!rect) return false;
+      if (isPointInHeroVideo(x1, y1, rect) || isPointInHeroVideo(x2, y2, rect)) return true;
+
+      const midX = (x1 + x2) / 2;
+      const midY = (y1 + y2) / 2;
+      if (isPointInHeroVideo(midX, midY, rect)) return true;
+
+      const q1X = (x1 + midX) / 2;
+      const q1Y = (y1 + midY) / 2;
+      if (isPointInHeroVideo(q1X, q1Y, rect)) return true;
+
+      const q2X = (midX + x2) / 2;
+      const q2Y = (midY + y2) / 2;
+      if (isPointInHeroVideo(q2X, q2Y, rect)) return true;
+
+      return false;
+    };
+
     let time = 0;
     const render = () => {
       time += 0.015;
       ctx.clearRect(0, 0, width, height);
+
+      const heroRect = getHeroVideoRect();
 
       // Draw subtle connecting lines between nearby green dots (Constellation logistics network effect)
       for (let i = 0; i < dots.length; i++) {
@@ -78,7 +123,10 @@ export default function ParticleBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           const maxLinkDist = 120;
 
-          if (dist < maxLinkDist) {
+          if (
+            dist < maxLinkDist &&
+            !isLineIntersectingHeroVideo(dots[i].x, dots[i].y, dots[j].x, dots[j].y, heroRect)
+          ) {
             const lineOpacity = (1 - dist / maxLinkDist) * 0.22;
             ctx.beginPath();
             ctx.moveTo(dots[i].x, dots[i].y);
@@ -121,14 +169,16 @@ export default function ParticleBackground() {
           Math.max(0.25, dot.baseOpacity + Math.sin(time * dot.pulseSpeed * 10 + dot.pulseOffset) * 0.3)
         );
 
-        // Draw green particle with glow
-        ctx.beginPath();
-        ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
-        ctx.fillStyle = `${dot.color}${opacity})`;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = 'rgba(16, 185, 129, 0.8)';
-        ctx.fill();
-        ctx.shadowBlur = 0;
+        // Draw green particle with glow if not over hero video
+        if (!isPointInHeroVideo(dot.x, dot.y, heroRect)) {
+          ctx.beginPath();
+          ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
+          ctx.fillStyle = `${dot.color}${opacity})`;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = 'rgba(16, 185, 129, 0.8)';
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
       });
 
       // Interactive cursor glow overlay
