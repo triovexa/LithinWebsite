@@ -65,31 +65,90 @@ export default function ParticleBackground() {
       });
     }
 
-    // Helper function to fetch bounding rectangles of all images, videos, and media containers
-    const getExcludedMediaRects = (): DOMRect[] => {
+    interface ExcludedMedia {
+      rect: DOMRect;
+      radius: number;
+    }
+
+    // Helper function to fetch bounding rectangles and border-radii of images, videos, and marked containers
+    const getExcludedMedia = (): ExcludedMedia[] => {
       const elements = document.querySelectorAll<HTMLElement>(
         'img, video, [data-no-particles], .no-particles'
       );
-      const rects: DOMRect[] = [];
+      const items: ExcludedMedia[] = [];
       elements.forEach((el) => {
         const rect = el.getBoundingClientRect();
         if (rect.width > 0 && rect.height > 0) {
-          rects.push(rect);
+          let radius = 24;
+          const computed = window.getComputedStyle(el);
+          const borderRadiusStr = computed.borderRadius;
+          if (borderRadiusStr) {
+            const parsed = parseFloat(borderRadiusStr);
+            if (!isNaN(parsed) && parsed > 0) {
+              radius = parsed;
+            }
+          }
+          items.push({ rect, radius });
         }
       });
-      return rects;
+      return items;
     };
 
-    const isPointInExcludedMedia = (x: number, y: number, rects: DOMRect[]): boolean => {
-      const padding = 4;
-      for (let i = 0; i < rects.length; i++) {
-        const r = rects[i];
-        if (
-          x >= r.left - padding &&
-          x <= r.right + padding &&
-          y >= r.top - padding &&
-          y <= r.bottom + padding
-        ) {
+    const isPointInRoundedRect = (
+      x: number,
+      y: number,
+      r: DOMRect,
+      radius: number
+    ): boolean => {
+      const padding = 2;
+      const left = r.left - padding;
+      const right = r.right + padding;
+      const top = r.top - padding;
+      const bottom = r.bottom + padding;
+
+      // Outer boundary check
+      if (x < left || x > right || y < top || y > bottom) {
+        return false;
+      }
+
+      // Inner cross check (excluding 4 corner boxes)
+      const rInner = Math.max(0, radius - padding);
+      const leftCorner = left + rInner;
+      const rightCorner = right - rInner;
+      const topCorner = top + rInner;
+      const bottomCorner = bottom - rInner;
+
+      if (x >= leftCorner && x <= rightCorner) return true;
+      if (y >= topCorner && y <= bottomCorner) return true;
+
+      // 4 corner regions distance check
+      let cornerX = 0;
+      let cornerY = 0;
+
+      if (x < leftCorner && y < topCorner) {
+        cornerX = leftCorner;
+        cornerY = topCorner;
+      } else if (x > rightCorner && y < topCorner) {
+        cornerX = rightCorner;
+        cornerY = topCorner;
+      } else if (x < leftCorner && y > bottomCorner) {
+        cornerX = leftCorner;
+        cornerY = bottomCorner;
+      } else if (x > rightCorner && y > bottomCorner) {
+        cornerX = rightCorner;
+        cornerY = bottomCorner;
+      } else {
+        return true;
+      }
+
+      const dx = x - cornerX;
+      const dy = y - cornerY;
+      return dx * dx + dy * dy <= rInner * rInner;
+    };
+
+    const isPointInExcludedMedia = (x: number, y: number, items: ExcludedMedia[]): boolean => {
+      for (let i = 0; i < items.length; i++) {
+        if (isPointInRoundedRect(x, y, items[i].rect, items[i].radius)) {
           return true;
         }
       }
@@ -101,31 +160,27 @@ export default function ParticleBackground() {
       y1: number,
       x2: number,
       y2: number,
-      rects: DOMRect[]
+      items: ExcludedMedia[]
     ): boolean => {
-      const padding = 4;
-      for (let i = 0; i < rects.length; i++) {
-        const r = rects[i];
-        const left = r.left - padding;
-        const right = r.right + padding;
-        const top = r.top - padding;
-        const bottom = r.bottom + padding;
-
-        const p1Inside = x1 >= left && x1 <= right && y1 >= top && y1 <= bottom;
-        const p2Inside = x2 >= left && x2 <= right && y2 >= top && y2 <= bottom;
-        if (p1Inside || p2Inside) return true;
-
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        if (
+          isPointInRoundedRect(x1, y1, item.rect, item.radius) ||
+          isPointInRoundedRect(x2, y2, item.rect, item.radius)
+        ) {
+          return true;
+        }
         const midX = (x1 + x2) / 2;
         const midY = (y1 + y2) / 2;
-        if (midX >= left && midX <= right && midY >= top && midY <= bottom) return true;
+        if (isPointInRoundedRect(midX, midY, item.rect, item.radius)) return true;
 
         const q1X = (x1 + midX) / 2;
         const q1Y = (y1 + midY) / 2;
-        if (q1X >= left && q1X <= right && q1Y >= top && q1Y <= bottom) return true;
+        if (isPointInRoundedRect(q1X, q1Y, item.rect, item.radius)) return true;
 
         const q2X = (midX + x2) / 2;
         const q2Y = (midY + y2) / 2;
-        if (q2X >= left && q2X <= right && q2Y >= top && q2Y <= bottom) return true;
+        if (isPointInRoundedRect(q2X, q2Y, item.rect, item.radius)) return true;
       }
       return false;
     };
@@ -135,19 +190,10 @@ export default function ParticleBackground() {
       time += 0.015;
       ctx.clearRect(0, 0, width, height);
 
-      // Get all current image & video bounding rectangles on screen
-      const mediaRects = getExcludedMediaRects();
+      // Fetch bounding rects & radii for all images, videos, and marked containers
+      const mediaItems = getExcludedMedia();
 
-      // Save context state & apply evenodd clip to exclude all image/video areas completely
-      ctx.save();
-      ctx.beginPath();
-      ctx.rect(0, 0, width, height);
-      mediaRects.forEach((r) => {
-        ctx.rect(r.left - 2, r.top - 2, r.width + 4, r.height + 4);
-      });
-      ctx.clip('evenodd');
-
-      // Draw subtle connecting lines between nearby green dots (Constellation logistics network effect)
+      // Draw subtle connecting lines between nearby green dots (skipping lines over any video or image)
       for (let i = 0; i < dots.length; i++) {
         for (let j = i + 1; j < dots.length; j++) {
           const dx = dots[i].x - dots[j].x;
@@ -157,7 +203,7 @@ export default function ParticleBackground() {
 
           if (
             dist < maxLinkDist &&
-            !isLineIntersectingExcludedMedia(dots[i].x, dots[i].y, dots[j].x, dots[j].y, mediaRects)
+            !isLineIntersectingExcludedMedia(dots[i].x, dots[i].y, dots[j].x, dots[j].y, mediaItems)
           ) {
             const lineOpacity = (1 - dist / maxLinkDist) * 0.22;
             ctx.beginPath();
@@ -170,7 +216,7 @@ export default function ParticleBackground() {
         }
       }
 
-      // Draw glowing emerald particles
+      // Draw glowing emerald particles (skipping dots inside any video or image rounded bounds)
       dots.forEach((dot) => {
         // Update positions
         dot.x += dot.vx;
@@ -201,8 +247,8 @@ export default function ParticleBackground() {
           Math.max(0.25, dot.baseOpacity + Math.sin(time * dot.pulseSpeed * 10 + dot.pulseOffset) * 0.3)
         );
 
-        // Draw green particle with glow if not over any image or video
-        if (!isPointInExcludedMedia(dot.x, dot.y, mediaRects)) {
+        // Draw particle dot ONLY if not over video or image
+        if (!isPointInExcludedMedia(dot.x, dot.y, mediaItems)) {
           ctx.beginPath();
           ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
           ctx.fillStyle = `${dot.color}${opacity})`;
@@ -213,8 +259,8 @@ export default function ParticleBackground() {
         }
       });
 
-      // Interactive cursor glow overlay
-      if (mouse.active) {
+      // Interactive cursor glow overlay (skipping over video or image)
+      if (mouse.active && !isPointInExcludedMedia(mouse.x, mouse.y, mediaItems)) {
         ctx.beginPath();
         const cursorGlow = ctx.createRadialGradient(
           mouse.x, mouse.y, 0,

@@ -13,17 +13,17 @@ export default function HomePage() {
     <div className="relative min-h-screen pt-24 pb-12 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col gap-16">
 
       {/* HERO SECTION - FULL WIDTH BRIGHT HD VIDEO BACKGROUND */}
-      <section id="hero-video-section" className="relative overflow-hidden rounded-3xl border border-emerald-500/30 bg-slate-950/20 backdrop-blur-sm shadow-2xl h-[70vh] sm:h-[75vh] md:h-[80vh] w-full transition-all">
+      <section id="hero-video-section" className="relative overflow-hidden rounded-3xl border border-emerald-500/30 bg-transparent shadow-2xl h-[70vh] sm:h-[75vh] md:h-[80vh] w-full transition-all">
         
         {/* 100% Vivid Bright Full HD Video Background */}
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden rounded-3xl">
           <video
             autoPlay
             loop
             muted
             playsInline
             poster="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1920&q=80"
-            className="w-full h-full object-cover opacity-100 scale-105 transition-all duration-700 brightness-105 contrast-105"
+            className="w-full h-full object-cover opacity-100 scale-105 transition-all duration-700 brightness-105 contrast-105 rounded-3xl"
           >
             {/* Primary Local Video File from public/hero-video.mp4 */}
             <source src="/hero-video.mp4" type="video/mp4" />
@@ -33,7 +33,7 @@ export default function HomePage() {
             <img
               src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1920&q=80"
               alt="Commercial Freight Container Truck"
-              className="w-full h-full object-cover opacity-100 scale-105"
+              className="w-full h-full object-cover opacity-100 scale-105 rounded-3xl"
             />
           </video>
         </div>
@@ -41,7 +41,7 @@ export default function HomePage() {
       </section>
 
       {/* 4 QUICK HIGHLIGHTS BAR - PLACED OUTSIDE & BELOW THE VIDEO */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#060a17] via-[#0b1329] to-[#060a17] border border-emerald-500/30 shadow-2xl shadow-emerald-500/10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 sm:p-8 rounded-3xl bg-slate-950/20 backdrop-blur-md border border-emerald-500/30 shadow-2xl shadow-emerald-500/10">
         <div className="flex items-center gap-4 border-b sm:border-b-0 sm:border-r border-white/10 pb-4 sm:pb-0 pr-0 sm:pr-4 group">
           <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_25px_rgba(16,185,129,0.3)] flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
             <Truck className="w-7 h-7 text-emerald-300 stroke-[2.2]" />
@@ -140,7 +140,7 @@ export default function HomePage() {
       </section>
 
       {/* WHY CHOOSE LITHIN TRANSPORT */}
-      <section className="p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 bg-slate-950/40 backdrop-blur-md shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <section className="p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 bg-slate-950/20 backdrop-blur-md shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div className="lg:col-span-6 flex flex-col gap-4">
           <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-extrabold uppercase tracking-wider w-fit">
             Enterprise Advantage

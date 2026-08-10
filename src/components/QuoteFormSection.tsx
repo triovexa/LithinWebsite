@@ -61,7 +61,7 @@ export default function QuoteFormSection() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         
         {/* Left Copy & Info */}
-        <div className="lg:col-span-5 flex flex-col justify-between p-8 sm:p-10 rounded-3xl glass-panel border border-emerald-500/20 bg-slate-950/40 backdrop-blur-md shadow-2xl">
+        <div className="lg:col-span-5 flex flex-col justify-between p-8 sm:p-10 rounded-3xl glass-panel border border-emerald-500/20 bg-slate-950/20 backdrop-blur-md shadow-2xl">
           <div>
             <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
               Instant Estimation
@@ -99,7 +99,7 @@ export default function QuoteFormSection() {
         </div>
 
         {/* Right Form Card */}
-        <div className="lg:col-span-7 p-8 sm:p-10 rounded-3xl glass-panel border border-emerald-500/20 shadow-2xl bg-slate-950/40 backdrop-blur-md">
+        <div className="lg:col-span-7 p-8 sm:p-10 rounded-3xl glass-panel border border-emerald-500/20 shadow-2xl bg-slate-950/20 backdrop-blur-md">
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>

@@ -133,7 +133,7 @@ export default function GalleryPage() {
             onClick={() => setActiveFilter(filter.id as any)}
             className={`px-5 py-2.5 rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all duration-200 ${activeFilter === filter.id
               ? 'bg-[#10b981] text-white shadow-lg shadow-emerald-500/30 scale-105'
-              : 'bg-[#0c1328] hover:bg-[#121c3b] border border-emerald-500/20 text-gray-300 hover:text-white'
+              : 'bg-slate-950/30 hover:bg-slate-900/40 backdrop-blur-md border border-emerald-500/20 text-gray-300 hover:text-white'
               }`}
           >
             {filter.label}
@@ -195,7 +195,7 @@ export default function GalleryPage() {
       </div>
 
       {/* Stats Counter Section */}
-      <div className="mt-8 p-8 rounded-3xl bg-gradient-to-r from-[#070b1e] via-[#09152b] to-[#070b1e] border border-emerald-500/20 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div className="mt-8 p-8 rounded-3xl bg-slate-950/20 backdrop-blur-md border border-emerald-500/20 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
         <div>
           <Truck className="w-7 h-7 text-emerald-400 mx-auto mb-2" />
           <span className="text-3xl sm:text-4xl font-black text-white block font-sans">150+</span>
