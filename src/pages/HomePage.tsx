@@ -170,7 +170,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="lg:col-span-6 relative rounded-2xl overflow-hidden h-72 border border-emerald-500/30 shadow-xl">
+        <div data-no-particles="true" className="lg:col-span-6 relative rounded-2xl overflow-hidden h-72 border border-emerald-500/30 shadow-xl">
           <img
             src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
             alt="Lithin Transport Logistics Hub"

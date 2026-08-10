@@ -65,46 +65,68 @@ export default function ParticleBackground() {
       });
     }
 
-    const getHeroVideoRect = () => {
-      const hero = document.getElementById('hero-video-section') || document.querySelector('video');
-      if (!hero) return null;
-      const rect = hero.getBoundingClientRect();
-      if (rect.width > 0 && rect.height > 0) return rect;
-      return null;
-    };
-
-    const isPointInHeroVideo = (x: number, y: number, rect: DOMRect | null) => {
-      if (!rect) return false;
-      return (
-        x >= rect.left - 5 &&
-        x <= rect.right + 5 &&
-        y >= rect.top - 5 &&
-        y <= rect.bottom + 5
+    // Helper function to fetch bounding rectangles of all images, videos, and media containers
+    const getExcludedMediaRects = (): DOMRect[] => {
+      const elements = document.querySelectorAll<HTMLElement>(
+        'img, video, [data-no-particles], .no-particles'
       );
+      const rects: DOMRect[] = [];
+      elements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.width > 0 && rect.height > 0) {
+          rects.push(rect);
+        }
+      });
+      return rects;
     };
 
-    const isLineIntersectingHeroVideo = (
+    const isPointInExcludedMedia = (x: number, y: number, rects: DOMRect[]): boolean => {
+      const padding = 4;
+      for (let i = 0; i < rects.length; i++) {
+        const r = rects[i];
+        if (
+          x >= r.left - padding &&
+          x <= r.right + padding &&
+          y >= r.top - padding &&
+          y <= r.bottom + padding
+        ) {
+          return true;
+        }
+      }
+      return false;
+    };
+
+    const isLineIntersectingExcludedMedia = (
       x1: number,
       y1: number,
       x2: number,
       y2: number,
-      rect: DOMRect | null
-    ) => {
-      if (!rect) return false;
-      if (isPointInHeroVideo(x1, y1, rect) || isPointInHeroVideo(x2, y2, rect)) return true;
+      rects: DOMRect[]
+    ): boolean => {
+      const padding = 4;
+      for (let i = 0; i < rects.length; i++) {
+        const r = rects[i];
+        const left = r.left - padding;
+        const right = r.right + padding;
+        const top = r.top - padding;
+        const bottom = r.bottom + padding;
 
-      const midX = (x1 + x2) / 2;
-      const midY = (y1 + y2) / 2;
-      if (isPointInHeroVideo(midX, midY, rect)) return true;
+        const p1Inside = x1 >= left && x1 <= right && y1 >= top && y1 <= bottom;
+        const p2Inside = x2 >= left && x2 <= right && y2 >= top && y2 <= bottom;
+        if (p1Inside || p2Inside) return true;
 
-      const q1X = (x1 + midX) / 2;
-      const q1Y = (y1 + midY) / 2;
-      if (isPointInHeroVideo(q1X, q1Y, rect)) return true;
+        const midX = (x1 + x2) / 2;
+        const midY = (y1 + y2) / 2;
+        if (midX >= left && midX <= right && midY >= top && midY <= bottom) return true;
 
-      const q2X = (midX + x2) / 2;
-      const q2Y = (midY + y2) / 2;
-      if (isPointInHeroVideo(q2X, q2Y, rect)) return true;
+        const q1X = (x1 + midX) / 2;
+        const q1Y = (y1 + midY) / 2;
+        if (q1X >= left && q1X <= right && q1Y >= top && q1Y <= bottom) return true;
 
+        const q2X = (midX + x2) / 2;
+        const q2Y = (midY + y2) / 2;
+        if (q2X >= left && q2X <= right && q2Y >= top && q2Y <= bottom) return true;
+      }
       return false;
     };
 
@@ -113,7 +135,17 @@ export default function ParticleBackground() {
       time += 0.015;
       ctx.clearRect(0, 0, width, height);
 
-      const heroRect = getHeroVideoRect();
+      // Get all current image & video bounding rectangles on screen
+      const mediaRects = getExcludedMediaRects();
+
+      // Save context state & apply evenodd clip to exclude all image/video areas completely
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(0, 0, width, height);
+      mediaRects.forEach((r) => {
+        ctx.rect(r.left - 2, r.top - 2, r.width + 4, r.height + 4);
+      });
+      ctx.clip('evenodd');
 
       // Draw subtle connecting lines between nearby green dots (Constellation logistics network effect)
       for (let i = 0; i < dots.length; i++) {
@@ -125,7 +157,7 @@ export default function ParticleBackground() {
 
           if (
             dist < maxLinkDist &&
-            !isLineIntersectingHeroVideo(dots[i].x, dots[i].y, dots[j].x, dots[j].y, heroRect)
+            !isLineIntersectingExcludedMedia(dots[i].x, dots[i].y, dots[j].x, dots[j].y, mediaRects)
           ) {
             const lineOpacity = (1 - dist / maxLinkDist) * 0.22;
             ctx.beginPath();
@@ -169,8 +201,8 @@ export default function ParticleBackground() {
           Math.max(0.25, dot.baseOpacity + Math.sin(time * dot.pulseSpeed * 10 + dot.pulseOffset) * 0.3)
         );
 
-        // Draw green particle with glow if not over hero video
-        if (!isPointInHeroVideo(dot.x, dot.y, heroRect)) {
+        // Draw green particle with glow if not over any image or video
+        if (!isPointInExcludedMedia(dot.x, dot.y, mediaRects)) {
           ctx.beginPath();
           ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
           ctx.fillStyle = `${dot.color}${opacity})`;
@@ -195,6 +227,8 @@ export default function ParticleBackground() {
         ctx.arc(mouse.x, mouse.y, 140, 0, Math.PI * 2);
         ctx.fill();
       }
+
+      ctx.restore();
 
       animationFrameId = requestAnimationFrame(render);
     };

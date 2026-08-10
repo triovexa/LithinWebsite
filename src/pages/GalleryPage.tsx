@@ -149,7 +149,7 @@ export default function GalleryPage() {
             onClick={() => setSelectedImage(item)}
             className="group cursor-pointer rounded-3xl glass-panel border border-emerald-500/15 hover:border-emerald-400/50 transition-all duration-300 overflow-hidden flex flex-col justify-between hover:-translate-y-1 shadow-xl"
           >
-            <div className="relative h-60 overflow-hidden">
+            <div data-no-particles="true" className="relative h-60 overflow-hidden">
               <img
                 src={item.image}
                 alt={item.title}
@@ -232,7 +232,7 @@ export default function GalleryPage() {
             </button>
 
             {/* Modal Image */}
-            <div className="relative max-h-[60vh] overflow-hidden bg-black flex items-center justify-center">
+            <div data-no-particles="true" className="relative max-h-[60vh] overflow-hidden bg-black flex items-center justify-center">
               <img
                 src={selectedImage.image}
                 alt={selectedImage.title}
