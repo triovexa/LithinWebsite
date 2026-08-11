@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Award, Navigation, Users, ShieldCheck, MapPin, Phone, Mail, Send, HelpCircle, ChevronDown } from 'lucide-react';
 import toast from 'react-hot-toast';
+import BranchNetworkSection from '../components/BranchNetworkSection';
 
 export default function AboutPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -276,6 +277,9 @@ export default function AboutPage() {
         </div>
 
       </section>
+
+      {/* PAN-INDIA BRANCH OFFICES NETWORK MAP */}
+      <BranchNetworkSection />
 
     </div>
   );

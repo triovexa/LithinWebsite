@@ -1,12 +1,12 @@
-import { Truck, Phone, Lock, Clock, MapPin, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Truck, Phone, Lock, Clock, MapPin, ShieldCheck, ArrowRight, CheckCircle2, Building2, Globe } from 'lucide-react';
 import QuoteFormSection from '../components/QuoteFormSection';
 
 export default function HomePage() {
   const routes = [
-    { from: "Chennai", to: "Bengaluru", time: "8 Hours", frequency: "Daily 15+ Trucks", type: "Container & FTL" },
-    { from: "Chennai", to: "Hyderabad", time: "14 Hours", frequency: "Daily 10+ Trucks", type: "Heavy Freight" },
-    { from: "Coimbatore", to: "Chennai", time: "10 Hours", frequency: "Daily 12+ Trucks", type: "Express Industrial" },
-    { from: "Chennai", to: "Mumbai", time: "34 Hours", frequency: "Regular Multi-Axle", type: "Sealed Heavy Cargo" },
+    { from: "Bangalore", to: "Chennai", time: "6 Hours", frequency: "Daily Express FTL", type: "Head Office Corridor" },
+    { from: "Bangalore", to: "Tirupur", time: "5 Hours", frequency: "Daily Garment Fleet", type: "Textile Freight Route" },
+    { from: "Chennai", to: "Tirupur", time: "7 Hours", frequency: "Daily Inter-Branch", type: "Industrial Cargo Line" },
+    { from: "Bangalore", to: "All India", time: "Express Transit", frequency: "Multi-Axle Fleet", type: "Pan-India Haulage" },
   ];
 
   return (
@@ -25,11 +25,8 @@ export default function HomePage() {
             poster="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1920&q=80"
             className="w-full h-full object-cover opacity-100 scale-105 transition-all duration-700 brightness-105 contrast-105 rounded-3xl"
           >
-            {/* Primary Local Video File from public/hero-video.mp4 */}
             <source src="/hero-video.mp4" type="video/mp4" />
-            {/* Online Backup Stream */}
             <source src="https://assets.mixkit.co/videos/preview/mixkit-truck-driving-on-the-highway-at-sunset-41581-large.mp4" type="video/mp4" />
-            {/* Fallback image */}
             <img
               src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1920&q=80"
               alt="Commercial Freight Container Truck"
@@ -47,18 +44,18 @@ export default function HomePage() {
             <Truck className="w-7 h-7 text-emerald-300 stroke-[2.2]" />
           </div>
           <div>
-            <span className="text-base font-black text-white uppercase tracking-wide block font-sans">Reliable Transport</span>
-            <span className="text-xs text-emerald-400 font-semibold block mt-0.5">Dedicated Fleet Operations</span>
+            <span className="text-base font-black text-white uppercase tracking-wide block font-sans">Pan-India Transport</span>
+            <span className="text-xs text-emerald-400 font-semibold block mt-0.5">58+ Express Destinations</span>
           </div>
         </div>
 
         <div className="flex items-center gap-4 border-b sm:border-b-0 lg:border-r border-white/10 pb-4 sm:pb-0 pr-0 lg:pr-4 group">
           <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_25px_rgba(16,185,129,0.3)] flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
-            <Clock className="w-7 h-7 text-emerald-300 stroke-[2.2]" />
+            <Building2 className="w-7 h-7 text-emerald-300 stroke-[2.2]" />
           </div>
           <div>
-            <span className="text-base font-black text-white uppercase tracking-wide block font-sans">On-Time Delivery</span>
-            <span className="text-xs text-emerald-400 font-semibold block mt-0.5">Strict Transit Scheduling</span>
+            <span className="text-base font-black text-white uppercase tracking-wide block font-sans">3 Official Offices</span>
+            <span className="text-xs text-emerald-400 font-semibold block mt-0.5">Bangalore (HQ), Chennai, Tirupur</span>
           </div>
         </div>
 
@@ -67,8 +64,8 @@ export default function HomePage() {
             <Lock className="w-7 h-7 text-emerald-300 stroke-[2.2]" />
           </div>
           <div>
-            <span className="text-base font-black text-white uppercase tracking-wide block font-sans">Safe & Secure</span>
-            <span className="text-xs text-emerald-400 font-semibold block mt-0.5">Certified Cargo Lashing</span>
+            <span className="text-base font-black text-white uppercase tracking-wide block font-sans">Daily Parcel Service</span>
+            <span className="text-xs text-emerald-400 font-semibold block mt-0.5">Sealed Box & Heavy Freight</span>
           </div>
         </div>
 
@@ -77,28 +74,28 @@ export default function HomePage() {
             <Phone className="w-7 h-7 text-emerald-300 stroke-[2.2]" />
           </div>
           <div>
-            <span className="text-base font-black text-white uppercase tracking-wide block font-sans">24/7 Support</span>
-            <span className="text-xs text-emerald-400 font-semibold block mt-0.5">Highway Dispatch Desk</span>
+            <span className="text-base font-black text-white uppercase tracking-wide block font-sans">24/7 Helpline Desk</span>
+            <span className="text-xs text-emerald-400 font-semibold block mt-0.5">Direct Dispatch Contact</span>
           </div>
         </div>
       </div>
 
-      {/* KEY HIGHWAY ROUTES & CORRIDORS */}
+      {/* KEY HIGHWAY ROUTES & CORRIDORS SUMMARY */}
       <section className="flex flex-col gap-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-extrabold uppercase tracking-wider">
-              Logistics Network
+              Logistics Network Overview
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-white mt-3 uppercase tracking-tight font-sans">
               Major Express Routes
             </h2>
           </div>
           <a
-            href="/services"
+            href="/services#parcel-network"
             className="flex items-center gap-2 text-xs font-extrabold text-emerald-400 uppercase tracking-wider hover:text-emerald-300 transition-colors w-fit"
           >
-            <span>View All Freight Services</span>
+            <span>View All 58+ Parcel Services & India Map</span>
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>
@@ -107,7 +104,7 @@ export default function HomePage() {
           {routes.map((route, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-3xl glass-panel border border-emerald-500/15 hover:border-emerald-400/50 transition-all duration-300 flex flex-col justify-between group"
+              className="p-6 rounded-3xl glass-panel border border-emerald-500/15 hover:border-emerald-400/50 transition-all duration-300 flex flex-col justify-between group shadow-xl"
             >
               <div>
                 <div className="flex items-center justify-between text-xs font-extrabold text-emerald-400 uppercase mb-3">
@@ -128,11 +125,11 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-gray-300 font-bold uppercase">
-                <div className="flex items-center gap-1.5 text-emerald-400">
-                  <MapPin className="w-3.5 h-3.5" />
-                  <span>GPS Tracked Route</span>
-                </div>
+              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-emerald-400 font-extrabold uppercase">
+                <a href="/services#parcel-network" className="hover:underline flex items-center gap-1">
+                  <span>View Service Destinations</span>
+                  <ArrowRight className="w-3 h-3" />
+                </a>
               </div>
             </div>
           ))}

@@ -22,7 +22,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative mt-20 bg-[#030612]/50 backdrop-blur-md border-t border-emerald-500/20 pt-16 pb-8">
+    <footer className="relative mt-20 bg-transparent pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Top 4-Column Layout */}
