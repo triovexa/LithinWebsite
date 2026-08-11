@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Award, Navigation, Users, ShieldCheck, MapPin, Phone, Mail, Send, HelpCircle, ChevronDown } from 'lucide-react';
 import toast from 'react-hot-toast';
+import BranchNetworkSection from '../components/BranchNetworkSection';
 
 export default function AboutPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -95,7 +96,7 @@ export default function AboutPage() {
       </div>
 
       {/* Numbers Section */}
-      <div className="p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 bg-gradient-to-r from-[#081329] via-[#050b1e] to-[#081329] shadow-xl">
+      <div className="p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 bg-slate-950/20 backdrop-blur-md shadow-xl">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center divide-x divide-white/10">
           <div className="px-4">
             <span className="text-4xl sm:text-6xl font-black text-white font-sans tracking-tight block">10+</span>
@@ -157,7 +158,7 @@ export default function AboutPage() {
       </section>
 
       {/* CORPORATE CONTACT SECTION (#contact) */}
-      <section id="contact" className="scroll-mt-28 p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 bg-gradient-to-br from-[#081229] to-[#040817] grid grid-cols-1 lg:grid-cols-12 gap-10 items-start shadow-2xl">
+      <section id="contact" className="scroll-mt-28 p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 bg-slate-950/20 backdrop-blur-md grid grid-cols-1 lg:grid-cols-12 gap-10 items-start shadow-2xl">
         
         {/* Contact Information */}
         <div className="lg:col-span-5 flex flex-col gap-6">
@@ -201,7 +202,7 @@ export default function AboutPage() {
         </div>
 
         {/* Quick Message Form */}
-        <div className="lg:col-span-7 bg-[#060a1f] p-6 sm:p-8 rounded-2xl border border-emerald-500/20">
+        <div className="lg:col-span-7 bg-slate-950/30 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-emerald-500/20">
           <h3 className="text-xl font-black text-white uppercase tracking-wide font-sans mb-4">
             Send Corporate Message
           </h3>
@@ -276,6 +277,9 @@ export default function AboutPage() {
         </div>
 
       </section>
+
+      {/* PAN-INDIA BRANCH OFFICES NETWORK MAP */}
+      <BranchNetworkSection />
 
     </div>
   );

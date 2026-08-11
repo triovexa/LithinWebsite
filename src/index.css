@@ -1,65 +1,86 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-  --font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Fredoka', 'Quicksand', 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', 'Fredoka', 'Space Grotesk', sans-serif;
+  --font-rounded: 'Fredoka', 'Quicksand', sans-serif;
 }
 
 @layer base {
-  * {
-    box-sizing: border-box;
+  html {
+    font-size: 17px;
   }
 
-  html {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  * {
+    box-sizing: border-box;
+    font-family: 'Fredoka', 'Quicksand', 'Outfit', 'Inter', system-ui, -apple-system, sans-serif !important;
   }
 
   body {
     background-color: #060814;
     color: #e2e8f0;
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Fredoka', 'Quicksand', 'Outfit', 'Inter', system-ui, -apple-system, sans-serif !important;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    letter-spacing: -0.011em;
+    font-size: 1.025rem;
+    line-height: 1.6;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    color: #f1f5f9;
-    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    letter-spacing: -0.02em;
+  /* Tone down font thickness of headings to match AGS sleek look */
+  h1,
+  h2,
+  h3 {
+    font-weight: 600 !important;
+    font-family: 'Outfit', 'Fredoka', 'Space Grotesk', sans-serif !important;
+    letter-spacing: -0.015em;
+  }
+
+  h4,
+  h5,
+  h6,
+  strong,
+  b,
+  .font-bold,
+  .font-semibold,
+  .font-black {
+    font-weight: 500 !important;
+  }
+
+  /* Soften general heading colors to reduce glare matching AGS */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #e2e8f0;
   }
 }
 
-.font-sans {
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+.font-display {
+  font-family: 'Outfit', 'Fredoka', 'Space Grotesk', sans-serif !important;
 }
 
-.font-heading, .font-display {
-  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif !important;
+.font-rounded {
+  font-family: 'Fredoka', 'Quicksand', sans-serif !important;
 }
 
-.font-mono {
-  font-family: 'JetBrains Mono', monospace !important;
-}
-
-/* AGS Glassmorphism Cards & Panels */
+/* AGS Glassmorphism Cards & Panels - Transparent Glass to show particle animation */
 .glass-card {
-  background: rgba(14, 17, 42, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.08);
+  background: rgba(6, 10, 28, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.1);
   border-radius: 1rem;
 }
 
 .glass-panel {
-  background: rgba(14, 17, 42, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(16, 185, 129, 0.15);
+  background: rgba(6, 10, 28, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(16, 185, 129, 0.2);
   border-radius: 1.25rem;
 }
 
@@ -159,4 +180,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #10b981;
 }
-
