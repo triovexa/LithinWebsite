@@ -62,27 +62,6 @@ export default function Navbar() {
     { name: 'CONTACT', path: '/#contact', hasDropdown: false },
   ];
 
-  const searchableItems = [
-    { title: 'Full Truck Load (FTL) Freight', category: 'Services', path: '/services' },
-    { title: 'Part Load Cargo (PTL)', category: 'Services', path: '/services' },
-    { title: 'Heavy Machinery & Multi-Axle Haulage', category: 'Services', path: '/services' },
-    { title: 'Sealed Container Fleet Operations', category: 'Services', path: '/services' },
-    { title: 'Warehousing & Storage Hubs', category: 'Services', path: '/services' },
-    { title: 'Bangalore - Chennai Express Route', category: 'Routes', path: '/' },
-    { title: 'Bangalore - Tirupur Garment Corridor', category: 'Routes', path: '/' },
-    { title: 'Chennai - Tirupur Inter-Branch Route', category: 'Routes', path: '/' },
-    { title: 'Photo Gallery & Fleet Operations', category: 'Gallery', path: '/gallery' },
-    { title: 'About Lithin Transport & Fleet', category: 'Company', path: '/about' },
-    { title: 'Get Instant Rate Quote / Contact', category: 'Support', path: '/#quote' },
-  ];
-
-  const searchResults = searchQuery.trim() === ''
-    ? searchableItems.slice(0, 4)
-    : searchableItems.filter(item =>
-      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.category.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-
   return (
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent px-4 sm:px-8 py-4 transition-all duration-300">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">

@@ -1,4 +1,4 @@
-import { Truck, Phone, Lock, Clock, MapPin, ShieldCheck, ArrowRight, CheckCircle2, Building2, Globe } from 'lucide-react';
+import { Truck, Phone, Lock, ShieldCheck, ArrowRight, CheckCircle2, Building2 } from 'lucide-react';
 import QuoteFormSection from '../components/QuoteFormSection';
 
 export default function HomePage() {
