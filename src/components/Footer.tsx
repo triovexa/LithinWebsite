@@ -7,8 +7,8 @@ export default function Footer() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (!isMobile) {
       e.preventDefault();
-      navigator.clipboard.writeText('+919876543210');
-      toast.success('Phone number +91 98765 43210 copied to clipboard!');
+      navigator.clipboard.writeText('+919566738884');
+      toast.success('Phone number +91 95667 38884 copied to clipboard!');
     }
   };
 
@@ -86,10 +86,11 @@ export default function Footer() {
               <li><a href="/#quote" className="hover:text-emerald-400 transition-colors">Instant Freight Rate Estimator</a></li>
               <li><a href="/#contact" className="hover:text-emerald-400 transition-colors">Track Consignment & Dispatch Desk</a></li>
               <li><Link to="/about" className="hover:text-emerald-400 transition-colors">About Our Fleet & Infrastructure</Link></li>
-              <li><a href="tel:+919876543210" onClick={handlePhoneClick} className="hover:text-emerald-400 transition-colors">Direct Highway Helpline Desk</a></li>
+              <li><a href="tel:+919566738884" onClick={handlePhoneClick} className="hover:text-emerald-400 transition-colors">Direct Highway Helpline Desk (+91 95667 38884)</a></li>
               <li><a href="mailto:support@lithintransport.com" onClick={handleEmailClick} className="hover:text-emerald-400 transition-colors">Report Cargo Inquiry or Support</a></li>
             </ul>
           </div>
+
 
           {/* Col 4: Stay Connected & Newsletter */}
           <div className="flex flex-col gap-4">

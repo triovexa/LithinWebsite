@@ -1,21 +1,57 @@
 import { useState } from 'react';
 import { Link as RouterLink, useLocation as useRouteLocation } from 'react-router-dom';
-import { Phone, Menu, X, ChevronDown, Search, ArrowRight } from 'lucide-react';
+import { Phone, Menu, X, ChevronDown, HelpCircle, User, Send } from 'lucide-react';
 import toast from 'react-hot-toast';
+import BookingFormContent from './BookingFormContent';
 
 export default function Navbar() {
   const location = useRouteLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [queryOpen, setQueryOpen] = useState(false);
+  const [queryData, setQueryData] = useState({
+    name: '',
+    phone: '',
+    message: ''
+  });
+  const [isQuerySubmitting, setIsQuerySubmitting] = useState(false);
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
 
   const handlePhoneClick = (e: React.MouseEvent) => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (!isMobile) {
       e.preventDefault();
-      navigator.clipboard.writeText('+919876543210');
-      toast.success('Phone number +91 98765 43210 copied to clipboard!');
+      navigator.clipboard.writeText('+919566738884');
+      toast.success('Phone number +91 95667 38884 copied to clipboard!');
     }
+  };
+
+
+  const handleQuerySubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!queryData.message.trim()) {
+      toast.error('Please enter your query message');
+      return;
+    }
+
+    setIsQuerySubmitting(true);
+
+    const whatsappText = 
+      `Lithin Transport - Customer Inquiry\n\n` +
+      (queryData.name.trim() ? `Client Name: ${queryData.name.trim()}\n` : '') +
+      (queryData.phone.trim() ? `Phone: ${queryData.phone.trim()}\n` : '') +
+      `Query: ${queryData.message.trim()}`;
+
+    const targetPhone = "919566738884";
+    const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(whatsappText)}`;
+
+    setTimeout(() => {
+      setIsQuerySubmitting(false);
+      toast.success('Opening WhatsApp to send your query...');
+      window.open(whatsappUrl, '_blank');
+      setQueryData({ name: '', phone: '', message: '' });
+      setQueryOpen(false);
+    }, 500);
   };
 
   const navLinks = [
@@ -25,27 +61,6 @@ export default function Navbar() {
     { name: 'ABOUT US', path: '/about', hasDropdown: false },
     { name: 'CONTACT', path: '/#contact', hasDropdown: false },
   ];
-
-  const searchableItems = [
-    { title: 'Full Truck Load (FTL) Freight', category: 'Services', path: '/services' },
-    { title: 'Part Load Cargo (PTL)', category: 'Services', path: '/services' },
-    { title: 'Heavy Machinery & Multi-Axle Haulage', category: 'Services', path: '/services' },
-    { title: 'Sealed Container Fleet Operations', category: 'Services', path: '/services' },
-    { title: 'Warehousing & Storage Hubs', category: 'Services', path: '/services' },
-    { title: 'Chennai - Bengaluru Express Route', category: 'Routes', path: '/' },
-    { title: 'Chennai - Hyderabad Highway Corridor', category: 'Routes', path: '/' },
-    { title: 'Coimbatore - Chennai Industrial Freight', category: 'Routes', path: '/' },
-    { title: 'Photo Gallery & Fleet Operations', category: 'Gallery', path: '/gallery' },
-    { title: 'About Lithin Transport & Fleet', category: 'Company', path: '/about' },
-    { title: 'Get Instant Rate Quote / Contact', category: 'Support', path: '/#quote' },
-  ];
-
-  const searchResults = searchQuery.trim() === ''
-    ? searchableItems.slice(0, 4)
-    : searchableItems.filter(item =>
-        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.category.toLowerCase().includes(searchQuery.toLowerCase())
-      );
 
   return (
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent px-4 sm:px-8 py-4 transition-all duration-300">
@@ -96,45 +111,46 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right: Search Button, Phone Pill & Transparent CTA Button */}
+        {/* Right: Query Button, Phone Pill & Transparent CTA Button */}
         <div className="hidden md:flex items-center gap-3">
           <button
-            onClick={() => setSearchOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-transparent hover:bg-emerald-500/10 border border-emerald-500/30 rounded-full text-white text-xs font-semibold tracking-wider transition-all"
-            title="Search Services & Routes"
+            onClick={() => setQueryOpen(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-transparent hover:bg-emerald-500/10 border border-emerald-500/30 rounded-full text-white text-xs font-semibold tracking-wider transition-all cursor-pointer"
+            title="Ask a Query"
           >
-            <Search className="w-3.5 h-3.5 text-emerald-400" />
-            <span>SEARCH</span>
+            <HelpCircle className="w-3.5 h-3.5 text-emerald-400" />
+            <span>QUERY</span>
           </button>
 
           <a
-            href="tel:+919876543210"
+            href="tel:+919566738884"
             onClick={handlePhoneClick}
             className="flex items-center gap-2 px-4 py-2 bg-transparent hover:bg-emerald-500/10 border border-emerald-500/30 rounded-full text-white text-xs font-semibold tracking-wider transition-all"
           >
             <Phone className="w-3.5 h-3.5 text-emerald-400" />
-            <span>+91 98765 43210</span>
+            <span>+91 95667 38884</span>
           </a>
 
-          <a
-            href="#quote"
-            className="flex items-center gap-2 px-4 py-2 bg-transparent hover:bg-emerald-500/10 border border-emerald-500/30 rounded-full text-white text-xs font-semibold tracking-wider transition-all"
+          <button
+            onClick={() => setBookingModalOpen(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/50 rounded-full text-emerald-300 text-xs font-black tracking-wider transition-all cursor-pointer shadow-[0_0_15px_rgba(16,185,129,0.2)]"
           >
             <div className="flex -space-x-1 text-emerald-400 text-xs font-black">
               <span>›</span>
               <span>›</span>
             </div>
-            <span>GET STARTED NOW</span>
-          </a>
+            <span>BOOK NOW</span>
+          </button>
         </div>
 
-        {/* Mobile Hamburger & Search Buttons */}
+        {/* Mobile Hamburger & Query Buttons */}
         <div className="flex items-center gap-2 lg:hidden">
           <button
-            onClick={() => setSearchOpen(true)}
-            className="p-2.5 rounded-xl bg-transparent border border-white/15 text-white hover:bg-white/10"
+            onClick={() => setQueryOpen(true)}
+            className="p-2.5 rounded-xl bg-transparent border border-white/15 text-white hover:bg-white/10 cursor-pointer"
+            title="Ask Query"
           >
-            <Search className="w-5 h-5 text-emerald-400" />
+            <HelpCircle className="w-5 h-5 text-emerald-400" />
           </button>
 
           <button
@@ -162,79 +178,135 @@ export default function Navbar() {
             </a>
           ))}
           <hr className="border-white/10 my-1" />
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              setQueryOpen(true);
+            }}
+            className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-xl text-white text-xs font-bold w-full text-left"
+          >
+            <HelpCircle className="w-4 h-4 text-emerald-400" />
+            <span>Ask a Query</span>
+          </button>
           <a
-            href="tel:+919876543210"
+            href="tel:+919566738884"
             onClick={handlePhoneClick}
             className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-xl text-white text-xs font-bold"
           >
             <Phone className="w-4 h-4 text-emerald-400" />
-            <span>+91 98765 43210</span>
+            <span>+91 95667 38884</span>
           </a>
-          <a
-            href="#quote"
-            onClick={() => setMobileMenuOpen(false)}
-            className="px-4 py-3 bg-emerald-500/20 border border-emerald-400/40 text-emerald-400 rounded-xl text-xs font-black uppercase tracking-wider text-center"
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              setBookingModalOpen(true);
+            }}
+            className="px-4 py-3 bg-emerald-500/20 border border-emerald-400/40 text-emerald-400 rounded-xl text-xs font-black uppercase tracking-wider text-center cursor-pointer"
           >
-            Get Started Now
-          </a>
+            Book Now
+          </button>
         </div>
       )}
 
-      {/* Polish Modal Search Dialog */}
-      {searchOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="relative w-full max-w-2xl bg-[#060b1e]/95 border border-emerald-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col gap-5">
+
+      {/* Lithin Transport Container Booking Modal Dialog */}
+      {bookingModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto">
+          <div className="relative w-full max-w-2xl bg-[#060b1e]/95 border border-emerald-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col gap-5 my-8">
             <button
-              onClick={() => { setSearchOpen(false); setSearchQuery(''); }}
+              onClick={() => setBookingModalOpen(false)}
+              className="absolute top-5 right-5 p-2.5 rounded-full bg-white/10 hover:bg-emerald-600 text-white transition-colors z-10"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <BookingFormContent
+              onSuccess={() => setBookingModalOpen(false)}
+              title="LITHIN TRANSPORT"
+              subtitle="Container Booking Form"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Lithin Transport Query Modal Dialog */}
+      {queryOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="relative w-full max-w-lg bg-[#060b1e]/95 border border-emerald-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col gap-5">
+            <button
+              onClick={() => setQueryOpen(false)}
               className="absolute top-5 right-5 p-2.5 rounded-full bg-white/10 hover:bg-emerald-600 text-white transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <h3 className="text-xs font-black uppercase tracking-widest text-emerald-400">Search Lithin Transport</h3>
-            
-            <div className="relative">
-              <Search className="absolute left-4 top-3.5 w-5 h-5 text-emerald-400" />
-              <input
-                type="text"
-                autoFocus
-                placeholder="Search freight services, express routes, FTL, gallery..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3.5 bg-[#02040c] border border-emerald-500/30 rounded-2xl text-white placeholder-gray-400 text-sm focus:outline-none focus:border-emerald-400 transition-colors"
-              />
+            <div className="border-b border-emerald-500/20 pb-3">
+              <h3 className="text-xl font-black text-white uppercase tracking-wider font-sans flex items-center gap-2">
+                <span className="text-emerald-400">LITHIN</span> TRANSPORT
+              </h3>
+              <p className="text-xs text-emerald-400 font-bold tracking-wider uppercase mt-1">
+                Submit Customer Query
+              </p>
             </div>
 
-            <div className="flex flex-col gap-2 mt-1 max-h-64 overflow-y-auto pr-1">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
-                {searchQuery ? 'Search Results' : 'Suggested Services & Express Routes'}
-              </span>
-              {searchResults.length > 0 ? (
-                searchResults.map((item, idx) => (
-                  <a
-                    key={idx}
-                    href={item.path}
-                    onClick={() => { setSearchOpen(false); setSearchQuery(''); }}
-                    className="flex items-center justify-between p-3.5 rounded-2xl bg-white/5 hover:bg-emerald-500/20 border border-emerald-500/10 hover:border-emerald-500/40 transition-all text-white text-xs group"
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-extrabold uppercase border border-emerald-500/30">
-                        {item.category}
-                      </span>
-                      <span className="font-bold tracking-wide">{item.title}</span>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-emerald-400 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                ))
-              ) : (
-                <div className="p-6 text-center text-xs text-gray-400">
-                  No matching services or routes found for "{searchQuery}".
-                </div>
-              )}
-            </div>
+            <form onSubmit={handleQuerySubmit} className="flex flex-col gap-4">
+              <div>
+                <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                  <User className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Your Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Selvamani"
+                  value={queryData.name}
+                  onChange={(e) => setQueryData({ ...queryData, name: e.target.value })}
+                  className="w-full px-4 py-3 bg-[#02040c] border border-emerald-500/30 rounded-xl text-white placeholder-gray-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                  <Phone className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Phone Number</span>
+                </label>
+                <input
+                  type="tel"
+                  placeholder="e.g. 9876543210"
+                  value={queryData.phone}
+                  onChange={(e) => setQueryData({ ...queryData, phone: e.target.value })}
+                  className="w-full px-4 py-3 bg-[#02040c] border border-emerald-500/30 rounded-xl text-white placeholder-gray-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                  <HelpCircle className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Your Query / Question</span>
+                  <span className="text-emerald-400">*</span>
+                </label>
+                <textarea
+                  rows={4}
+                  placeholder="Type your freight query, route question, or container inquiry here..."
+                  value={queryData.message}
+                  onChange={(e) => setQueryData({ ...queryData, message: e.target.value })}
+                  className="w-full px-4 py-3 bg-[#02040c] border border-emerald-500/30 rounded-xl text-white placeholder-gray-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isQuerySubmitting}
+                className="w-full py-4 bg-[#10b981] hover:bg-emerald-600 text-white font-black rounded-xl shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 text-sm uppercase tracking-wider disabled:opacity-50 cursor-pointer mt-1"
+              >
+                <Send className="w-4 h-4" />
+                <span>{isQuerySubmitting ? 'Sending Query...' : 'Send Query to WhatsApp'}</span>
+              </button>
+            </form>
           </div>
         </div>
       )}
     </header>
   );
 }
+
+
