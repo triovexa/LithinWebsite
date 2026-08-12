@@ -13,6 +13,18 @@ export default function App() {
   return (
     <Router>
       <div className="relative min-h-screen text-slate-200 bg-[#030511] selection:bg-emerald-500 selection:text-white overflow-x-hidden">
+        {/* Ambient Glowing Orbs & Tech Mesh for Rich Mass Website Background */}
+        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+          {/* Top Left Glowing Radial Glow */}
+          <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-emerald-500/15 rounded-full blur-[140px]" />
+          {/* Middle Right Radial Glow */}
+          <div className="absolute top-1/3 -right-32 w-[700px] h-[700px] bg-teal-500/12 rounded-full blur-[160px]" />
+          {/* Bottom Left Glow */}
+          <div className="absolute -bottom-32 -left-32 w-[650px] h-[650px] bg-emerald-600/15 rounded-full blur-[150px]" />
+          {/* Subtle Cyber Logistics Grid Mesh */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b9810a_1px,transparent_1px),linear-gradient(to_bottom,#10b9810a_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-40" />
+        </div>
+
         {/* Toast Notification Container */}
         <Toaster
           position="top-right"
@@ -54,6 +66,7 @@ export default function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/fleet" element={<GalleryPage />} />
           </Routes>
         </main>
 

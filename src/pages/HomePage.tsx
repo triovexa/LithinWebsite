@@ -1,9 +1,7 @@
-import { MessageCircle, Truck, Phone, Lock, Clock, MapPin, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Truck, Phone, Lock, Clock, MapPin, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
 import QuoteFormSection from '../components/QuoteFormSection';
 
 export default function HomePage() {
-  const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent("Hi Lithin Transport, I would like to know more about your commercial transportation services.")}`;
-
   const routes = [
     { from: "Chennai", to: "Bengaluru", time: "8 Hours", frequency: "Daily 15+ Trucks", type: "Container & FTL" },
     { from: "Chennai", to: "Hyderabad", time: "14 Hours", frequency: "Daily 10+ Trucks", type: "Heavy Freight" },
@@ -15,17 +13,17 @@ export default function HomePage() {
     <div className="relative min-h-screen pt-24 pb-12 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col gap-16">
 
       {/* HERO SECTION - FULL WIDTH BRIGHT HD VIDEO BACKGROUND */}
-      <section className="relative overflow-hidden rounded-3xl border border-emerald-500/30 bg-slate-950/20 backdrop-blur-sm shadow-2xl min-h-[85vh] flex flex-col justify-between p-6 sm:p-12 lg:p-16 transition-all">
+      <section id="hero-video-section" className="relative overflow-hidden rounded-3xl border border-emerald-500/30 bg-slate-950/20 backdrop-blur-sm shadow-2xl h-[70vh] sm:h-[75vh] md:h-[80vh] w-full transition-all">
         
         {/* 100% Vivid Bright Full HD Video Background */}
-        <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
           <video
             autoPlay
             loop
             muted
             playsInline
             poster="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1920&q=80"
-            className="w-full h-full object-cover opacity-100 scale-105 transition-all duration-700 brightness-110 contrast-105"
+            className="w-full h-full object-cover opacity-100 scale-105 transition-all duration-700 brightness-105 contrast-105"
           >
             {/* Primary Local Video File from public/hero-video.mp4 */}
             <source src="/hero-video.mp4" type="video/mp4" />
@@ -38,103 +36,52 @@ export default function HomePage() {
               className="w-full h-full object-cover opacity-100 scale-105"
             />
           </video>
-
-          {/* Light Minimal Vignette Only behind text so Video Stays 100% Bright & Vivid */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#030612]/70 via-[#030612]/30 to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#030612]/80 via-transparent to-transparent pointer-events-none" />
-        </div>
-
-        {/* Hero Headlines Content Container - Glass Styled for Text Readability */}
-        <div className="flex flex-col gap-6 max-w-3xl pt-8 sm:pt-12">
-          
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-950/80 backdrop-blur-md border border-emerald-500/40 text-emerald-400 text-xs font-extrabold uppercase tracking-wider w-fit shadow-lg">
-            <Truck className="w-4 h-4 text-emerald-400" />
-            <span>Leading Commercial Freight Carrier</span>
-          </div>
-
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.08] tracking-tight uppercase font-sans drop-shadow-lg">
-            Reliable Transportation. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-emerald-400 to-teal-300">
-              Delivered with Trust.
-            </span>
-          </h1>
-
-          <p className="text-base sm:text-lg text-slate-100 max-w-2xl font-medium leading-relaxed drop-shadow-md bg-slate-950/40 backdrop-blur-sm p-3 rounded-2xl border border-white/5">
-            Safe, Reliable and Timely Transport Solutions for Your Business across All Major Indian Industrial Corridors.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <a
-              href="#quote"
-              className="px-7 py-4 bg-[#10b981] hover:bg-emerald-600 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-xl shadow-emerald-500/30 transition-all hover:scale-105"
-            >
-              Get a Free Quote
-            </a>
-
-            <a
-              href="/about"
-              className="px-7 py-4 bg-slate-950/80 hover:bg-slate-900 border border-emerald-500/40 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-lg backdrop-blur-md transition-all hover:scale-105"
-            >
-              Contact Us
-            </a>
-
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2.5 px-7 py-4 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-extrabold uppercase tracking-wider rounded-xl shadow-xl transition-all hover:scale-105"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>WhatsApp Us</span>
-            </a>
-          </div>
-
-        </div>
-
-        {/* Hero Bottom Bar: 4 Quick Highlights - 3D Metallic Glowing Badges */}
-        <div className="mt-12 pt-6 border-t border-emerald-500/30 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 bg-slate-950/40 backdrop-blur-md p-6 rounded-2xl border border-emerald-500/25 shadow-xl">
-          <div className="flex items-center gap-4 border-r border-white/10 pr-4 group">
-            <div className="relative w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
-              <Truck className="w-6 h-6 text-emerald-300 stroke-[2.2]" />
-            </div>
-            <div>
-              <span className="text-sm font-black text-white uppercase tracking-wide block font-sans">Reliable Transport</span>
-              <span className="text-[11px] text-emerald-400 font-semibold block">Dedicated Fleet Operations</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4 border-r border-white/10 pr-4 group">
-            <div className="relative w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
-              <Clock className="w-6 h-6 text-emerald-300 stroke-[2.2]" />
-            </div>
-            <div>
-              <span className="text-sm font-black text-white uppercase tracking-wide block font-sans">On-Time Delivery</span>
-              <span className="text-[11px] text-emerald-400 font-semibold block">Strict Transit Scheduling</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4 border-r border-white/10 pr-4 group">
-            <div className="relative w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
-              <Lock className="w-6 h-6 text-emerald-300 stroke-[2.2]" />
-            </div>
-            <div>
-              <span className="text-sm font-black text-white uppercase tracking-wide block font-sans">Safe & Secure</span>
-              <span className="text-[11px] text-emerald-400 font-semibold block">Certified Cargo Lashing</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4 group">
-            <div className="relative w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
-              <Phone className="w-6 h-6 text-emerald-300 stroke-[2.2]" />
-            </div>
-            <div>
-              <span className="text-sm font-black text-white uppercase tracking-wide block font-sans">24/7 Support</span>
-              <span className="text-[11px] text-emerald-400 font-semibold block">Highway Dispatch Desk</span>
-            </div>
-          </div>
         </div>
 
       </section>
+
+      {/* 4 QUICK HIGHLIGHTS BAR - PLACED OUTSIDE & BELOW THE VIDEO */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#060a17] via-[#0b1329] to-[#060a17] border border-emerald-500/30 shadow-2xl shadow-emerald-500/10">
+        <div className="flex items-center gap-4 border-b sm:border-b-0 sm:border-r border-white/10 pb-4 sm:pb-0 pr-0 sm:pr-4 group">
+          <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_25px_rgba(16,185,129,0.3)] flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
+            <Truck className="w-7 h-7 text-emerald-300 stroke-[2.2]" />
+          </div>
+          <div>
+            <span className="text-base font-black text-white uppercase tracking-wide block font-sans">Reliable Transport</span>
+            <span className="text-xs text-emerald-400 font-semibold block mt-0.5">Dedicated Fleet Operations</span>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-4 border-b sm:border-b-0 lg:border-r border-white/10 pb-4 sm:pb-0 pr-0 lg:pr-4 group">
+          <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_25px_rgba(16,185,129,0.3)] flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
+            <Clock className="w-7 h-7 text-emerald-300 stroke-[2.2]" />
+          </div>
+          <div>
+            <span className="text-base font-black text-white uppercase tracking-wide block font-sans">On-Time Delivery</span>
+            <span className="text-xs text-emerald-400 font-semibold block mt-0.5">Strict Transit Scheduling</span>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-4 border-b sm:border-b-0 sm:border-r border-white/10 pb-4 sm:pb-0 pr-0 sm:pr-4 group">
+          <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_25px_rgba(16,185,129,0.3)] flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
+            <Lock className="w-7 h-7 text-emerald-300 stroke-[2.2]" />
+          </div>
+          <div>
+            <span className="text-base font-black text-white uppercase tracking-wide block font-sans">Safe & Secure</span>
+            <span className="text-xs text-emerald-400 font-semibold block mt-0.5">Certified Cargo Lashing</span>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-4 group">
+          <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600/30 via-teal-500/20 to-emerald-400/10 border border-emerald-400/40 shadow-[0_0_25px_rgba(16,185,129,0.3)] flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
+            <Phone className="w-7 h-7 text-emerald-300 stroke-[2.2]" />
+          </div>
+          <div>
+            <span className="text-base font-black text-white uppercase tracking-wide block font-sans">24/7 Support</span>
+            <span className="text-xs text-emerald-400 font-semibold block mt-0.5">Highway Dispatch Desk</span>
+          </div>
+        </div>
+      </div>
 
       {/* KEY HIGHWAY ROUTES & CORRIDORS */}
       <section className="flex flex-col gap-8">
@@ -223,7 +170,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="lg:col-span-6 relative rounded-2xl overflow-hidden h-72 border border-emerald-500/30 shadow-xl">
+        <div data-no-particles="true" className="lg:col-span-6 relative rounded-2xl overflow-hidden h-72 border border-emerald-500/30 shadow-xl">
           <img
             src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
             alt="Lithin Transport Logistics Hub"

@@ -104,7 +104,7 @@ export default function TrackingSection() {
               Track Shipment
             </button>
           </form>
-          
+
           <div className="flex items-center justify-center gap-4 mt-3 text-xs text-gray-400">
             <span>Try sample LR numbers:</span>
             <button
@@ -149,13 +149,12 @@ export default function TrackingSection() {
                 return (
                   <div key={idx} className="flex flex-col items-center text-center relative z-10">
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all ${
-                        isCompleted
+                      className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all ${isCompleted
                           ? 'bg-emerald-500/20 border-emerald-400 text-emerald-400 shadow-lg shadow-emerald-500/20'
                           : isCurrent
-                          ? 'bg-teal-500/20 border-teal-400 text-teal-300 animate-pulse'
-                          : 'bg-white/5 border-white/15 text-gray-600'
-                      }`}
+                            ? 'bg-teal-500/20 border-teal-400 text-teal-300 animate-pulse'
+                            : 'bg-white/5 border-white/15 text-gray-600'
+                        }`}
                     >
                       {isCompleted ? (
                         <CheckCircle2 className="w-5 h-5" />
