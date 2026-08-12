@@ -16,8 +16,8 @@ export default function Footer() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (!isMobile) {
       e.preventDefault();
-      navigator.clipboard.writeText('support@lithintransport.com');
-      toast.success('Email support@lithintransport.com copied to clipboard!');
+      navigator.clipboard.writeText('lithintransports@gmail.com');
+      toast.success('Email lithintransports@gmail.com copied to clipboard!');
     }
   };
 
@@ -84,10 +84,10 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-2 text-xs text-gray-300">
               <li><a href="/#quote" className="hover:text-emerald-400 transition-colors">Instant Freight Rate Estimator</a></li>
-              <li><a href="/#contact" className="hover:text-emerald-400 transition-colors">Track Consignment & Dispatch Desk</a></li>
+              <li><a href="/#contact" className="hover:text-emerald-400 transition-colors font-bold text-emerald-400">Head Office (Bengaluru) & Branches (Tirupur, Chennai)</a></li>
               <li><Link to="/about" className="hover:text-emerald-400 transition-colors">About Our Fleet & Infrastructure</Link></li>
-              <li><a href="tel:+919566738884" onClick={handlePhoneClick} className="hover:text-emerald-400 transition-colors">Direct Highway Helpline Desk (+91 95667 38884)</a></li>
-              <li><a href="mailto:support@lithintransport.com" onClick={handleEmailClick} className="hover:text-emerald-400 transition-colors">Report Cargo Inquiry or Support</a></li>
+              <li><a href="tel:+919566738884" onClick={handlePhoneClick} className="hover:text-emerald-400 transition-colors">Helpline Desk: +91 95667 38884 / +91 93423 17996</a></li>
+              <li><a href="mailto:lithintransports@gmail.com" onClick={handleEmailClick} className="hover:text-emerald-400 transition-colors">lithintransports@gmail.com</a></li>
             </ul>
           </div>
 

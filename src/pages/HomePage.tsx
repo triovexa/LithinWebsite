@@ -1,5 +1,6 @@
 import { Truck, Phone, Lock, ShieldCheck, ArrowRight, CheckCircle2, Building2 } from 'lucide-react';
 import QuoteFormSection from '../components/QuoteFormSection';
+import ContactSection from '../components/ContactSection';
 
 export default function HomePage() {
   const routes = [
@@ -186,6 +187,9 @@ export default function HomePage() {
 
       {/* FREIGHT RATE QUOTE SECTION */}
       <QuoteFormSection />
+
+      {/* OFFICIAL CONTACT DETAILS SECTION */}
+      <ContactSection id="contact" />
 
     </div>
   );

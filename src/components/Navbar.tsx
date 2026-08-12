@@ -3,11 +3,13 @@ import { Link as RouterLink, useLocation as useRouteLocation } from 'react-route
 import { Phone, Menu, X, ChevronDown, HelpCircle, User, Send } from 'lucide-react';
 import toast from 'react-hot-toast';
 import BookingFormContent from './BookingFormContent';
+import ContactSection from './ContactSection';
 
 export default function Navbar() {
   const location = useRouteLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [queryOpen, setQueryOpen] = useState(false);
+  const [contactModalOpen, setContactModalOpen] = useState(false);
   const [queryData, setQueryData] = useState({
     name: '',
     phone: '',
@@ -55,11 +57,11 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { name: 'HOME', path: '/', hasDropdown: false },
-    { name: 'SERVICES', path: '/services', hasDropdown: false },
-    { name: 'GALLERY', path: '/gallery', hasDropdown: false },
-    { name: 'ABOUT US', path: '/about', hasDropdown: false },
-    { name: 'CONTACT', path: '/#contact', hasDropdown: false },
+    { name: 'HOME', path: '/', isModal: false },
+    { name: 'SERVICES', path: '/services', isModal: false },
+    { name: 'GALLERY', path: '/gallery', isModal: false },
+    { name: 'ABOUT US', path: '/about', isModal: false },
+    { name: 'CONTACT', path: '#contact', isModal: true },
   ];
 
   return (
@@ -93,6 +95,17 @@ export default function Navbar() {
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path && !link.path.includes('#');
+            if (link.isModal) {
+              return (
+                <button
+                  key={link.name}
+                  onClick={() => setContactModalOpen(true)}
+                  className="flex items-center gap-1.5 text-xs font-bold tracking-widest uppercase transition-all duration-200 py-1 px-2 rounded-lg bg-transparent text-slate-200 hover:text-emerald-400 hover:bg-white/5 cursor-pointer"
+                >
+                  <span>{link.name}</span>
+                </button>
+              );
+            }
             return (
               <a
                 key={link.name}
@@ -103,9 +116,6 @@ export default function Navbar() {
                   }`}
               >
                 <span>{link.name}</span>
-                {link.hasDropdown && (
-                  <ChevronDown className="w-3.5 h-3.5 text-slate-300 stroke-[2.5]" />
-                )}
               </a>
             );
           })}
@@ -166,17 +176,32 @@ export default function Navbar() {
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden mt-3 p-5 bg-[#060817]/95 backdrop-blur-2xl border border-white/10 rounded-2xl flex flex-col gap-3 shadow-2xl animate-in fade-in duration-200">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.path}
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-between px-4 py-3 text-xs font-bold tracking-widest uppercase text-slate-200 hover:bg-white/10 rounded-xl"
-            >
-              <span>{link.name}</span>
-              {link.hasDropdown && <ChevronDown className="w-4 h-4 text-slate-400" />}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            if (link.isModal) {
+              return (
+                <button
+                  key={link.name}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setContactModalOpen(true);
+                  }}
+                  className="flex items-center justify-between px-4 py-3 text-xs font-bold tracking-widest uppercase text-slate-200 hover:bg-white/10 rounded-xl text-left cursor-pointer"
+                >
+                  <span>{link.name}</span>
+                </button>
+              );
+            }
+            return (
+              <a
+                key={link.name}
+                href={link.path}
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between px-4 py-3 text-xs font-bold tracking-widest uppercase text-slate-200 hover:bg-white/10 rounded-xl"
+              >
+                <span>{link.name}</span>
+              </a>
+            );
+          })}
           <hr className="border-white/10 my-1" />
           <button
             onClick={() => {
@@ -302,6 +327,23 @@ export default function Navbar() {
                 <span>{isQuerySubmitting ? 'Sending Query...' : 'Send Query to WhatsApp'}</span>
               </button>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Lithin Transport Official Contact Details Modal Dialog */}
+      {contactModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto">
+          <div className="relative w-full max-w-4xl bg-[#060b1e]/95 border border-emerald-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col gap-5 my-8 max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setContactModalOpen(false)}
+              className="absolute top-5 right-5 p-2.5 rounded-full bg-white/10 hover:bg-emerald-600 text-white transition-colors z-10 cursor-pointer"
+              title="Close Contact Modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <ContactSection isModal={true} />
           </div>
         </div>
       )}
