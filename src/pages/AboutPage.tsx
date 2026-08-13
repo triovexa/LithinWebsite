@@ -187,7 +187,7 @@ export default function AboutPage() {
               <Phone className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-xs font-extrabold text-white uppercase">24/7 Hotline</h4>
-                <p className="text-xs text-gray-300 mt-0.5">+91 98765 43210 / +91 44 2800 9000</p>
+                <p className="text-xs text-gray-300 mt-0.5">+91 95667 38884 / +91 93423 17996</p>
               </div>
             </div>
 

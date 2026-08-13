@@ -13,8 +13,8 @@ export default function Navbar() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (!isMobile) {
       e.preventDefault();
-      navigator.clipboard.writeText('+919876543210');
-      toast.success('Phone number +91 98765 43210 copied to clipboard!');
+      navigator.clipboard.writeText('+919566738884');
+      toast.success('Phone numbers +91 95667 38884 / +91 93423 17996 copied!');
     }
   };
 
@@ -51,13 +51,13 @@ export default function Navbar() {
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent px-4 sm:px-8 py-4 transition-all duration-300">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
 
-        {/* Left: Official Lithin Logo Image in a Circular Metallic Glow Badge */}
-        <RouterLink to="/" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-full p-1 bg-[#060b1e]/90 border-2 border-emerald-400/60 shadow-[0_0_20px_rgba(16,185,129,0.4)] flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform group-hover:border-emerald-300">
+        {/* Left: Official Lithin Logo Image in a Perfect Circular Metallic Glow Badge */}
+        <RouterLink to="/" className="flex items-center gap-3 group shrink-0">
+          <div className="w-12 h-12 shrink-0 aspect-square rounded-full p-0.5 bg-[#060b1e] border-2 border-emerald-400/80 shadow-[0_0_20px_rgba(16,185,129,0.4)] flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform group-hover:border-emerald-300">
             <img
               src="/logo.png"
               alt="Lithin Transport Logo"
-              className="w-full h-full object-contain rounded-full"
+              className="w-full h-full object-cover rounded-full scale-105"
               onError={(e) => {
                 (e.target as HTMLImageElement).src = '/logo-tab.png';
               }}
@@ -96,29 +96,44 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right: Search Button, Phone Pill & Transparent CTA Button */}
+        {/* Right: Search Button, Mass 24/7 Helpline Desk Widget & Transparent CTA Button */}
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={() => setSearchOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-transparent hover:bg-emerald-500/10 border border-emerald-500/30 rounded-full text-white text-xs font-semibold tracking-wider transition-all"
+            className="flex items-center gap-2 px-4 py-2.5 bg-transparent hover:bg-emerald-500/10 border border-emerald-500/30 rounded-full text-white text-xs font-semibold tracking-wider transition-all"
             title="Search Services & Routes"
           >
             <Search className="w-3.5 h-3.5 text-emerald-400" />
             <span>SEARCH</span>
           </button>
 
+          {/* MASS 24/7 HELPLINE DESK HEADER WIDGET */}
           <a
-            href="tel:+919876543210"
+            href="tel:+919566738884"
             onClick={handlePhoneClick}
-            className="flex items-center gap-2 px-4 py-2 bg-transparent hover:bg-emerald-500/10 border border-emerald-500/30 rounded-full text-white text-xs font-semibold tracking-wider transition-all"
+            className="flex items-center gap-2.5 px-4 py-1.5 bg-slate-950/80 hover:bg-slate-900 border border-emerald-500/60 rounded-full text-white transition-all shadow-[0_0_20px_rgba(16,185,129,0.25)] hover:border-emerald-400 hover:shadow-[0_0_25px_rgba(16,185,129,0.45)] group"
+            title="24/7 Lithin Transport Helpline Desk"
           >
-            <Phone className="w-3.5 h-3.5 text-emerald-400" />
-            <span>+91 98765 43210</span>
+            <div className="relative flex items-center justify-center shrink-0">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping absolute" />
+              <span className="w-2 h-2 rounded-full bg-emerald-400 relative" />
+            </div>
+            <div className="flex flex-col text-left leading-tight">
+              <span className="text-[8px] font-black uppercase tracking-widest text-emerald-400">
+                24/7 HELPLINE DESK
+              </span>
+              <div className="flex items-center gap-1 text-xs font-black text-white group-hover:text-emerald-300 transition-colors">
+                <Phone className="w-3 h-3 text-emerald-400" />
+                <span>+91 95667 38884</span>
+              </div>
+            </div>
           </a>
 
           <a
-            href="#quote"
-            className="flex items-center gap-2 px-4 py-2 bg-transparent hover:bg-emerald-500/10 border border-emerald-500/30 rounded-full text-white text-xs font-semibold tracking-wider transition-all"
+            href="https://wa.me/919566738884"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2.5 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-400/40 rounded-full text-emerald-400 text-xs font-black tracking-wider transition-all shadow-[0_0_15px_rgba(16,185,129,0.2)]"
           >
             <div className="flex -space-x-1 text-emerald-400 text-xs font-black">
               <span>›</span>
@@ -162,16 +177,30 @@ export default function Navbar() {
             </a>
           ))}
           <hr className="border-white/10 my-1" />
+          
+          {/* Mobile 24/7 Helpline Desk Widget */}
           <a
-            href="tel:+919876543210"
+            href="tel:+919566738884"
             onClick={handlePhoneClick}
-            className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-xl text-white text-xs font-bold"
+            className="flex items-center justify-between px-4 py-3 bg-slate-900 border border-emerald-500/40 rounded-xl text-white text-xs font-bold"
           >
+            <div className="flex items-center gap-2.5">
+              <div className="relative flex items-center justify-center shrink-0">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping absolute" />
+                <span className="w-2 h-2 rounded-full bg-emerald-400 relative" />
+              </div>
+              <div className="flex flex-col text-left">
+                <span className="text-[8px] font-black uppercase tracking-widest text-emerald-400">24/7 HELPLINE DESK</span>
+                <span className="text-xs font-extrabold text-white">+91 95667 38884</span>
+              </div>
+            </div>
             <Phone className="w-4 h-4 text-emerald-400" />
-            <span>+91 98765 43210</span>
           </a>
+
           <a
-            href="#quote"
+            href="https://wa.me/919566738884"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMobileMenuOpen(false)}
             className="px-4 py-3 bg-emerald-500/20 border border-emerald-400/40 text-emerald-400 rounded-xl text-xs font-black uppercase tracking-wider text-center"
           >

@@ -121,7 +121,7 @@ export default function QuoteFormSection() {
                 </label>
                 <input
                   type="tel"
-                  placeholder="e.g. 98765 43210"
+                  placeholder="e.g. 95667 38884"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="w-full px-4 py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white placeholder-gray-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors"

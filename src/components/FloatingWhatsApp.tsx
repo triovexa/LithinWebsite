@@ -1,7 +1,7 @@
 import { MessageCircle } from 'lucide-react';
 
 export default function FloatingWhatsApp() {
-  const whatsappNumber = "919876543210";
+  const whatsappNumber = "919566738884";
   const defaultMessage = encodeURIComponent("Hi Lithin Transport, I would like to know more about your transportation services.");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${defaultMessage}`;
 
