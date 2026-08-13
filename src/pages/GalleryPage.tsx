@@ -18,21 +18,21 @@ export default function GalleryPage() {
   const galleryItems: GalleryItem[] = [
     {
       id: 1,
-      title: "Container Fleet in Transit",
+      title: "Lithin Transport Contractor Fleet",
       category: "fleet",
-      categoryLabel: "Fleet Vehicles",
-      location: "Chennai - Bengaluru Highway",
-      image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80",
-      description: "Our heavy-duty sealed container trucks transporting high-value industrial freight safely across South India."
+      categoryLabel: "Transport Contractor Fleet",
+      location: "Bangalore H.O & Pan-India Corridors",
+      image: "/transport-contractor.jpg",
+      description: "Dedicated commercial BharatBenz Heavy FTL vehicles and multi-axle trucks handling industrial cargo across India."
     },
     {
       id: 2,
-      title: "Automated Logistics Warehouse Hub",
-      category: "warehouse",
-      categoryLabel: "Warehousing & Hubs",
-      location: "Sriperumbudur Hub",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
-      description: "State-of-the-art sorting and storage hub equipped with 24/7 security telematics and temperature monitoring."
+      title: "Lithin Express Goods Booking Agency",
+      category: "fleet",
+      categoryLabel: "Booking Agency Fleet",
+      location: "Chennai & Tirupur Industrial Hubs",
+      image: "/booking-agency.jpg",
+      description: "Express part-load (PTL) consignment dispatches, commercial parcel haulage, and doorstep pickup vehicles."
     },
     {
       id: 3,
@@ -108,10 +108,7 @@ export default function GalleryPage() {
 
       {/* Gallery Header */}
       <div className="text-center max-w-3xl mx-auto">
-        <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-extrabold uppercase tracking-wider">
-          Visual Showcase & Operations
-        </span>
-        <h1 className="text-4xl sm:text-6xl font-black text-white mt-4 tracking-tight uppercase font-sans">
+        <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight uppercase font-sans">
           OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500">GALLERY</span>
         </h1>
         <p className="text-gray-300 mt-4 text-base sm:text-lg leading-relaxed font-normal">
