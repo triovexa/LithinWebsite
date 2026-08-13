@@ -7,13 +7,13 @@ export default function HomePage() {
     {
       title: "Transport Contractor",
       description: "Official commercial transport contractor providing dedicated Full Truck Load (FTL) vehicle haulage, heavy industrial machinery transport, SIPCOT supply chain logistics, and long-distance interstate fleet contracts.",
-      image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1200&q=80",
+      image: "/transport-contractor.jpg",
       highlight: "Fleet Contracting & FTL"
     },
     {
       title: "Booking Agency",
       description: "Authorized express goods booking agency facilitating daily express part-load (PTL) consignment booking, commercial parcel dispatches, doorstep pickup/delivery, and verified route booking.",
-      image: "https://images.unsplash.com/photo-1616432043562-3671ea2e5242?auto=format&fit=crop&w=1200&q=80",
+      image: "/booking-agency.jpg",
       highlight: "Express Goods Booking"
     }
   ];
@@ -68,17 +68,13 @@ export default function HomePage() {
                 className="p-6 rounded-3xl glass-panel bg-slate-950/80 backdrop-blur-xl border border-emerald-500/30 hover:border-emerald-400/60 transition-all duration-300 flex flex-col justify-between group shadow-2xl overflow-hidden"
               >
                 <div>
-                  {/* HD IMAGE BANNER HEADER WITH FLOATING BADGE */}
-                  <div className="relative h-48 rounded-2xl overflow-hidden mb-5 border border-emerald-500/20 group-hover:border-emerald-400/40 transition-colors">
+                  {/* HD IMAGE BANNER HEADER */}
+                  <div className="relative aspect-[16/9.2] rounded-2xl overflow-hidden mb-5 border border-emerald-500/20 group-hover:border-emerald-400/40 transition-colors bg-slate-950">
                     <img
                       src={srv.image}
                       alt={srv.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    {/* Floating Highlight Badge */}
-                    <div className="absolute bottom-3 right-3 text-[10px] font-extrabold uppercase tracking-wider text-emerald-300 bg-slate-950/85 backdrop-blur-md px-2.5 py-1 rounded-lg border border-emerald-500/30">
-                      {srv.highlight}
-                    </div>
                   </div>
 
                   <h3 className="text-lg font-extrabold text-white mb-2 uppercase tracking-wide font-sans group-hover:text-emerald-400 transition-colors">

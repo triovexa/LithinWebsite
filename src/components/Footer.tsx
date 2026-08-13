@@ -16,38 +16,38 @@ export default function Footer() {
     <footer className="relative mt-20 bg-slate-950/80 backdrop-blur-xl border-t border-emerald-500/20 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
-        {/* TOP ROW: ABOUT US, QUICK LINKS, 30 YEARS BADGE */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        {/* TOP ROW: ABOUT US, QUICK LINKS, OFFICES & BRANCHES, 6+ YEARS BADGE */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-white/10">
           
           {/* ABOUT US */}
-          <div className="md:col-span-6 flex flex-col gap-4">
+          <div className="md:col-span-4 flex flex-col gap-4">
             <h3 className="text-sm font-extrabold text-white uppercase tracking-wider flex items-center gap-2 border-b border-emerald-500/30 pb-2.5 w-fit">
               <span>About Us</span>
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
             </h3>
 
-            <p className="text-xs text-gray-300 leading-relaxed font-normal max-w-xl">
-              Established in 2020, Lithin Transport is a premier commercial <strong className="text-emerald-400 font-extrabold">Transport Contractor</strong> and <strong className="text-emerald-400 font-extrabold">Booking Agency</strong>. We specialize in professional transport contracting, commercial fleet haulage, and express goods booking solutions tailored to your business.
+            <p className="text-xs text-gray-300 leading-relaxed font-normal">
+              Established in 2020, Lithin Transport is a premier commercial <strong className="text-emerald-400 font-extrabold">Transport Contractor</strong> and <strong className="text-emerald-400 font-extrabold">Booking Agency</strong>. We specialize in professional transport contracting, commercial fleet haulage, and express goods booking solutions.
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 mt-1">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase rounded-full">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Transport Contractor & Booking Agency</span>
+            <div className="flex flex-wrap items-center gap-2 mt-1">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-bold uppercase rounded-full">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Transport Contractor</span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase rounded-full">
-                <Award className="w-4 h-4 text-emerald-400" />
-                <span>Licensed Interstate Carrier</span>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-bold uppercase rounded-full">
+                <Award className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Licensed Carrier</span>
               </div>
             </div>
           </div>
 
           {/* QUICK LINKS */}
-          <div className="md:col-span-3 flex flex-col gap-4">
+          <div className="md:col-span-2 flex flex-col gap-4">
             <h3 className="text-sm font-extrabold text-white uppercase tracking-wider border-b border-emerald-500/30 pb-2.5 w-fit">
               Quick Links
             </h3>
-            <ul className="flex flex-col gap-2.5 text-xs text-gray-300">
+            <ul className="flex flex-col gap-2 text-xs text-gray-300">
               {[
                 { name: 'Home', path: '/' },
                 { name: 'Services', path: '/services' },
@@ -58,9 +58,9 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     to={item.path}
-                    className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors font-medium group"
+                    className="flex items-center gap-1 hover:text-emerald-400 transition-colors font-medium group"
                   >
-                    <ChevronRight className="w-3.5 h-3.5 text-emerald-400 group-hover:translate-x-0.5 transition-transform" />
+                    <ChevronRight className="w-3 h-3 text-emerald-400 group-hover:translate-x-0.5 transition-transform" />
                     <span>{item.name}</span>
                   </Link>
                 </li>
@@ -68,81 +68,74 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* CELEBRATING 6+ YEARS BADGE */}
-          <div className="md:col-span-3 flex flex-col items-center justify-center p-6 rounded-3xl bg-slate-900/40 border border-emerald-500/20 text-center relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 via-transparent to-transparent pointer-events-none" />
-            <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200 uppercase tracking-tighter">
+          {/* OUR OFFICES & BRANCHES */}
+          <div className="md:col-span-3 flex flex-col gap-4">
+            <h3 className="text-sm font-extrabold text-white uppercase tracking-wider border-b border-emerald-500/30 pb-2.5 flex items-center gap-2 text-emerald-400 w-fit">
+              <Building2 className="w-4 h-4 text-emerald-400" />
+              <span>Offices & Branches</span>
+            </h3>
+            <ul className="flex flex-col gap-3 text-xs text-gray-300">
+              <li className="flex flex-col gap-0.5">
+                <span className="font-extrabold text-white uppercase text-xs flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Bangalore (H.O)</span>
+                </span>
+                <a
+                  href="tel:+919566738884"
+                  onClick={handlePhoneClick('+91 95667 38884')}
+                  className="text-[11px] text-emerald-400 hover:text-emerald-300 font-bold flex items-center gap-1 pl-5 transition-colors"
+                >
+                  <Phone className="w-3 h-3" />
+                  <span>+91 95667 38884</span>
+                </a>
+              </li>
+
+              <li className="flex flex-col gap-0.5">
+                <span className="font-extrabold text-white uppercase text-xs flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Chennai Branch</span>
+                </span>
+                <a
+                  href="tel:+919342317996"
+                  onClick={handlePhoneClick('+91 93423 17996')}
+                  className="text-[11px] text-emerald-400 hover:text-emerald-300 font-bold flex items-center gap-1 pl-5 transition-colors"
+                >
+                  <Phone className="w-3 h-3" />
+                  <span>+91 93423 17996</span>
+                </a>
+              </li>
+
+              <li className="flex flex-col gap-0.5">
+                <span className="font-extrabold text-white uppercase text-xs flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Tirupur Hub</span>
+                </span>
+                <a
+                  href="tel:+919566738884"
+                  onClick={handlePhoneClick('+91 95667 38884')}
+                  className="text-[11px] text-emerald-400 hover:text-emerald-300 font-bold flex items-center gap-1 pl-5 transition-colors"
+                >
+                  <Phone className="w-3 h-3" />
+                  <span>+91 95667 38884</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* CELEBRATING 6+ YEARS BADGE CARD */}
+          <div className="md:col-span-3 flex flex-col items-center justify-center p-5 rounded-3xl bg-slate-900/60 border border-emerald-500/30 text-center relative overflow-hidden group shadow-xl">
+            <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/15 via-transparent to-transparent pointer-events-none" />
+            <div className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200 uppercase tracking-tighter">
               6+ YEARS
             </div>
             <div className="text-xs font-black uppercase tracking-widest text-emerald-400 mt-1">
               In Transport Service
             </div>
-            <p className="text-[11px] text-gray-400 mt-2">
+            <p className="text-[11px] text-gray-400 mt-2 leading-relaxed">
               Serving All-India Commercial Freight Corridors Since 2020
             </p>
           </div>
 
-        </div>
-
-        {/* MIDDLE ROW: OFFICIAL TRANSPORT HUBS & OFFICES */}
-        <div className="py-10 border-b border-white/10">
-          <h3 className="text-sm font-extrabold text-white uppercase tracking-wider mb-6 flex items-center gap-2 text-emerald-400">
-            <Building2 className="w-4 h-4 text-emerald-400" />
-            <span>Official Transport Hubs & Offices</span>
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs text-gray-300">
-            {/* BANGALORE H.O */}
-            <div className="flex flex-col gap-2 p-5 rounded-2xl bg-slate-900/40 border border-emerald-500/15">
-              <h4 className="font-black text-white text-sm uppercase tracking-wide text-emerald-400 flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-emerald-400" />
-                BANGALORE H.O
-              </h4>
-              <p className="text-gray-300 leading-relaxed text-[11px]">
-                Peenya Industrial Area & Kalasipalyam, Bengaluru - 560058
-              </p>
-              <div className="flex items-center gap-2 pt-2 border-t border-white/10 text-emerald-400 font-bold">
-                <Phone className="w-3.5 h-3.5" />
-                <a href="tel:+919566738884" onClick={handlePhoneClick('+91 95667 38884')} className="hover:underline">
-                  Phone: +91 95667 38884
-                </a>
-              </div>
-            </div>
-
-            {/* CHENNAI MAIN OFFICE */}
-            <div className="flex flex-col gap-2 p-5 rounded-2xl bg-slate-900/40 border border-emerald-500/15">
-              <h4 className="font-black text-white text-sm uppercase tracking-wide text-emerald-400 flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-emerald-400" />
-                CHENNAI MAIN OFFICE
-              </h4>
-              <p className="text-gray-300 leading-relaxed text-[11px]">
-                GST Road, Guindy Industrial Estate, Chennai - 600032
-              </p>
-              <div className="flex items-center gap-2 pt-2 border-t border-white/10 text-emerald-400 font-bold">
-                <Phone className="w-3.5 h-3.5" />
-                <a href="tel:+919342317996" onClick={handlePhoneClick('+91 93423 17996')} className="hover:underline">
-                  Phone: +91 93423 17996
-                </a>
-              </div>
-            </div>
-
-            {/* TIRUPUR HUB */}
-            <div className="flex flex-col gap-2 p-5 rounded-2xl bg-slate-900/40 border border-emerald-500/15">
-              <h4 className="font-black text-white text-sm uppercase tracking-wide text-emerald-400 flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-emerald-400" />
-                TIRUPUR HUB
-              </h4>
-              <p className="text-gray-300 leading-relaxed text-[11px]">
-                Palladam Road, Garment Industry Corridor, Tirupur - 641604
-              </p>
-              <div className="flex items-center gap-2 pt-2 border-t border-white/10 text-emerald-400 font-bold">
-                <Phone className="w-3.5 h-3.5" />
-                <a href="tel:+919566738884" onClick={handlePhoneClick('+91 95667 38884')} className="hover:underline">
-                  Phone: +91 95667 38884
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* BOTTOM BAR: LEGAL & COPYRIGHT */}
