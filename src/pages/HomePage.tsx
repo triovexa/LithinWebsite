@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import BranchNetworkSection from '../components/BranchNetworkSection';
+import TrustStatsBanner from '../components/TrustStatsBanner';
 
 export default function HomePage() {
   const homeServices = [
@@ -169,6 +170,9 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+
+      {/* TRUST & STATS BANNER SECTION */}
+      <TrustStatsBanner />
 
     </div>
   );
