@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import ParticleBackground from './components/ParticleBackground';
 import Navbar from './components/Navbar';
@@ -9,9 +10,20 @@ import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import GalleryPage from './pages/GalleryPage';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
+
+  return null;
+}
+
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="relative min-h-screen text-slate-200 bg-[#030511] selection:bg-emerald-500 selection:text-white overflow-x-hidden">
         {/* Ambient Glowing Orbs & Tech Mesh for Rich Mass Website Background */}
         <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">

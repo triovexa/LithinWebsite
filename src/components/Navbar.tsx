@@ -58,6 +58,8 @@ export default function Navbar() {
     }, 500);
   };
 
+
+
   const navLinks = [
     { name: 'HOME', path: '/', isModal: false },
     { name: 'SERVICES', path: '/services', isModal: false },
@@ -320,8 +322,18 @@ export default function Navbar() {
           <a
             href="tel:+919566738884"
             onClick={handlePhoneClick}
-            className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-xl text-white text-xs font-bold"
+            className="flex items-center justify-between px-4 py-3 bg-slate-900 border border-emerald-500/40 rounded-xl text-white text-xs font-bold"
           >
+            <div className="flex items-center gap-2.5">
+              <div className="relative flex items-center justify-center shrink-0">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping absolute" />
+                <span className="w-2 h-2 rounded-full bg-emerald-400 relative" />
+              </div>
+              <div className="flex flex-col text-left">
+                <span className="text-[8px] font-black uppercase tracking-widest text-emerald-400">24/7 HELPLINE DESK</span>
+                <span className="text-xs font-extrabold text-white">+91 95667 38884</span>
+              </div>
+            </div>
             <Phone className="w-4 h-4 text-emerald-400" />
             <span>+91 95667 38884</span>
           </a>

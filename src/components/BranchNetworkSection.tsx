@@ -70,7 +70,7 @@ export default function BranchNetworkSection() {
     <section id="branch-locations" className="my-12 scroll-mt-24 flex flex-col gap-8">
       
       {/* SECTION HEADER */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <span className="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-extrabold uppercase tracking-wider flex items-center gap-1.5 w-fit">
             <Building2 className="w-4 h-4 text-emerald-400" />
@@ -212,9 +212,7 @@ export default function BranchNetworkSection() {
           </div>
 
         </div>
-
       </div>
-
     </section>
   );
 }

@@ -17,8 +17,8 @@
   }
 
   body {
-    background-color: #060814;
-    color: #e2e8f0;
+    background-color: #040612;
+    color: #f8fafc;
     font-family: 'Fredoka', 'Quicksand', 'Outfit', 'Inter', system-ui, -apple-system, sans-serif !important;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -27,17 +27,23 @@
     line-height: 1.6;
   }
 
-  /* Tone down font thickness of headings to match AGS sleek look */
   h1,
   h2,
   h3 {
-    font-weight: 600 !important;
+    font-weight: 600;
     font-family: 'Outfit', 'Fredoka', 'Space Grotesk', sans-serif !important;
     letter-spacing: -0.015em;
+    color: #f8fafc;
   }
 
-  h4, h5, h6, strong, b,
-  .font-bold, .font-semibold, .font-black {
+  h4,
+  h5,
+  h6,
+  strong,
+  b,
+  .font-bold,
+  .font-semibold,
+  .font-black {
     font-weight: 500 !important;
   }
 
@@ -60,36 +66,38 @@
   font-family: 'Fredoka', 'Quicksand', sans-serif !important;
 }
 
+/* MASS Dark Glassmorphism Cards & Panels - Deep Dark Backdrop for 100% Text Visibility */
 /* AGS Glassmorphism Cards & Panels */
 .glass-card {
-  background: rgba(6, 10, 28, 0.25);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.1);
-  border-radius: 1rem;
-}
-
-.glass-panel {
-  background: rgba(6, 10, 28, 0.25);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  background: rgba(6, 10, 28, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.75), 0 0 25px 0 rgba(16, 185, 129, 0.15);
   border-radius: 1.25rem;
 }
 
+.glass-panel {
+  background: rgba(6, 10, 28, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.75), 0 0 25px 0 rgba(16, 185, 129, 0.15);
+  border-radius: 1.5rem;
+}
+
 .stat-card {
-  background: #0e112a;
+  background: #090c24;
   border-radius: 1rem;
   padding: 1.25rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.25);
   transition: all 0.3s ease;
 }
 
 .stat-card:hover {
-  border-color: rgba(16, 185, 129, 0.25);
-  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.12), 0 0 0 1px rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 0 8px 28px rgba(16, 185, 129, 0.25);
 }
 
 /* AGS Input Fields */
