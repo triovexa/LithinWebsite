@@ -70,10 +70,10 @@ export default function ParticleBackground() {
       radius: number;
     }
 
-    // Helper function to fetch bounding rectangles and border-radii of images, videos, and marked containers
+    // Helper function to fetch bounding rectangles and border-radii of images, videos, maps/iframes, and marked containers
     const getExcludedMedia = (): ExcludedMedia[] => {
       const elements = document.querySelectorAll<HTMLElement>(
-        'img, video, [data-no-particles], .no-particles'
+        'img, video, iframe, [data-no-particles], .no-particles'
       );
       const items: ExcludedMedia[] = [];
       elements.forEach((el) => {
@@ -289,5 +289,5 @@ export default function ParticleBackground() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="fixed inset-0 w-full h-full z-20 pointer-events-none" />;
+  return <canvas ref={canvasRef} className="fixed inset-0 w-full h-full z-0 pointer-events-none" />;
 }

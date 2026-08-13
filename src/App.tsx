@@ -74,7 +74,9 @@ export default function App() {
         <FloatingWhatsApp />
 
         {/* Main Footer */}
-        <Footer />
+        <div className="relative z-10">
+          <Footer />
+        </div>
       </div>
     </Router>
   );

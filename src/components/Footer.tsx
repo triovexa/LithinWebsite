@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { X, ShieldCheck, HelpCircle } from 'lucide-react';
+import { X, ShieldCheck, HelpCircle, ExternalLink, MapPin } from 'lucide-react';
 import toast from 'react-hot-toast';
 import BookingFormContent from './BookingFormContent';
 
@@ -8,6 +8,164 @@ export default function Footer() {
   const [showTermsModal, setShowTermsModal] = useState(false);
   const [queryOpen, setQueryOpen] = useState(false);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [selectedBranchId, setSelectedBranchId] = useState<'bangalore' | 'tirupur' | 'chennai'>('bangalore');
+
+  const footerBranches = {
+    bangalore: {
+      name: 'BANGALORE H.O',
+      shortName: 'Bangalore HQ',
+      address: '#329, Pavithra Nilayam, 2nd B Main, OMBR Layout, Bengaluru, Karnataka - 560043',
+      phone: '+91 95667 38884',
+      mapEmbedUrl: 'https://maps.google.com/maps?q=329%2C%20Pavithra%20Nilayam%2C%202%20B%20Main%2C%20OMBR%20Layout%2C%20Bengalore%20560043&t=&z=15&ie=UTF8&iwloc=&output=embed',
+      googleMapsLink: 'https://www.google.com/maps/search/?api=1&query=329+Pavithra+Nilayam+2+B+Main+OMBR+Layout+Bengalore+560043',
+    },
+    tirupur: {
+      name: 'TIRUPUR BRANCH',
+      shortName: 'Tirupur Branch',
+      address: '13/162, Amman Nagar, 1st Street, Rakkiyapalayam, Avinashi, Tirupur, Tamil Nadu - 641654',
+      mapEmbedUrl: 'https://maps.google.com/maps?q=13%2F162%2C%20Amman%20Nagar%2C1%20ST%20Street%2C%20Rakkiyapalayam%2C%20Avinashi%2C%20Tirupur%20641654&t=&z=15&ie=UTF8&iwloc=&output=embed',
+      googleMapsLink: 'https://www.google.com/maps/search/?api=1&query=13/162+Amman+Nagar+1st+Street+Rakkiyapalayam+Avinashi+Tirupur+641654',
+    },
+    chennai: {
+      name: 'CHENNAI BRANCH',
+      shortName: 'Chennai Branch',
+      address: 'Siva Sakthi Enterprises, No.5, Madhavaram Redhills High Road, Vadaperumbakkam, Chennai, Tamil Nadu - 600060 (GST: 33AKEPT5983B1Z2)',
+      mapEmbedUrl: 'https://maps.google.com/maps?q=No.5%20Madhavaram%20Redhils%20High%20Road%20Vadaperumbakkam%20Chennai%20600060&t=&z=15&ie=UTF8&iwloc=&output=embed',
+      googleMapsLink: 'https://www.google.com/maps/search/?api=1&query=No+5+Madhavaram+Redhills+High+Road+Vadaperumbakkam+Chennai+600060',
+    },
+  };
+
+  const trustedPartners = [
+    {
+      name: 'MRF TYRES',
+      renderLogo: () => (
+        <div className="flex items-center gap-1.5 px-1 py-0.5">
+          <svg className="w-5 h-5 text-[#e11d48] shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v10h-2zm-4 3h2v4H7zm8 0h2v4h-2z"/>
+          </svg>
+          <div className="flex flex-col leading-none">
+            <span className="font-black italic text-[#e11d48] text-sm font-sans tracking-tighter">MRF</span>
+            <span className="text-[7px] font-black text-slate-800 uppercase tracking-widest">TYRES</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      name: 'BRITANNIA',
+      renderLogo: () => (
+        <div className="flex flex-col items-center justify-center px-1">
+          <span className="font-serif font-black text-[#15803d] text-sm tracking-wider leading-none">BRITANNIA</span>
+          <span className="h-0.5 w-full bg-red-600 rounded-full mt-0.5" />
+          <span className="text-[6px] font-black text-red-600 tracking-tighter uppercase leading-none mt-0.5">Eat Healthy, Think Better</span>
+        </div>
+      ),
+    },
+    {
+      name: 'TATA MOTORS',
+      renderLogo: () => (
+        <div className="flex items-center gap-1.5 px-1">
+          <div className="w-5 h-5 rounded-full bg-[#1e40af] flex items-center justify-center text-white font-black text-[10px] shrink-0 shadow-sm">
+            T
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="font-sans font-black text-[#1e40af] text-xs tracking-wider">TATA</span>
+            <span className="text-[7px] text-slate-600 font-extrabold uppercase tracking-tight">MOTORS</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      name: 'ASHOK LEYLAND',
+      renderLogo: () => (
+        <div className="flex items-center gap-1.5 px-1">
+          <div className="w-5 h-5 rounded bg-[#1e3a8a] flex items-center justify-center text-[#d97706] font-black text-[10px] shrink-0 shadow-sm">
+            AL
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="font-sans font-black text-[#1e3a8a] text-[11px] tracking-tight">ASHOK</span>
+            <span className="text-[8px] font-black text-[#d97706] uppercase tracking-wider">LEYLAND</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      name: 'RELIANCE LOGISTICS',
+      renderLogo: () => (
+        <div className="flex items-center gap-1.5 px-1">
+          <svg className="w-5 h-5 text-[#dc2626] shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          <div className="flex flex-col leading-none">
+            <span className="font-sans font-black text-[#dc2626] text-xs tracking-tighter">Reliance</span>
+            <span className="text-[7px] font-black text-slate-700 uppercase tracking-widest">LOGISTICS</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      name: 'ITC LIMITED',
+      renderLogo: () => (
+        <div className="flex items-center gap-1.5 px-1">
+          <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-[#1e40af] to-[#047857] flex items-center justify-center text-white font-black text-[9px] shrink-0 shadow-sm">
+            ITC
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="font-sans font-black text-[#1e40af] text-xs tracking-widest">ITC</span>
+            <span className="text-[7px] text-emerald-800 font-black tracking-tight">LIMITED</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      name: 'AMAZON INDIA',
+      renderLogo: () => (
+        <div className="flex flex-col items-center justify-center px-1">
+          <div className="flex items-center gap-0.5 leading-none">
+            <span className="font-bold text-[#111827] text-xs font-sans">amazon</span>
+            <span className="text-[9px] text-[#f59e0b] font-black">.in</span>
+          </div>
+          <svg className="w-10 h-1.5 text-[#f59e0b] mt-0.5" viewBox="0 0 100 20" fill="none" stroke="currentColor" strokeWidth="4">
+            <path d="M5 5 Q50 20 95 5" strokeLinecap="round" />
+          </svg>
+        </div>
+      ),
+    },
+    {
+      name: 'FLIPKART',
+      renderLogo: () => (
+        <div className="flex items-center gap-1.5 px-1">
+          <div className="w-5 h-5 rounded-md bg-[#ffe11b] border border-[#2874f0] flex items-center justify-center text-[#2874f0] font-black text-xs shrink-0 shadow-sm">
+            f
+          </div>
+          <span className="font-extrabold text-[#2874f0] text-xs tracking-tight">Flipkart</span>
+        </div>
+      ),
+    },
+    {
+      name: 'APOLLO TYRES',
+      renderLogo: () => (
+        <div className="flex items-center gap-1.5 px-1">
+          <div className="w-5 h-5 rounded-full bg-[#7c3aed] flex items-center justify-center text-white font-black text-[10px] shrink-0 shadow-sm">
+            a
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="font-sans font-black text-[#7c3aed] text-xs tracking-tighter">apollo</span>
+            <span className="text-[7px] font-black text-slate-700 uppercase tracking-widest">TYRES</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      name: 'GODREJ',
+      renderLogo: () => (
+        <div className="flex items-center gap-1 px-1">
+          <span className="font-serif italic font-black text-[#be123c] text-sm tracking-tight">Godrej</span>
+        </div>
+      ),
+    },
+  ];
+
+  const activeBranch = footerBranches[selectedBranchId];
 
   const [queryForm, setQueryForm] = useState({ name: '', phone: '', query: '' });
   const [isQuerySubmitting, setIsQuerySubmitting] = useState(false);
@@ -25,14 +183,6 @@ export default function Footer() {
     }
   };
 
-  const handleEmailClick = (e: React.MouseEvent) => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (!isMobile) {
-      e.preventDefault();
-      navigator.clipboard.writeText('lithintransports@gmail.com');
-      toast.success('Email lithintransports@gmail.com copied to clipboard!');
-    }
-  };
 
   const handleQuerySubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,172 +206,314 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative mt-12 bg-transparent border-t border-emerald-500/20 pt-10 pb-6">
+    <footer className="relative z-10 mt-12 bg-transparent border-t border-emerald-500/20 pt-10 pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Top Content Grid: About Us, Quick Links, Get In Touch, Celebrating 6+ Years Badge */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-8 border-b border-white/10 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-8 border-b border-white/10 items-end">
           
-          {/* Col 1: About Us (lg:col-span-3) */}
-          <div className="lg:col-span-3 flex flex-col gap-3">
-            <Link to="/" onClick={handleQuickLinkClick} className="flex items-center gap-3 group">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-1 bg-[#060b1e] border-2 border-emerald-400/70 shadow-[0_0_25px_rgba(16,185,129,0.5)] flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform shrink-0">
-                <img
-                  src="/logo.png"
-                  alt="Lithin Transport Logo"
-                  className="w-full h-full object-contain rounded-full scale-130"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/logo-tab.png';
-                  }}
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl sm:text-2xl font-black text-white uppercase tracking-widest font-sans leading-none">
-                  LITHIN
-                </span>
-                <span className="text-[10px] font-extrabold text-emerald-400 uppercase tracking-[0.25em] mt-1">
-                  TRANSPORT
-                </span>
-              </div>
-            </Link>
-
-            <h4 className="text-xs font-black text-white uppercase tracking-widest text-emerald-400 border-b border-emerald-500/30 pb-1 w-fit mt-1">
-              About Us
-            </h4>
-
-            <p className="text-xs text-gray-300 leading-relaxed font-normal">
-              Founded in 2020, Lithin Transport is a professional transport contractor and freight booking agency offering expert freight transport, parcel dispatch, and comprehensive logistics solutions across India.
-            </p>
-          </div>
-
-          {/* Col 2: Quick Links with Auto-Scroll to Top (lg:col-span-2) */}
-          <div className="lg:col-span-2 flex flex-col gap-2.5">
-            <h4 className="text-xs font-black text-white uppercase tracking-widest text-emerald-400 border-b border-emerald-500/30 pb-1 w-fit">
-              Quick Links
-            </h4>
-            <ul className="flex flex-col gap-2 text-xs text-gray-300">
-              <li>
-                <Link to="/" onClick={handleQuickLinkClick} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-medium">
-                  <span className="text-emerald-400 font-bold">›</span>
-                  <span>Home</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" onClick={handleQuickLinkClick} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-medium">
-                  <span className="text-emerald-400 font-bold">›</span>
-                  <span>About Us</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" onClick={handleQuickLinkClick} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-medium">
-                  <span className="text-emerald-400 font-bold">›</span>
-                  <span>Services</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/gallery" onClick={handleQuickLinkClick} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-medium">
-                  <span className="text-emerald-400 font-bold">›</span>
-                  <span>Fleet Gallery</span>
-                </Link>
-              </li>
+          {/* Combined Col 1 & 2 Section (lg:col-span-5) */}
+          <div className="lg:col-span-5 flex flex-col gap-4">
+            
+            {/* Top Grid: About Us & Quick Links */}
+            <div className="grid grid-cols-1 sm:grid-cols-5 gap-6">
               
-              <li>
-                <button
-                  onClick={() => setBookingModalOpen(true)}
-                  className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-bold text-emerald-400 cursor-pointer text-left"
-                >
-                  <span className="text-emerald-400 font-bold">›</span>
-                  <span>Book Container Freight</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => setQueryOpen(true)}
-                  className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-medium cursor-pointer text-left"
-                >
-                  <span className="text-emerald-400 font-bold">›</span>
-                  <span>Ask a Query</span>
-                </button>
-              </li>
-            </ul>
+              {/* About Us (sm:col-span-3) */}
+              <div className="sm:col-span-3 flex flex-col gap-3">
+                <Link to="/" onClick={handleQuickLinkClick} className="flex items-center gap-3 group">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-1 bg-[#060b1e] border-2 border-emerald-400/70 shadow-[0_0_25px_rgba(16,185,129,0.5)] flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform shrink-0">
+                    <img
+                      src="/logo.png"
+                      alt="Lithin Transport Logo"
+                      className="w-full h-full object-contain rounded-full scale-130"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/logo-tab.png';
+                      }}
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-xl sm:text-2xl font-black text-white uppercase tracking-widest font-sans leading-none">
+                      LITHIN
+                    </span>
+                    <span className="text-[10px] font-extrabold text-emerald-400 uppercase tracking-[0.25em] mt-1">
+                      TRANSPORT
+                    </span>
+                  </div>
+                </Link>
+
+                <h4 className="text-xs font-black text-white uppercase tracking-widest text-emerald-400 border-b border-emerald-500/30 pb-1 w-fit mt-1">
+                  About Us
+                </h4>
+
+                <p className="text-xs text-gray-300 leading-relaxed font-normal">
+                  Founded in 2020, Lithin Transport is a professional transport contractor and freight booking agency offering expert freight transport, parcel dispatch, and comprehensive logistics solutions across India.
+                </p>
+              </div>
+
+              {/* Quick Links (sm:col-span-2) */}
+              <div className="sm:col-span-2 flex flex-col gap-2.5">
+                <h4 className="text-xs font-black text-white uppercase tracking-widest text-emerald-400 border-b border-emerald-500/30 pb-1 w-fit">
+                  Quick Links
+                </h4>
+                <ul className="flex flex-col gap-2 text-xs text-gray-300">
+                  <li>
+                    <Link to="/" onClick={handleQuickLinkClick} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-medium">
+                      <span className="text-emerald-400 font-bold">›</span>
+                      <span>Home</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/about" onClick={handleQuickLinkClick} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-medium">
+                      <span className="text-emerald-400 font-bold">›</span>
+                      <span>About Us</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/services" onClick={handleQuickLinkClick} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-medium">
+                      <span className="text-emerald-400 font-bold">›</span>
+                      <span>Services</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/gallery" onClick={handleQuickLinkClick} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-medium">
+                      <span className="text-emerald-400 font-bold">›</span>
+                      <span>Fleet Gallery</span>
+                    </Link>
+                  </li>
+                  
+                  <li>
+                    <button
+                      onClick={() => setBookingModalOpen(true)}
+                      className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-medium text-gray-300 cursor-pointer text-left"
+                    >
+                      <span className="text-emerald-400 font-bold">›</span>
+                      <span>Book Now</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => setQueryOpen(true)}
+                      className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-medium cursor-pointer text-left"
+                    >
+                      <span className="text-emerald-400 font-bold">›</span>
+                      <span>Ask a Query</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+
+            {/* TRUSTED ENTERPRISE LOGISTICS PARTNERS (FULL WIDTH ACROSS BOTH COLUMNS!) */}
+            <div className="p-2.5 rounded-2xl bg-[#060b1e]/90 border border-emerald-500/30 flex flex-col gap-1.5 shadow-xl overflow-hidden relative group w-full">
+              
+              {/* Fade edges left & right */}
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[#060b1e] to-transparent z-10" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#060b1e] to-transparent z-10" />
+
+              <div className="flex items-center justify-between border-b border-white/10 pb-1 z-20">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                  <span className="text-[10px] font-black text-emerald-400 uppercase tracking-widest font-sans">
+                    Trusted Enterprise Partners
+                  </span>
+                </div>
+                <span className="text-[9px] font-extrabold text-gray-400 uppercase tracking-wider">
+                  Top Commercial Clients
+                </span>
+              </div>
+
+              {/* Smooth Infinite Horizontally Scrolling Real Logo Ticker */}
+              <div className="overflow-hidden w-full py-1">
+                <div className="animate-marquee-scroll flex items-center gap-3.5">
+                  {[...trustedPartners, ...trustedPartners].map((partner, pIdx) => (
+                    <div
+                      key={pIdx}
+                      className="px-3.5 py-1.5 rounded-xl bg-white/95 border border-white/40 shadow-sm flex items-center gap-1.5 shrink-0 group-hover:scale-105 transition-transform"
+                    >
+                      {partner.renderLogo()}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
           </div>
 
-          {/* Col 3: Get In Touch (lg:col-span-4) */}
+          {/* Col 3: Get In Touch (lg:col-span-4) - Interactive Branch Selector Cards */}
           <div className="lg:col-span-4 flex flex-col gap-3">
-            <h4 className="text-xs font-black text-white uppercase tracking-widest text-emerald-400 border-b border-emerald-500/30 pb-1 w-fit">
-              Get In Touch
-            </h4>
+            <div className="flex items-center justify-between border-b border-emerald-500/30 pb-1">
+              <h4 className="text-xs font-black text-white uppercase tracking-widest text-emerald-400">
+                Get In Touch
+              </h4>
+              <span className="text-[10px] font-bold text-gray-400">Click branch to view map</span>
+            </div>
 
             <div className="flex flex-col gap-2.5 text-xs">
               {/* Head Office: Bangalore */}
-              <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex flex-col gap-0.5">
-                <span className="font-black text-emerald-400 uppercase text-[11px]">
-                  BANGALORE H.O
-                </span>
-                <p className="text-[11px] text-gray-300 font-normal leading-snug">
-                  Electronic City Industrial Area, Bengaluru, Karnataka - 560100
+              <div
+                onClick={() => setSelectedBranchId('bangalore')}
+                className={`p-3 rounded-xl transition-all cursor-pointer border flex flex-col gap-0.5 relative overflow-hidden ${
+                  selectedBranchId === 'bangalore'
+                    ? 'bg-[#081328] border-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.25)]'
+                    : 'bg-white/5 border-white/10 hover:border-emerald-500/40 hover:bg-white/10'
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-black text-emerald-400 uppercase text-[11px] flex items-center gap-1">
+                    <span>BANGALORE H.O</span>
+                  </span>
+                  {selectedBranchId === 'bangalore' && (
+                    <span className="text-[9px] font-black text-emerald-400 uppercase bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-400/40 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      Active Map Location
+                    </span>
+                  )}
+                </div>
+                <p className="text-[11px] text-gray-300 font-normal leading-snug mt-0.5">
+                  #329, Pavithra Nilayam, 2nd B Main, OMBR Layout, Bengaluru, Karnataka - 560043
                 </p>
-                <a
-                  href="tel:+919566738884"
-                  onClick={(e) => handlePhoneClick(e, '+91 95667 38884')}
-                  className="text-[11px] font-bold text-white hover:text-emerald-400 transition-colors"
-                >
-                  Phone: +91 95667 38884
-                </a>
+                <div className="flex flex-col gap-0.5 mt-1 text-[10px]">
+                  <a
+                    href="tel:+919566738884"
+                    onClick={(e) => handlePhoneClick(e, '+91 95667 38884')}
+                    className="font-bold text-white hover:text-emerald-400 transition-colors"
+                  >
+                    Phone: +91 95667 38884
+                  </a>
+                  <span className="text-emerald-300 font-semibold text-[9.5px]">
+                    Email: arul.p@lithintransport.in | deepu@lithintransport.in | admin@lithintransport.in
+                  </span>
+                </div>
               </div>
 
               {/* Tirupur Branch */}
-              <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex flex-col gap-0.5">
-                <span className="font-black text-emerald-400 uppercase text-[11px]">
-                  TIRUPUR BRANCH
-                </span>
-                <p className="text-[11px] text-gray-300 font-normal leading-snug">
-                  Garment Export Zone, Tirupur, Tamil Nadu - 641604
+              <div
+                onClick={() => setSelectedBranchId('tirupur')}
+                className={`p-3 rounded-xl transition-all cursor-pointer border flex flex-col gap-0.5 relative overflow-hidden ${
+                  selectedBranchId === 'tirupur'
+                    ? 'bg-[#081328] border-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.25)]'
+                    : 'bg-white/5 border-white/10 hover:border-emerald-500/40 hover:bg-white/10'
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-black text-emerald-400 uppercase text-[11px] flex items-center gap-1">
+                    <span>TIRUPUR BRANCH</span>
+                  </span>
+                  {selectedBranchId === 'tirupur' && (
+                    <span className="text-[9px] font-black text-emerald-400 uppercase bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-400/40 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      Active Map Location
+                    </span>
+                  )}
+                </div>
+                <p className="text-[11px] text-gray-300 font-normal leading-snug mt-0.5">
+                  13/162, Amman Nagar, 1st Street, Rakkiyapalayam, Avinashi, Tirupur, Tamil Nadu - 641654
                 </p>
-                <a
-                  href="tel:+919342317996"
-                  onClick={(e) => handlePhoneClick(e, '+91 93423 17996')}
-                  className="text-[11px] font-bold text-white hover:text-emerald-400 transition-colors"
-                >
-                  Phone: +91 93423 17996
-                </a>
+                <div className="mt-1 text-[9.5px] text-emerald-300 font-semibold leading-tight">
+                  Email: arul.p@lithintransport.in | deepu@lithintransport.in | admin@lithintransport.in
+                </div>
               </div>
 
               {/* Chennai Branch */}
-              <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex flex-col gap-0.5">
-                <span className="font-black text-emerald-400 uppercase text-[11px]">
-                  CHENNAI BRANCH
-                </span>
-                <p className="text-[11px] text-gray-300 font-normal leading-snug">
-                  Ambattur Industrial Estate, Chennai, Tamil Nadu - 600058
+              <div
+                onClick={() => setSelectedBranchId('chennai')}
+                className={`p-3 rounded-xl transition-all cursor-pointer border flex flex-col gap-0.5 relative overflow-hidden ${
+                  selectedBranchId === 'chennai'
+                    ? 'bg-[#081328] border-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.25)]'
+                    : 'bg-white/5 border-white/10 hover:border-emerald-500/40 hover:bg-white/10'
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-black text-emerald-400 uppercase text-[11px] flex items-center gap-1">
+                    <span>CHENNAI BRANCH</span>
+                  </span>
+                  {selectedBranchId === 'chennai' && (
+                    <span className="text-[9px] font-black text-emerald-400 uppercase bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-400/40 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      Active Map Location
+                    </span>
+                  )}
+                </div>
+                <p className="text-[11px] text-gray-300 font-normal leading-snug mt-0.5">
+                  Siva Sakthi Enterprises, No.5, Madhavaram Redhills High Road, Vadaperumbakkam, Chennai, Tamil Nadu - 600060 (GST: 33AKEPT5983B1Z2)
                 </p>
-                <a
-                  href="mailto:lithintransports@gmail.com"
-                  onClick={handleEmailClick}
-                  className="text-[11px] font-bold text-emerald-300 hover:text-emerald-400 transition-colors"
-                >
-                  Email: lithintransports@gmail.com
-                </a>
+                <div className="mt-1 text-[9.5px] text-emerald-300 font-semibold leading-tight">
+                  Email: arul.p@lithintransport.in | deepu@lithintransport.in | admin@lithintransport.in
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Col 4: Celebrating 6+ Years In Service Badge (Far Right - lg:col-span-3) */}
-          <div className="lg:col-span-3 flex flex-col items-center justify-center p-6 rounded-3xl bg-gradient-to-br from-[#081226] via-[#05091a] to-[#040816] border-2 border-emerald-500/30 text-center shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
+          {/* Col 4: Celebrating 6+ Years Badge & Interactive Branch Google Map (Far Right - lg:col-span-3) */}
+          <div className="lg:col-span-3 flex flex-col gap-3 justify-between h-full">
             
-            <span className="text-xs font-black tracking-widest text-emerald-400 uppercase font-sans italic">
-              Celebrating
-            </span>
-            <div className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-400 font-sans tracking-tight my-1 drop-shadow-lg">
-              6+ YEARS
+            {/* Top: Perfect Symmetric Centered 6+ Years Badge */}
+            <div className="flex flex-col items-center justify-center p-3.5 sm:p-4 rounded-2xl bg-gradient-to-br from-[#081226] via-[#05091a] to-[#040816] border-2 border-emerald-500/30 text-center shadow-xl relative overflow-hidden shrink-0 gap-1">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl pointer-events-none" />
+              
+              <span className="text-[10px] font-black tracking-[0.25em] text-emerald-400 uppercase font-sans">
+                CELEBRATING
+              </span>
+              
+              <div className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-400 font-sans tracking-tight leading-none drop-shadow-md my-0.5">
+                6+ YEARS
+              </div>
+
+              <span className="text-[9px] font-black tracking-widest text-white uppercase bg-emerald-500/20 px-3 py-0.5 rounded-full border border-emerald-400/40 shadow-sm">
+                IN SERVICE
+              </span>
+
+              <p className="text-[9px] text-gray-400 font-medium tracking-wide mt-0.5">
+                Pan-India Commercial Freight
+              </p>
             </div>
-            <span className="text-[10px] font-black tracking-[0.2em] text-white uppercase bg-emerald-500/25 px-3 py-1 rounded-full border border-emerald-400/40 shadow-md">
-              In Service
-            </span>
-            <p className="text-[10px] text-gray-400 font-medium mt-2">
-              Pan-India Commercial Freight
-            </p>
+
+            {/* Bottom: Interactive Google Map Frame for Selected Branch (PERFECTLY ALIGNED AT BASELINE!) */}
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center justify-between text-[10px] font-extrabold uppercase text-emerald-400">
+                <span className="flex items-center gap-1">
+                  <MapPin className="w-3 h-3 text-emerald-400" />
+                  <span>{activeBranch.shortName} Map</span>
+                </span>
+                <a
+                  href={activeBranch.googleMapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[9px] text-white hover:text-emerald-300 font-bold flex items-center gap-1 underline underline-offset-2 cursor-pointer"
+                  title="Open Location in Google Maps"
+                >
+                  <span>Open Map</span>
+                  <ExternalLink className="w-3 h-3 text-emerald-400" />
+                </a>
+              </div>
+
+              {/* Compact Map Box (Adjusted for exact horizontal baseline alignment across all columns!) */}
+              <div className="relative w-full h-32 sm:h-34 rounded-2xl overflow-hidden border-2 border-emerald-500/40 shadow-xl bg-[#060b1e] group">
+                <iframe
+                  key={selectedBranchId}
+                  title={`${activeBranch.name} Google Map Location`}
+                  src={activeBranch.mapEmbedUrl}
+                  className="w-full h-full border-0 filter brightness-95 contrast-105"
+                  loading="lazy"
+                  allowFullScreen
+                />
+
+                {/* Click Overlay Link */}
+                <a
+                  href={activeBranch.googleMapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-2 right-2 px-2.5 py-1 rounded-lg bg-black/85 hover:bg-emerald-600 text-white font-extrabold text-[10px] uppercase tracking-wider backdrop-blur-md border border-emerald-400/40 flex items-center gap-1 transition-all cursor-pointer shadow-lg"
+                  title="Open in Google Maps App"
+                >
+                  <span>Google Maps</span>
+                  <ExternalLink className="w-3 h-3 text-emerald-300" />
+                </a>
+              </div>
+            </div>
+
           </div>
 
         </div>

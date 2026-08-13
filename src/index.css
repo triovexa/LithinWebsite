@@ -230,3 +230,23 @@ body {
 div.skiptranslate {
   display: none !important;
 }
+
+/* INFINITE MARQUEE ANIMATION FOR TRUSTED CLIENT LOGOS */
+@keyframes marqueeFooter {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-scroll {
+  display: flex;
+  width: max-content;
+  animation: marqueeFooter 22s linear infinite;
+}
+
+.animate-marquee-scroll:hover {
+  animation-play-state: paused;
+}
