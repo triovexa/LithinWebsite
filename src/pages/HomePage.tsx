@@ -23,7 +23,7 @@ export default function HomePage() {
 
       {/* HERO SECTION - FULL WIDTH BRIGHT HD VIDEO BACKGROUND */}
       <section id="hero-video-section" className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-emerald-500/30 bg-slate-950 shadow-2xl aspect-[16/10] sm:aspect-[16/9] w-full transition-all">
-        
+
         {/* 100% Vivid Bright Full HD Video Background */}
         <div className="absolute inset-0 overflow-hidden rounded-3xl">
           <video
@@ -94,7 +94,7 @@ export default function HomePage() {
           >
             {/* Glowing Gradient Ring */}
             <span className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-300 to-emerald-400 rounded-full opacity-80 group-hover:opacity-100 transition-opacity" />
-            
+
             {/* Inner Dark Glass Pill */}
             <span className="relative px-6 py-2.5 bg-slate-950/90 group-hover:bg-slate-950/80 backdrop-blur-xl rounded-full text-white flex items-center gap-2 border border-emerald-500/30 transition-all">
               <span>More Details</span>
@@ -106,7 +106,7 @@ export default function HomePage() {
 
       {/* 4. FLEET & OPERATIONS GALLERY PREVIEW SECTION */}
       <section id="gallery-preview-section" className="flex flex-col gap-8 scroll-mt-28">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white uppercase tracking-tight font-sans">
@@ -160,7 +160,7 @@ export default function HomePage() {
           >
             {/* Glowing Gradient Ring */}
             <span className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-300 to-emerald-400 rounded-full opacity-80 group-hover:opacity-100 transition-opacity" />
-            
+
             {/* Inner Dark Glass Pill */}
             <span className="relative px-6 py-2.5 bg-slate-950/90 group-hover:bg-slate-950/80 backdrop-blur-xl rounded-full text-white flex items-center gap-2 border border-emerald-500/30 transition-all">
               <span>More Details</span>

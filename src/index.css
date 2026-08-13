@@ -44,7 +44,17 @@
   .font-bold,
   .font-semibold,
   .font-black {
-    font-weight: 600;
+    font-weight: 500 !important;
+  }
+
+  /* Soften general heading colors to reduce glare matching AGS */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #e2e8f0;
   }
 }
 
@@ -56,7 +66,7 @@
   font-family: 'Fredoka', 'Quicksand', sans-serif !important;
 }
 
-/* MASS Dark Glassmorphism Cards & Panels - Deep Dark Backdrop for 100% Text Visibility */
+/* AGS Glassmorphism Cards & Panels - Transparent Glass to show particle animation */
 .glass-card {
   background: rgba(6, 10, 28, 0.88);
   backdrop-filter: blur(20px);
@@ -170,4 +180,60 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #10b981;
+}
+
+/* Animated Snake Glow Border for Social Icons */
+@keyframes snakeBorderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-snake-border {
+  background: linear-gradient(90deg, #10b981, #3b82f6, #ec4899, #10b981);
+  background-size: 300% 300%;
+  animation: snakeBorderGlow 2.5s ease infinite;
+}
+
+/* HIDE ALL GOOGLE TRANSLATE BANNERS, TOOLBARS & OVERLAYS */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+.goog-te-gadget,
+.goog-tooltip,
+.goog-tooltip:hover,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+#google_translate_element {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+#goog-gt- {
+  display: none !important;
+}
+
+div.skiptranslate {
+  display: none !important;
 }

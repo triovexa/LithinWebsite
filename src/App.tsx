@@ -78,6 +78,7 @@ export default function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/fleet" element={<GalleryPage />} />
           </Routes>
         </main>
 
