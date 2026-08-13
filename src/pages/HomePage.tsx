@@ -26,7 +26,7 @@ export default function HomePage() {
       <section id="hero-video-section" className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-emerald-500/30 bg-slate-950 shadow-2xl aspect-[16/10] sm:aspect-[16/9] w-full transition-all">
 
         {/* 100% Vivid Bright Full HD Video Background */}
-        <div className="absolute inset-0 overflow-hidden rounded-3xl">
+        <div className="absolute inset-0 overflow-hidden rounded-2xl sm:rounded-3xl">
           <video
             autoPlay
             loop

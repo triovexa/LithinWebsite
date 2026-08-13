@@ -125,7 +125,7 @@ export default function Navbar() {
         </nav>
 
         {/* Right: Query Button, Phone Pill & Transparent CTA Button */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           <button
             onClick={() => setQueryOpen(true)}
             className="flex items-center gap-2 px-4 py-2 bg-transparent hover:bg-emerald-500/10 border border-emerald-500/30 rounded-full text-white text-xs font-semibold tracking-wider transition-all cursor-pointer"
@@ -352,13 +352,13 @@ export default function Navbar() {
 
       {/* Lithin Transport Container Booking Modal Dialog */}
       {bookingModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto">
-          <div className="relative w-full max-w-2xl bg-[#060b1e]/95 border border-emerald-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col gap-5 my-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto">
+          <div className="relative w-full max-w-2xl bg-[#060b1e]/95 border border-emerald-500/40 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-2xl flex flex-col gap-4 sm:gap-5 my-auto max-h-[92vh] overflow-y-auto">
             <button
               onClick={() => setBookingModalOpen(false)}
-              className="absolute top-5 right-5 p-2.5 rounded-full bg-white/10 hover:bg-emerald-600 text-white transition-colors z-10"
+              className="absolute top-3 right-3 sm:top-5 sm:right-5 p-2 sm:p-2.5 rounded-full bg-white/10 hover:bg-emerald-600 text-white transition-colors z-20 cursor-pointer"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
             <BookingFormContent

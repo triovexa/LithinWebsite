@@ -209,22 +209,22 @@ export default function BookingFormContent({
 
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-4 sm:gap-5">
       {/* Form Header */}
-      <div className="border-b border-emerald-500/20 pb-4">
-        <h3 className="text-2xl font-black text-white uppercase tracking-wider font-sans flex items-center gap-2">
+      <div className="border-b border-emerald-500/20 pb-3 sm:pb-4">
+        <h3 className="text-xl sm:text-2xl font-black text-white uppercase tracking-wider font-sans flex items-center gap-2">
           <span className="text-emerald-400">{title.split(' ')[0]}</span> {title.split(' ').slice(1).join(' ')}
         </h3>
-        <p className="text-xs text-emerald-400 font-bold tracking-wider uppercase mt-1">
+        <p className="text-[11px] sm:text-xs text-emerald-400 font-bold tracking-wider uppercase mt-1">
           {subtitle}
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:gap-5">
         {/* Field 1 & 2: Client Name & Phone */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           <div>
-            <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+            <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5 sm:mb-2 flex items-center gap-1.5">
               <User className="w-3.5 h-3.5 text-emerald-400" />
               <span>Client Name</span>
               <span className="text-emerald-400">*</span>
@@ -234,12 +234,12 @@ export default function BookingFormContent({
               placeholder="e.g. ABC Company"
               value={formData.clientName}
               onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
-              className="w-full px-4 py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white placeholder-gray-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors"
+              className="w-full px-3.5 py-3 sm:px-4 sm:py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white placeholder-gray-500 text-base sm:text-sm focus:outline-none focus:border-emerald-400 transition-colors"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+            <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5 sm:mb-2 flex items-center gap-1.5">
               <Phone className="w-3.5 h-3.5 text-emerald-400" />
               <span>Phone</span>
               <span className="text-emerald-400">*</span>
@@ -249,14 +249,14 @@ export default function BookingFormContent({
               placeholder="e.g. 9876543210"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className="w-full px-4 py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white placeholder-gray-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors"
+              className="w-full px-3.5 py-3 sm:px-4 sm:py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white placeholder-gray-500 text-base sm:text-sm focus:outline-none focus:border-emerald-400 transition-colors"
             />
           </div>
         </div>
 
         {/* Field 3: Material */}
         <div>
-          <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5 sm:mb-2 flex items-center gap-1.5">
             <Package className="w-3.5 h-3.5 text-emerald-400" />
             <span>Material</span>
             <span className="text-emerald-400">*</span>
@@ -266,15 +266,15 @@ export default function BookingFormContent({
             placeholder="e.g. Garments"
             value={formData.material}
             onChange={(e) => setFormData({ ...formData, material: e.target.value })}
-            className="w-full px-4 py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white placeholder-gray-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors"
+            className="w-full px-3.5 py-3 sm:px-4 sm:py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white placeholder-gray-500 text-base sm:text-sm focus:outline-none focus:border-emerald-400 transition-colors"
           />
         </div>
 
         {/* Field 4 & 5: From & To with City Auto-complete Recommendations */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           {/* From City input with recommendation dropdown */}
           <div className="relative" ref={fromRef}>
-            <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+            <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5 sm:mb-2 flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-emerald-400" />
               <span>From (Pickup)</span>
               <span className="text-emerald-400">*</span>
@@ -288,7 +288,7 @@ export default function BookingFormContent({
                 setFormData({ ...formData, from: e.target.value });
                 setFromFocused(true);
               }}
-              className="w-full px-4 py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white placeholder-gray-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors"
+              className="w-full px-3.5 py-3 sm:px-4 sm:py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white placeholder-gray-500 text-base sm:text-sm focus:outline-none focus:border-emerald-400 transition-colors"
             />
 
             {fromFocused && filteredFromCities.length > 0 && (
@@ -304,7 +304,7 @@ export default function BookingFormContent({
                       setFormData({ ...formData, from: city });
                       setFromFocused(false);
                     }}
-                    className="w-full text-left px-3 py-2 text-xs text-white hover:bg-emerald-500/20 rounded-xl transition-colors flex items-center justify-between"
+                    className="w-full text-left px-3 py-2 text-xs text-white hover:bg-emerald-500/20 rounded-xl transition-colors flex items-center justify-between cursor-pointer"
                   >
                     <span>{city}</span>
                     {formData.from.toLowerCase() === city.toLowerCase() && (
@@ -318,7 +318,7 @@ export default function BookingFormContent({
 
           {/* To City input with recommendation dropdown */}
           <div className="relative" ref={toRef}>
-            <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+            <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5 sm:mb-2 flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-emerald-400" />
               <span>To (Destination)</span>
               <span className="text-emerald-400">*</span>
@@ -332,7 +332,7 @@ export default function BookingFormContent({
                 setFormData({ ...formData, to: e.target.value });
                 setToFocused(true);
               }}
-              className="w-full px-4 py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white placeholder-gray-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors"
+              className="w-full px-3.5 py-3 sm:px-4 sm:py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white placeholder-gray-500 text-base sm:text-sm focus:outline-none focus:border-emerald-400 transition-colors"
             />
 
             {toFocused && filteredToCities.length > 0 && (
@@ -348,7 +348,7 @@ export default function BookingFormContent({
                       setFormData({ ...formData, to: city });
                       setToFocused(false);
                     }}
-                    className="w-full text-left px-3 py-2 text-xs text-white hover:bg-emerald-500/20 rounded-xl transition-colors flex items-center justify-between"
+                    className="w-full text-left px-3 py-2 text-xs text-white hover:bg-emerald-500/20 rounded-xl transition-colors flex items-center justify-between cursor-pointer"
                   >
                     <span>{city}</span>
                     {formData.to.toLowerCase() === city.toLowerCase() && (
@@ -362,17 +362,17 @@ export default function BookingFormContent({
         </div>
 
         {/* Field 6 & 7: Container Size Selection & Quantity */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           {/* Container Size Dropdown & Quick Selection Chips */}
           <div>
-            <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+            <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5 sm:mb-2 flex items-center gap-1.5">
               <Box className="w-3.5 h-3.5 text-emerald-400" />
               <span>Container Size</span>
             </label>
             <select
               value={formData.container}
               onChange={(e) => setFormData({ ...formData, container: e.target.value })}
-              className="w-full px-4 py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white text-sm focus:outline-none focus:border-emerald-400 transition-colors cursor-pointer"
+              className="w-full px-3.5 py-3 sm:px-4 sm:py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white text-base sm:text-sm focus:outline-none focus:border-emerald-400 transition-colors cursor-pointer"
             >
               {CONTAINER_SIZES.map((size) => (
                 <option key={size} value={size} className="bg-[#060b1e] text-white">
@@ -401,14 +401,14 @@ export default function BookingFormContent({
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+            <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5 sm:mb-2 flex items-center gap-1.5">
               <Truck className="w-3.5 h-3.5 text-emerald-400" />
               <span>Quantity</span>
             </label>
             <select
               value={formData.quantity}
               onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-              className="w-full px-4 py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white text-sm focus:outline-none focus:border-emerald-400 transition-colors cursor-pointer"
+              className="w-full px-3.5 py-3 sm:px-4 sm:py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white text-base sm:text-sm focus:outline-none focus:border-emerald-400 transition-colors cursor-pointer"
             >
               <option value="1 Container" className="bg-[#060b1e]">1 Container</option>
               <option value="2 Containers" className="bg-[#060b1e]">2 Containers</option>
@@ -421,7 +421,7 @@ export default function BookingFormContent({
 
         {/* Field 8: Pickup Date Calendar Picker */}
         <div>
-          <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5 sm:mb-2 flex items-center gap-1.5">
             <Calendar className="w-3.5 h-3.5 text-emerald-400" />
             <span>Pickup Date (Select from Calendar)</span>
           </label>
@@ -430,7 +430,7 @@ export default function BookingFormContent({
               type="date"
               value={formData.pickupDate}
               onChange={(e) => setFormData({ ...formData, pickupDate: e.target.value })}
-              className="w-full px-4 py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white text-sm focus:outline-none focus:border-emerald-400 transition-colors cursor-pointer"
+              className="w-full px-3.5 py-3 sm:px-4 sm:py-3 bg-[#030614] border border-emerald-500/20 rounded-xl text-white text-base sm:text-sm focus:outline-none focus:border-emerald-400 transition-colors cursor-pointer"
               style={{ colorScheme: 'dark' }}
             />
           </div>
@@ -440,7 +440,7 @@ export default function BookingFormContent({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full py-4 bg-[#10b981] hover:bg-emerald-600 text-white font-black rounded-xl shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 text-sm uppercase tracking-wider disabled:opacity-50 mt-2 cursor-pointer"
+          className="w-full py-3.5 sm:py-4 bg-[#10b981] hover:bg-emerald-600 text-white font-black rounded-xl shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 text-xs sm:text-sm uppercase tracking-wider disabled:opacity-50 mt-1 sm:mt-2 cursor-pointer"
         >
           <Send className="w-4 h-4" />
           <span>{isSubmitting ? 'Submitting Booking...' : 'Book Now'}</span>
