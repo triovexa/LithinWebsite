@@ -66,8 +66,7 @@
   font-family: 'Fredoka', 'Quicksand', sans-serif !important;
 }
 
-/* MASS Dark Glassmorphism Cards & Panels - Deep Dark Backdrop for 100% Text Visibility */
-/* AGS Glassmorphism Cards & Panels */
+/* Glassmorphism Cards & Panels - Deep Dark Backdrop for 100% Text Visibility */
 .glass-card {
   background: rgba(6, 10, 28, 0.88);
   backdrop-filter: blur(20px);

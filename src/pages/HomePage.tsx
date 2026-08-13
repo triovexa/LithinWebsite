@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
+import TrustStatsBanner from '../components/TrustStatsBanner';
+import ReviewsSection from '../components/ReviewsSection';
 
 export default function HomePage() {
   const homeServices = [
@@ -167,6 +169,12 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+
+      {/* TRUST & STATS BANNER SECTION */}
+      <TrustStatsBanner />
+
+      {/* TRUCK BOOKING REVIEWS & CLIENT TESTIMONIALS CAROUSEL */}
+      <ReviewsSection />
 
     </div>
   );

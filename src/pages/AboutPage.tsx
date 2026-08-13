@@ -25,7 +25,7 @@ export default function AboutPage() {
           alt="Lithin Transport Operations Fleet & Headquarters"
           className="w-full h-full object-contain sm:object-cover object-center group-hover:scale-103 transition-transform duration-700"
         />
-        
+
         {/* Top-Left Glassmorphic Badge */}
         <div className="absolute top-3 left-3 sm:top-6 sm:left-6 z-10">
           <div className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl sm:rounded-2xl bg-[#060b1e]/85 backdrop-blur-md border border-emerald-500/40 text-white  font-black text-[10px] sm:text-xs  tracking-wider shadow-2xl flex items-center gap-1.5 sm:gap-2">
@@ -37,7 +37,7 @@ export default function AboutPage() {
 
       {/* MAIN CONTENT SECTION (Split Layout: Text on Left, office1.png Image on Right) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 bg-gradient-to-b from-[#090e24]/90 to-[#060814] shadow-2xl">
-        
+
         {/* Left Side: Elaborated Simple English Content */}
         <div className="lg:col-span-7 flex flex-col gap-5">
           <div>
@@ -75,7 +75,7 @@ export default function AboutPage() {
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#060814] via-transparent to-transparent opacity-80" />
-            
+
             {/* Image Overlay Label */}
             <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-[#060b1e]/90 backdrop-blur-md border border-emerald-500/30">
               <span className="text-[10px] font-black text-emerald-400 uppercase tracking-widest block">
