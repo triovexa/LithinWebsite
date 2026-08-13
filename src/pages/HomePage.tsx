@@ -14,10 +14,10 @@ export default function HomePage() {
     <div className="relative min-h-screen pt-24 pb-12 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col gap-16">
 
       {/* HERO SECTION - FULL WIDTH BRIGHT HD VIDEO BACKGROUND */}
-      <section id="hero-video-section" className="relative overflow-hidden rounded-3xl border border-emerald-500/30 bg-transparent shadow-2xl h-[70vh] sm:h-[75vh] md:h-[80vh] w-full transition-all">
+      <section id="hero-video-section" className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-emerald-500/30 bg-transparent shadow-2xl h-[50vh] sm:h-[70vh] md:h-[80vh] w-full transition-all">
         
         {/* 100% Vivid Bright Full HD Video Background */}
-        <div className="absolute inset-0 overflow-hidden rounded-3xl">
+        <div className="absolute inset-0 overflow-hidden rounded-2xl sm:rounded-3xl">
           <video
             autoPlay
             loop
