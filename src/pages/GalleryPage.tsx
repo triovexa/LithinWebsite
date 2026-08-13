@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Truck, Building2, X, PackageCheck, ArrowRight, CheckCircle2, MapPin } from 'lucide-react';
+import { Truck, Building2, X, ArrowRight, CheckCircle2, MapPin } from 'lucide-react';
+import BookingFormContent from '../components/BookingFormContent';
 
 export interface FleetVehicle {
   id: number;
@@ -209,9 +210,17 @@ export default function GalleryPage() {
     { id: '32ft', label: '32 Ft' },
   ];
 
+  const [bookingVehicleFeet, setBookingVehicleFeet] = useState<string | null>(null);
+
   const filteredVehicles = feetFilter === 'all'
     ? fleetVehicles
     : fleetVehicles.filter(v => v.feet === feetFilter);
+
+  const handleBookVehicle = (feet: string) => {
+    setSelectedVehicle(null);
+    const cleanFeet = feet.toLowerCase().trim(); // '7ft', '14ft', '32ft', etc.
+    setBookingVehicleFeet(cleanFeet);
+  };
 
   // Helper component for fallback images
   const FleetImage = ({ sources, alt, className }: { sources: string[]; alt: string; className: string }) => {
@@ -393,29 +402,6 @@ export default function GalleryPage() {
         </div>
       )}
 
-      {/* Fleet Booking Call to Action */}
-      <div className="mt-6 p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#070b1e] via-[#09162e] to-[#070b1e] border border-emerald-500/25 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex flex-col gap-2 text-center md:text-left max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider w-fit mx-auto md:mx-0">
-            <PackageCheck className="w-4 h-4" />
-            <span>Dedicated Cargo Haulage</span>
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight">
-            Need Container Freight Services for Your Cargo Routes?
-          </h2>
-          <p className="text-sm text-gray-300 leading-relaxed font-normal">
-            We provide guaranteed SLA freight dispatch for 7ft, 10ft, 14ft, 17ft, 20ft, 22ft, 24ft, and 32ft commercial trucks across India.
-          </p>
-        </div>
-
-        <a
-          href="/services#quote"
-          className="px-8 py-4 bg-[#10b981] hover:bg-emerald-600 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-xl shadow-emerald-500/30 transition-all hover:scale-105 shrink-0"
-        >
-          Book Fleet / Get Instant Quote
-        </a>
-      </div>
-
       {/* Vehicle Specification Modal */}
       {selectedVehicle && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md animate-in fade-in duration-200">
@@ -455,14 +441,13 @@ export default function GalleryPage() {
                   </p>
                 </div>
 
-                <a
-                  href="/services#quote"
-                  onClick={() => setSelectedVehicle(null)}
-                  className="px-6 py-3 bg-[#10b981] hover:bg-emerald-600 text-white text-xs font-black uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/30 transition-all flex items-center gap-2"
+                <button
+                  onClick={() => handleBookVehicle(selectedVehicle.feet)}
+                  className="px-6 py-3 bg-[#10b981] hover:bg-emerald-600 text-white text-xs font-black uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-500/30 transition-all flex items-center gap-2 cursor-pointer"
                 >
                   <span>Book {selectedVehicle.feet.toUpperCase()} Truck</span>
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </button>
               </div>
 
               {/* Transport Applications (Concise Pills) */}
@@ -534,6 +519,28 @@ export default function GalleryPage() {
               </button>
             </div>
 
+          </div>
+        </div>
+      )}
+
+      {/* Directly Opened Booking Form Modal matching Image 2 */}
+      {bookingVehicleFeet && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="relative max-w-xl w-full bg-[#060b1e] border-2 border-emerald-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col max-h-[95vh] overflow-y-auto">
+            <button
+              onClick={() => setBookingVehicleFeet(null)}
+              className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-white/10 text-white hover:bg-emerald-600 transition-colors cursor-pointer"
+              title="Close Booking Form"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <BookingFormContent
+              initialContainer={bookingVehicleFeet}
+              onSuccess={() => setBookingVehicleFeet(null)}
+              title="LITHIN TRANSPORT"
+              subtitle="CONTAINER BOOKING FORM"
+            />
           </div>
         </div>
       )}

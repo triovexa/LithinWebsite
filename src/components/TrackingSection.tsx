@@ -72,7 +72,7 @@ export default function TrackingSection() {
 
   return (
     <section id="tracking" className="my-16 scroll-mt-24">
-      <div className="p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 shadow-2xl relative overflow-hidden">
+      <div className="p-8 sm:p-12 rounded-3xl glass-panel border border-emerald-500/20 shadow-2xl relative overflow-hidden bg-slate-950/20 backdrop-blur-md">
         <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none" />
 
         <div className="max-w-2xl mx-auto text-center">
@@ -94,7 +94,7 @@ export default function TrackingSection() {
                 placeholder="Enter LR Number (e.g. LR001)"
                 value={lrNumber}
                 onChange={(e) => setLrNumber(e.target.value)}
-                className="w-full pl-12 pr-4 py-3.5 bg-[#030614] border border-emerald-500/20 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-emerald-400 transition-colors text-sm font-medium"
+                className="w-full pl-12 pr-4 py-3.5 bg-slate-950/40 backdrop-blur-md border border-emerald-500/20 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-emerald-400 transition-colors text-sm font-medium"
               />
             </div>
             <button
@@ -126,7 +126,7 @@ export default function TrackingSection() {
 
         {trackingResult && (
           <div className="mt-10 pt-8 border-t border-white/10 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-300">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 bg-[#050b1e]/80 p-5 rounded-2xl border border-emerald-500/20 text-xs">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 bg-slate-950/30 backdrop-blur-md p-5 rounded-2xl border border-emerald-500/20 text-xs">
               <div>
                 <span className="text-gray-400 block mb-1">LR / Consignment No:</span>
                 <span className="text-sm font-black text-white tracking-wider">{trackingResult.lrNumber}</span>

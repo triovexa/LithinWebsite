@@ -28,7 +28,9 @@
   }
 
   /* Tone down font thickness of headings to match AGS sleek look */
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-weight: 600 !important;
     font-family: 'Outfit', 'Fredoka', 'Space Grotesk', sans-serif !important;
     letter-spacing: -0.015em;
@@ -40,7 +42,12 @@
   }
 
   /* Soften general heading colors to reduce glare matching AGS */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: #e2e8f0;
   }
 }
@@ -55,19 +62,19 @@
 
 /* AGS Glassmorphism Cards & Panels */
 .glass-card {
-  background: rgba(14, 17, 42, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.08);
+  background: rgba(6, 10, 28, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(16, 185, 129, 0.1);
   border-radius: 1rem;
 }
 
 .glass-panel {
-  background: rgba(14, 17, 42, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(16, 185, 129, 0.15);
+  background: rgba(6, 10, 28, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(16, 185, 129, 0.2);
   border-radius: 1.25rem;
 }
 
@@ -168,3 +175,58 @@
   background: #10b981;
 }
 
+/* Animated Snake Glow Border for Social Icons */
+@keyframes snakeBorderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-snake-border {
+  background: linear-gradient(90deg, #10b981, #3b82f6, #ec4899, #10b981);
+  background-size: 300% 300%;
+  animation: snakeBorderGlow 2.5s ease infinite;
+}
+
+/* HIDE ALL GOOGLE TRANSLATE BANNERS, TOOLBARS & OVERLAYS */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+.goog-te-gadget,
+.goog-tooltip,
+.goog-tooltip:hover,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+#google_translate_element {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+#goog-gt- {
+  display: none !important;
+}
+
+div.skiptranslate {
+  display: none !important;
+}
