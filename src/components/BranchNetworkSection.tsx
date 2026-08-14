@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Mail, Phone, ChevronRight, Star, Truck, Search, ShieldCheck, ArrowRight, ArrowLeft } from 'lucide-react';
+import { MapPin, Mail, Phone, ChevronRight, Star, Search, ShieldCheck, ArrowRight, ArrowLeft } from 'lucide-react';
 import { ALL_HUB_COVERAGE } from '../data/locationData';
 import type { HubCoverage, StateCoverage } from '../data/locationData';
 
@@ -67,6 +67,28 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
   // Active Hub Coverage data based on selected branch
   const activeHubData: HubCoverage = ALL_HUB_COVERAGE.find((h) => h.hubId === selectedBranch.id) || ALL_HUB_COVERAGE[0];
 
+  // Trigger route selection and open booking form modal with pre-filled FROM & TO
+  const handleBookingRouteClick = (e: React.MouseEvent, fromCity: string, toCity: string) => {
+    e.preventDefault();
+    (window as any).lastSelectedRoute = { from: fromCity, to: toCity };
+
+    window.dispatchEvent(
+      new CustomEvent('selectRoute', {
+        detail: {
+          from: fromCity,
+          to: toCity
+        }
+      })
+    );
+
+    const quoteElem = document.getElementById('quote');
+    if (quoteElem) {
+      quoteElem.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.dispatchEvent(new CustomEvent('openBookingModal'));
+    }
+  };
+
   // Change hub & reset state view
   const handleHubSelect = (branch: BranchInfo) => {
     setSelectedBranch(branch);
@@ -93,15 +115,9 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
       {/* SECTION HEADER */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] sm:text-xs font-black uppercase tracking-wider mb-2">
-            100% Pan-India Cargo & Freight Network
-          </div>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tight font-sans drop-shadow-[0_4px_25px_rgba(16,185,129,0.35)]">
             Our Head Office & Branches
           </h2>
-          <p className="text-gray-300 text-xs sm:text-sm mt-1.5 max-w-3xl">
-            Select any Head Office or Branch below to view all destination states, districts, and major industrial cities serviced from that office across India.
-          </p>
         </div>
       </div>
 
@@ -309,9 +325,6 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
                   {selectedState.code}
                 </span>
               </div>
-              <p className="text-gray-300 text-xs sm:text-base mt-2 font-medium max-w-3xl leading-relaxed">
-                {selectedState.serviceType} • Complete Doorstep Pickup & Daily Direct Freight Fleet from {activeHubData.hubName.split(' (')[0]} Hub.
-              </p>
             </div>
 
             {/* SEARCH BAR FOR CITIES IN THIS STATE */}
@@ -335,28 +348,26 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
               </div>
             </div>
 
-            {/* FULL-WIDTH GRID OF DISTRICTS & CITIES CARDS ON THE PAGE */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* FULL-WIDTH GRID OF DISTRICTS & CITIES CARDS ON THE PAGE (MATCHING SCREENSHOT 1) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {selectedState.districts
                 .filter(d => d.name.toLowerCase().includes(citySearchTerm.toLowerCase()) || d.type.toLowerCase().includes(citySearchTerm.toLowerCase()))
                 .map((dist, idx) => (
                   <div
                     key={idx}
-                    className="p-6 rounded-3xl bg-slate-950/90 border border-emerald-500/20 hover:border-emerald-400/70 hover:bg-slate-950 transition-all duration-300 flex flex-col justify-between gap-5 shadow-2xl group relative overflow-hidden"
+                    className="p-5 rounded-2xl glass-panel bg-slate-950/80 border border-emerald-500/30 hover:border-emerald-400/60 transition-all duration-300 flex flex-col justify-between shadow-xl group relative overflow-hidden"
                   >
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-xl pointer-events-none group-hover:bg-emerald-500/15" />
-
                     <div>
-                      {/* CITY NAME & TRANSIT TIME */}
-                      <div className="flex items-start justify-between gap-3 mb-2">
-                        <h4 className="text-xl font-black text-white uppercase tracking-wide group-hover:text-emerald-300 transition-colors flex items-center gap-2 font-sans">
-                          <MapPin className="w-4 h-4 text-emerald-400 shrink-0 group-hover:scale-125 transition-transform" />
-                          <span>{dist.name}</span>
+                      {/* CITY NAME HEADER WITH GREEN MAP PIN */}
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <MapPin className="w-4 h-4 text-emerald-400 shrink-0" />
+                        <h4 className="text-base sm:text-lg font-black text-white uppercase tracking-wide group-hover:text-emerald-300 transition-colors font-sans">
+                          {dist.name}
                         </h4>
                       </div>
 
-                      {/* HUB INDUSTRIAL FOCUS */}
-                      <p className="text-xs text-emerald-400 font-bold mb-4 leading-snug">
+                      {/* HUB INDUSTRIAL FOCUS / DESCRIPTION */}
+                      <p className="text-xs text-emerald-400 font-semibold mb-3 leading-snug">
                         {dist.type}
                       </p>
 
@@ -368,31 +379,33 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
                         <span className="px-2.5 py-1 rounded-md bg-slate-900 border border-white/10 text-gray-300 text-[10px] font-bold">
                           Part Load (PTL)
                         </span>
-                        <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[10px] font-black">
+                        <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[10px] font-extrabold">
                           Doorstep Pickup
                         </span>
                       </div>
                     </div>
 
-                    {/* ACTION FOOTER BAR */}
-                    <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-2 text-xs">
-                      <span className="text-[11px] text-gray-400 font-medium">Daily Direct Fleet</span>
-                      <a
-                        href={`https://wa.me/919566738884?text=Hi,%20I%20want%20to%20book%20shipment%20to%20${encodeURIComponent(dist.name)},%20${encodeURIComponent(selectedState.name)}%20from%20${encodeURIComponent(activeHubData.hubName.split(' (')[0])}%20Office.`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-black text-xs uppercase tracking-wider transition-all shadow-md shadow-emerald-500/20 flex items-center gap-1.5 hover:scale-105"
-                      >
-                        <span>Book Parcel</span>
-                        <ChevronRight className="w-4 h-4" />
-                      </a>
+                    {/* ACTION FOOTER BAR WITH SOLID BRIGHT GREEN BOOK PARCEL BUTTON */}
+                    <div>
+                      <div className="border-t border-white/10 my-3" />
+                      <div className="flex items-center justify-between gap-2 text-xs">
+                        <span className="text-xs text-gray-400 font-medium">Daily Direct Fleet</span>
+                        <button
+                          type="button"
+                          onClick={(e) => handleBookingRouteClick(e, activeHubData.hubName.split(' (')[0], dist.name)}
+                          className="px-4 py-1.5 rounded-full bg-[#00d68f] hover:bg-emerald-300 text-[#060a1c] font-black text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(16,185,129,0.4)] flex items-center gap-1 hover:scale-105 cursor-pointer"
+                        >
+                          <span>BOOK PARCEL</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))}
             </div>
 
             {/* BOTTOM NAV BAR */}
-            <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="pt-6 border-t border-white/10 flex items-center justify-start">
               <button
                 onClick={() => setSelectedState(null)}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-white/10 text-white font-extrabold text-xs uppercase tracking-wider transition-colors cursor-pointer"
@@ -400,11 +413,6 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
                 <ArrowLeft className="w-4 h-4" />
                 <span>← Back to All {selectedBranch.name.split(' (')[0]} States</span>
               </button>
-
-              <div className="flex items-center gap-2 text-xs text-gray-400 font-semibold">
-                <Truck className="w-4 h-4 text-emerald-400" />
-                <span>Doorstep pickup & express delivery active in all districts of {selectedState.name}</span>
-              </div>
             </div>
           </div>
         ) : (
@@ -413,23 +421,13 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
           /* ========================================================================= */
           <div className="flex flex-col gap-8">
             {/* EXPLORER TOP HEADER */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-emerald-500/20">
-              <div>
-                <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-black uppercase tracking-wider mb-2">
-                  {selectedBranch.name.split(' (')[0]} Hub Network
-                </div>
-                <h3 className="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight font-sans">
-                  Serviced Destinations
-                </h3>
-                <p className="text-gray-400 text-xs sm:text-sm mt-1 font-normal">
-                  Daily express freight and parcel corridors dispatched from {selectedBranch.name.split(' (')[0]} Hub.
-                </p>
+            <div className="pb-4 border-b border-emerald-500/20">
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-black uppercase tracking-wider mb-2">
+                {selectedBranch.name.split(' (')[0]} Hub Network
               </div>
-
-              <div className="px-4 py-2.5 rounded-2xl bg-slate-900 border border-emerald-500/30 text-emerald-300 text-xs font-black uppercase tracking-wider shrink-0 flex items-center gap-2 shadow-lg w-fit">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span>{activeHubData.states.length} States Covered</span>
-              </div>
+              <h3 className="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight font-sans">
+                Serviced Destinations
+              </h3>
             </div>
 
             {/* SEARCH BAR FOR STATES & DISTRICTS */}
@@ -489,7 +487,6 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
                 No states or districts found matching "<strong className="text-white">{locationSearchTerm}</strong>" under {selectedBranch.name.split(' (')[0]} Hub. Try searching another office or contact our 24/7 hotline at <strong className="text-emerald-400">+91 95667 38884</strong>.
               </div>
             )}
-
           </div>
         )}
       </div>

@@ -50,11 +50,20 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
           { name: 'Ballari & Hospet', type: 'Steel & Mining Industrial Corridor', transitTime: '7 Hours' },
           { name: 'Tumakuru', type: 'Vasanthanarasapura SIPCOT Park', transitTime: '2 Hours' },
           { name: 'Shivamogga', type: 'Malnad Trade & Goods Depot', transitTime: '6 Hours' },
-          { name: 'Kalaburagi', type: 'Cement & Grain Logistics Belt', transitTime: '11 Hours' },
-          { name: 'Udupi', type: 'Coastal Commercial Corridor', transitTime: '8 Hours' },
+          { name: 'Kalaburagi (Gulbarga)', type: 'Cement & Grain Logistics Belt', transitTime: '11 Hours' },
+          { name: 'Udupi & Kundapura', type: 'Coastal Commercial Corridor', transitTime: '8 Hours' },
           { name: 'Hassan', type: 'SEZ & Coffee Export Terminal', transitTime: '4.5 Hours' },
-          { name: 'Bagalkote & Bidar', type: 'North-East Karnataka Industrial Belt', transitTime: '12 Hours' },
-          { name: 'Chitradurga & Haveri', type: 'National Highway Highway Transit Belt', transitTime: '5 Hours' }
+          { name: 'Vijayapura (Bijapur)', type: 'North Karnataka Agri Trade Hub', transitTime: '11 Hours' },
+          { name: 'Raichur & Koppal', type: 'Thermal Energy & Rice Mill Belt', transitTime: '9 Hours' },
+          { name: 'Mandya & Ramanagara', type: 'Automobile & Sugar Industrial Corridor', transitTime: '2.5 Hours' },
+          { name: 'Kolar & Chintamani', type: 'Gold Field & Industrial SIPCOT Belt', transitTime: '2 Hours' },
+          { name: 'Chikkamagaluru & Mudigere', type: 'Spices & Coffee Export Belt', transitTime: '5.5 Hours' },
+          { name: 'Bagalkote & Jamkhandi', type: 'Cement & Silk Weaving Center', transitTime: '11.5 Hours' },
+          { name: 'Bidar & Bhalki', type: 'Northern Frontier Trade Junction', transitTime: '13 Hours' },
+          { name: 'Chitradurga & Haveri', type: 'National Highway Highway Transit Belt', transitTime: '5 Hours' },
+          { name: 'Karwar & Sirsi', type: 'Coastal Seaport & Timber Depot', transitTime: '9 Hours' },
+          { name: 'Gadag & Ron', type: 'Textile & Agricultural Logistics Depot', transitTime: '8.5 Hours' },
+          { name: 'Yadgir & Chincholi', type: 'Industrial & Grain Trade Belt', transitTime: '10.5 Hours' }
         ]
       },
       {
@@ -65,17 +74,22 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         transitTime: '18 - 24 Hours',
         serviceType: 'Express Heavy Cargo & Daily Parcel Line',
         districts: [
-          { name: 'Mumbai (Bhiwandi Logistics Hub)', type: 'Commercial Seaport & National Cargo Terminal', transitTime: '22 Hours' },
-          { name: 'Pune (Chakan & Pimpri)', type: 'Automobile & Heavy Engineering SIPCOT', transitTime: '18 Hours' },
-          { name: 'Thane & Navi Mumbai', type: 'JNPT Port & Warehouse Corridor', transitTime: '22 Hours' },
-          { name: 'Nagpur', type: 'Zero-Mile All-India Transit Hub', transitTime: '20 Hours' },
-          { name: 'Nashik', type: 'Pharma & Agricultural Industrial Belt', transitTime: '22 Hours' },
-          { name: 'Chhatrapati Sambhajinagar (Aurangabad)', type: 'Auto Component & Electrical Zone', transitTime: '20 Hours' },
-          { name: 'Solapur', type: 'Garment & Textile Manufacturing Hub', transitTime: '14 Hours' },
-          { name: 'Kolhapur', type: 'Foundry & Sugar Machinery Belt', transitTime: '12 Hours' },
-          { name: 'Sangli & Satara', type: 'Agro & Industrial Freight Corridor', transitTime: '13 Hours' },
-          { name: 'Amravati & Nanded', type: 'Vidarbha & Marathwada Trade Depot', transitTime: '22 Hours' },
-          { name: 'Jalgaon & Dhule', type: 'North MH Chemical & Agri Goods Zone', transitTime: '24 Hours' }
+          { name: 'Mumbai (Bhiwandi & Kalamboli)', type: 'Commercial Seaport & National Cargo Terminal', transitTime: '22 Hours' },
+          { name: 'Pune (Chakan, Pimpri & Bhosari)', type: 'Automobile & Heavy Engineering SIPCOT', transitTime: '18 Hours' },
+          { name: 'Thane, Navi Mumbai & JNPT', type: 'JNPT Ocean Container Seaport Terminal', transitTime: '22 Hours' },
+          { name: 'Nagpur & Butibori', type: 'Zero-Mile All-India Transit Hub', transitTime: '20 Hours' },
+          { name: 'Nashik & Ambad', type: 'Pharma & Agricultural Industrial Belt', transitTime: '22 Hours' },
+          { name: 'Chhatrapati Sambhajinagar (Aurangabad WALUJ)', type: 'Auto Component & Electrical Zone', transitTime: '20 Hours' },
+          { name: 'Solapur & Akkalkot', type: 'Garment & Textile Manufacturing Hub', transitTime: '14 Hours' },
+          { name: 'Kolhapur & Ichalkaranji', type: 'Foundry & Textile Weaving Belt', transitTime: '12 Hours' },
+          { name: 'Sangli & Miraj', type: 'Turmeric, Spices & Agro Freight Corridor', transitTime: '13 Hours' },
+          { name: 'Satara & Karad', type: 'Engineering & Sugar Industry Zone', transitTime: '14.5 Hours' },
+          { name: 'Amravati & Akola', type: 'Vidarbha Cotton & Oil Mill Trade Depot', transitTime: '22 Hours' },
+          { name: 'Nanded & Latur', type: 'Marathwada Commercial Trade Center', transitTime: '19 Hours' },
+          { name: 'Jalgaon & Bhusawal', type: 'North MH Chemical, Banana & Railway Hub', transitTime: '24 Hours' },
+          { name: 'Dhule & Malegaon', type: 'Powerloom & Highway Transit Corridor', transitTime: '23 Hours' },
+          { name: 'Chandrapur & Wardha', type: 'Coal Mining & Cement Industrial Belt', transitTime: '21 Hours' },
+          { name: 'Ratnagiri & Sindhudurg', type: 'Konkan Coast Marine Freight Depot', transitTime: '16 Hours' }
         ]
       },
       {
@@ -86,15 +100,20 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         transitTime: '28 - 34 Hours',
         serviceType: 'Textile, Chemical & Heavy Freight Line',
         districts: [
-          { name: 'Ahmedabad', type: 'State Financial & Textile Capital', transitTime: '30 Hours' },
-          { name: 'Surat', type: 'Diamond & Synthetic Fabric Capital', transitTime: '28 Hours' },
-          { name: 'Vadodara', type: 'Chemical, Fertilizer & Power Equipment', transitTime: '32 Hours' },
-          { name: 'Rajkot', type: 'Engineering & Auto Spare Parts Zone', transitTime: '34 Hours' },
-          { name: 'Gandhidham & Kandla', type: 'Deendayal Port International Cargo Terminal', transitTime: '36 Hours' },
-          { name: 'Morbi', type: 'Asia Largest Ceramic & Tiles Hub', transitTime: '34 Hours' },
+          { name: 'Ahmedabad & Sanand', type: 'State Financial, Auto & Textile Capital', transitTime: '30 Hours' },
+          { name: 'Surat & Hazira', type: 'Diamond, Heavy Port & Synthetic Fabric Capital', transitTime: '28 Hours' },
+          { name: 'Vadodara & Halol', type: 'Chemical, Fertilizer & Power Equipment', transitTime: '32 Hours' },
+          { name: 'Rajkot & Shapar Metoda', type: 'Engineering & Auto Spare Parts Zone', transitTime: '34 Hours' },
+          { name: 'Gandhidham & Kandla (Deendayal Port)', type: 'Deendayal International Seaport Cargo Hub', transitTime: '36 Hours' },
+          { name: 'Morbi', type: 'Asia Largest Ceramic Tiles & Sanitaryware Hub', transitTime: '34 Hours' },
           { name: 'Vapi & Ankleshwar', type: 'Asia Largest Chemical Industrial Belt', transitTime: '30 Hours' },
-          { name: 'Bharuch & Anand', type: 'Petrochemical & Dairy Freight Zone', transitTime: '31 Hours' },
-          { name: 'Bhavnagar & Jamnagar', type: 'Shipbuilding & Brass Metal Capital', transitTime: '35 Hours' }
+          { name: 'Bharuch & Dahej SEZ', type: 'Petrochemical & Ocean Port Terminal', transitTime: '31 Hours' },
+          { name: 'Anand & Nadiad', type: 'Dairy, Agro & Engineering Freight Belt', transitTime: '30.5 Hours' },
+          { name: 'Bhavnagar & Alang', type: 'Shipbuilding, Alang Shipbreaking & Brass', transitTime: '35 Hours' },
+          { name: 'Jamnagar', type: 'World Largest Petroleum Refinery & Brass Hub', transitTime: '36 Hours' },
+          { name: 'Junagadh & Porbandar', type: 'Ocean Marine & Cement Freight Desk', transitTime: '37 Hours' },
+          { name: 'Mehsana & Kadi', type: 'Oil & Ceramic Industrial Corridor', transitTime: '32 Hours' },
+          { name: 'Navsari & Valsad', type: 'Textile, Paper & Agro Export Belt', transitTime: '29 Hours' }
         ]
       },
       {
@@ -105,10 +124,12 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         transitTime: '12 - 16 Hours',
         serviceType: 'Pharma & Daily Commercial Express',
         districts: [
-          { name: 'Panaji', type: 'State Capital & Commercial Center', transitTime: '14 Hours' },
+          { name: 'Panaji (Panjim)', type: 'State Capital & Commercial Center', transitTime: '14 Hours' },
           { name: 'Verna Industrial Estate', type: 'Major Pharma & Electronics SIPCOT', transitTime: '13 Hours' },
-          { name: 'Margao & Mormugao', type: 'Seaport Freight & Mining Cargo Terminal', transitTime: '14 Hours' },
-          { name: 'Vasco da Gama & Mapusa', type: 'Port Logistics & North Goa Trade', transitTime: '14.5 Hours' }
+          { name: 'Margao & Mormugao Port', type: 'Seaport Freight & Ore Mining Cargo Terminal', transitTime: '14 Hours' },
+          { name: 'Vasco da Gama', type: 'Port Logistics & Marine Terminal', transitTime: '14 Hours' },
+          { name: 'Mapusa & Ponda', type: 'North Goa Trade & Commercial Hub', transitTime: '15 Hours' },
+          { name: 'Bicholim & Tuem', type: 'Industrial SIPCOT Estate & Mining Zone', transitTime: '15.5 Hours' }
         ]
       },
       {
@@ -120,17 +141,20 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         serviceType: 'Express Freight & Daily Consignments',
         districts: [
           { name: 'Hyderabad & Secunderabad', type: 'Pharma Capital & Tech Logistics Hub', transitTime: '12 Hours' },
-          { name: 'Warangal', type: 'Textile Park & Agricultural Trade Center', transitTime: '15 Hours' },
+          { name: 'Patancheru & Pashamylaram', type: 'Major Industrial & Chemical SIPCOT Zone', transitTime: '12 Hours' },
+          { name: 'Warangal & Kazipet', type: 'Textile Park & Agricultural Trade Center', transitTime: '15 Hours' },
           { name: 'Karimnagar', type: 'Granite & Agricultural Freight Belt', transitTime: '16 Hours' },
-          { name: 'Nizamabad', type: 'Turmeric & Commercial Agro Terminal', transitTime: '17 Hours' },
-          { name: 'Khammam', type: 'Coal & Mineral Mining Transit Corridor', transitTime: '14 Hours' },
-          { name: 'Ramagundam', type: 'Thermal Power & Fertilizer SIPCOT', transitTime: '16 Hours' },
-          { name: 'Mahbubnagar & Nalgonda', type: 'South Telangana Trade Junction', transitTime: '13 Hours' }
+          { name: 'Nizamabad & Armoor', type: 'Turmeric & Commercial Agro Terminal', transitTime: '17 Hours' },
+          { name: 'Khammam & Kothagudem', type: 'Coal & Mineral Mining Transit Corridor', transitTime: '14 Hours' },
+          { name: 'Ramagundam & Mancherial', type: 'Thermal Power & Fertilizer SIPCOT', transitTime: '16 Hours' },
+          { name: 'Mahbubnagar & Jadcherla', type: 'Pharma SEZ & South Telangana Junction', transitTime: '13 Hours' },
+          { name: 'Nalgonda & Suryapet', type: 'Cement & Grain Commercial Corridor', transitTime: '13.5 Hours' },
+          { name: 'Medak & Sangareddy', type: 'Heavy Engineering & Defense Industrial Belt', transitTime: '12.5 Hours' }
         ]
       },
       {
         id: 'delhi-ncr',
-        name: 'Delhi (NCT)',
+        name: 'Delhi (NCT & NCR)',
         code: 'DL',
         region: 'North India',
         transitTime: '36 - 42 Hours',
@@ -140,7 +164,9 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
           { name: 'Okhla & Mayapuri', type: 'Central Delhi Industrial Estate', transitTime: '36 Hours' },
           { name: 'Gurugram (Gurgaon)', type: 'Corporate Supply Chain & Auto SIPCOT', transitTime: '36 Hours' },
           { name: 'Noida & Greater Noida', type: 'Electronics & Mobile Manufacturing Hub', transitTime: '38 Hours' },
-          { name: 'Faridabad & Ghaziabad', type: 'Machinery & Cargo Rail Junction', transitTime: '37 Hours' }
+          { name: 'Faridabad & Ballabhgarh', type: 'Machinery & Heavy Industry Zone', transitTime: '37 Hours' },
+          { name: 'Ghaziabad & Sahibabad', type: 'Railway Freight & Engineering Center', transitTime: '37.5 Hours' },
+          { name: 'Kundli & Rai (Sonipat NCR)', type: 'Food Processing & Cold Chain Belt', transitTime: '38 Hours' }
         ]
       },
       {
@@ -151,12 +177,15 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         transitTime: '38 - 44 Hours',
         serviceType: 'Stone, Textile & Handicraft Freight Line',
         districts: [
-          { name: 'Jaipur', type: 'Handicraft, Marble & Garment Capital', transitTime: '40 Hours' },
-          { name: 'Bhiwadi', type: 'NCR Industrial & Auto Ancillary Zone', transitTime: '38 Hours' },
-          { name: 'Jodhpur', type: 'Handicrafts & Wooden Furniture Capital', transitTime: '44 Hours' },
-          { name: 'Udaipur', type: 'Marble & Zinc Mining Industrial Belt', transitTime: '42 Hours' },
+          { name: 'Jaipur & Sitapura SEZ', type: 'Handicraft, Jewellery & Garment Capital', transitTime: '40 Hours' },
+          { name: 'Bhiwadi & Neemrana', type: 'NCR Industrial & Japanese Auto Zone', transitTime: '38 Hours' },
+          { name: 'Jodhpur & Boranada', type: 'Handicrafts & Wooden Furniture HQ', transitTime: '44 Hours' },
+          { name: 'Udaipur & Sukher', type: 'Marble & Zinc Mining Industrial Belt', transitTime: '42 Hours' },
           { name: 'Bhilwara', type: 'Textile & Suiting Manufacturing Capital', transitTime: '40 Hours' },
-          { name: 'Kota & Ajmer', type: 'Stone Freight & Educational Hub', transitTime: '41 Hours' }
+          { name: 'Kota & Ramganj Mandi', type: 'Kota Stone Freight & Chemical Hub', transitTime: '41 Hours' },
+          { name: 'Ajmer & Kishangarh', type: 'Asia Largest Marble & Granite Trading Hub', transitTime: '41 Hours' },
+          { name: 'Alwar & Khairthal', type: 'Edible Oil & Engineering Freight Zone', transitTime: '39 Hours' },
+          { name: 'Bikaner & Sri Ganganagar', type: 'Wool, Agro & Gypsum Mining Center', transitTime: '45 Hours' }
         ]
       },
       {
@@ -168,11 +197,13 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         serviceType: 'Central Interstate Logistics Corridor',
         districts: [
           { name: 'Indore & Pithampur', type: 'Pharma & Auto SIPCOT Capital', transitTime: '24 Hours' },
-          { name: 'Bhopal', type: 'Heavy Electricals (BHEL) & Industrial Center', transitTime: '26 Hours' },
-          { name: 'Gwalior', type: 'Engineering & Textile Zone', transitTime: '30 Hours' },
-          { name: 'Jabalpur', type: 'Defense Equipment & Railway Hub', transitTime: '28 Hours' },
-          { name: 'Dewas & Ujjain', type: 'Chemical & Commercial Trade Center', transitTime: '25 Hours' },
-          { name: 'Satna & Singrauli', type: 'Cement & Energy Mining Belt', transitTime: '32 Hours' }
+          { name: 'Bhopal & Mandideep', type: 'Heavy Electricals (BHEL) & Industrial Center', transitTime: '26 Hours' },
+          { name: 'Gwalior & Malanpur', type: 'Engineering & Textile Zone', transitTime: '30 Hours' },
+          { name: 'Jabalpur', type: 'Defense Equipment & Ordnance Factory Hub', transitTime: '28 Hours' },
+          { name: 'Dewas & Ujjain', type: 'Chemical, Printing & Commercial Center', transitTime: '25 Hours' },
+          { name: 'Satna & Katni', type: 'Cement & Marble Mining Belt', transitTime: '32 Hours' },
+          { name: 'Singrauli & Rewa', type: 'Energy, Coal Mining & Cement Corridor', transitTime: '34 Hours' },
+          { name: 'Ratlam & Neemuch', type: 'Agro Goods & Chemical Freight Depot', transitTime: '26 Hours' }
         ]
       },
       {
@@ -184,10 +215,12 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         serviceType: 'Textile, Agri & Hardware Freight Express',
         districts: [
           { name: 'Ludhiana', type: 'Textile, Hosiery & Cycle Industry HQ', transitTime: '44 Hours' },
-          { name: 'Amritsar', type: 'Trade Gateway & Dry Port Terminal', transitTime: '48 Hours' },
+          { name: 'Amritsar', type: 'International Border Trade & Dry Port', transitTime: '48 Hours' },
           { name: 'Jalandhar', type: 'Sports Goods & Hand Tools Capital', transitTime: '46 Hours' },
           { name: 'Mohali (SAS Nagar)', type: 'IT & Electronics Industrial Hub', transitTime: '44 Hours' },
-          { name: 'Patiala & Bathinda', type: 'Agro Machinery & Thermal Energy Hub', transitTime: '47 Hours' }
+          { name: 'Patiala & Rajpura', type: 'Agro Machinery & Railway Workshop Hub', transitTime: '45 Hours' },
+          { name: 'Bathinda & Mansa', type: 'Thermal Energy, Oil Refinery & Cotton Belt', transitTime: '47 Hours' },
+          { name: 'Pathankot', type: 'Northern Frontier Transit Depot', transitTime: '49 Hours' }
         ]
       },
       {
@@ -201,8 +234,10 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
           { name: 'Panipat', type: 'Asia Largest Handloom & Carpet Export Hub', transitTime: '40 Hours' },
           { name: 'Ambala', type: 'Scientific Instruments & Army Transit Hub', transitTime: '42 Hours' },
           { name: 'Karnal & Sonipat', type: 'Rice Export & Food Processing Zone', transitTime: '41 Hours' },
-          { name: 'Hisar & Rohtak', type: 'Steel & Textile Commercial Center', transitTime: '42 Hours' },
-          { name: 'Yamunanagar & Rewari', type: 'Plywood Industry & Metal Hub', transitTime: '43 Hours' }
+          { name: 'Hisar & Sirsa', type: 'Steel Pipes & Cotton Commercial Center', transitTime: '42 Hours' },
+          { name: 'Rohtak & Jhajjar', type: 'Footwear & Auto Component Park', transitTime: '40 Hours' },
+          { name: 'Yamunanagar & Jagadhri', type: 'Plywood Capital & Metal Hardware Hub', transitTime: '43 Hours' },
+          { name: 'Rewari & Manesar', type: 'Auto Manufacturing & Metal Zone', transitTime: '38 Hours' }
         ]
       },
       {
@@ -250,12 +285,16 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         districts: [
           { name: 'Chennai Metro & Port', type: 'International Container Terminal & Automotive HQ', transitTime: 'Same Day' },
           { name: 'Sriperumbudur & Oragadam', type: 'Global Auto & Electronics SIPCOT Hub', transitTime: '2 Hours' },
-          { name: 'Kanchipuram', type: 'Silk & Industrial Freight Belt', transitTime: '2.5 Hours' },
-          { name: 'Ranipet & Ambur', type: 'Leather Export Industrial Cluster', transitTime: '3 Hours' },
-          { name: 'Vellore', type: 'Medical & Commercial Freight Hub', transitTime: '3 Hours' },
-          { name: 'Cuddalore & Ennore', type: 'Chemical SIPCOT & Thermal Seaport', transitTime: '4 Hours' },
-          { name: 'Villupuram & Tiruvannamalai', type: 'Central TN Trade Corridor', transitTime: '3.5 Hours' },
-          { name: 'Nagapattinam & Mayiladuthurai', type: 'Coastal Agro & Port Terminal', transitTime: '5 Hours' }
+          { name: 'Kanchipuram & Chengalpattu', type: 'Silk & Industrial Freight Belt', transitTime: '2.5 Hours' },
+          { name: 'Ranipet & Wallajah', type: 'Chemical & Tannery Industrial Cluster', transitTime: '3 Hours' },
+          { name: 'Ambur & Vaniyambadi', type: 'Global Leather Export Capital', transitTime: '3.5 Hours' },
+          { name: 'Vellore & Gudiyatham', type: 'Medical & Matchbox Freight Hub', transitTime: '3 Hours' },
+          { name: 'Cuddalore & Neyveli (NLC)', type: 'Chemical SIPCOT & Lignite Energy Seaport', transitTime: '4 Hours' },
+          { name: 'Ennore & Ponneri', type: 'Major Marine Container Port Belt', transitTime: '1.5 Hours' },
+          { name: 'Villupuram & Tindivanam', type: 'Central TN Trade & Highway Corridor', transitTime: '3.5 Hours' },
+          { name: 'Tiruvannamalai & Arani', type: 'Rice Mill & Handloom Silk Capital', transitTime: '3.5 Hours' },
+          { name: 'Nagapattinam & Karaikal', type: 'Coastal Agro & Marine Port Terminal', transitTime: '5 Hours' },
+          { name: 'Dharmapuri & Harur', type: 'Granite & Agro Commercial Hub', transitTime: '4.5 Hours' }
         ]
       },
       {
@@ -267,15 +306,20 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         serviceType: 'Port Cargo, Steel & Daily Express Parcel',
         districts: [
           { name: 'Visakhapatnam (Vizag)', type: 'Major Seaport, Naval Dockyard & Steel Plant', transitTime: '16 Hours' },
-          { name: 'Vijayawada', type: 'State Commercial & Express Distribution Hub', transitTime: '9 Hours' },
-          { name: 'Guntur', type: 'Spice, Cotton & Agricultural Market', transitTime: '9.5 Hours' },
-          { name: 'Kakinada', type: 'Deepwater Port & Fertilizer Freight Hub', transitTime: '14 Hours' },
-          { name: 'Rajahmundry', type: 'Paper & Commercial Trade Depot', transitTime: '12 Hours' },
-          { name: 'Tirupati & Chittoor', type: 'Electronics & Pilgrimage Freight Hub', transitTime: '4 Hours' },
-          { name: 'Nellore & Krishnapatnam', type: 'Seaport Freight Corridor', transitTime: '6 Hours' },
-          { name: 'Anantapur & Kurnool', type: 'KIA Auto Manufacturing & Mineral Belt', transitTime: '8 Hours' },
-          { name: 'Ongole & Eluru', type: 'Agro & Granite Export Hub', transitTime: '10 Hours' },
-          { name: 'Srikakulam & Vizianagaram', type: 'North Coastal Trade Terminal', transitTime: '17 Hours' }
+          { name: 'Vijayawada & Amaravati', type: 'State Commercial & Capital Distribution Hub', transitTime: '9 Hours' },
+          { name: 'Guntur & Tenali', type: 'Spice, Chilli & Cotton Market Capital', transitTime: '9.5 Hours' },
+          { name: 'Kakinada', type: 'Deepwater Ocean Port & Fertilizer Freight Hub', transitTime: '14 Hours' },
+          { name: 'Rajahmundry & Kadiyam', type: 'Paper Mill & Agricultural Nursery Depot', transitTime: '12 Hours' },
+          { name: 'Tirupati & Sri City SEZ', type: 'Global Electronics & Mobile Manufacturing SEZ', transitTime: '3.5 Hours' },
+          { name: 'Chittoor & Madanapalle', type: 'Granite & Mango Pulp Export Zone', transitTime: '4.5 Hours' },
+          { name: 'Nellore & Gudur', type: 'Mica Mining & Commercial Trade Depot', transitTime: '5.5 Hours' },
+          { name: 'Krishnapatnam Port', type: 'Major Deepwater Marine Container Seaport', transitTime: '6 Hours' },
+          { name: 'Anantapur & Hindupur', type: 'KIA Automobile Manufacturing Belt', transitTime: '8 Hours' },
+          { name: 'Kurnool & Nandyal', type: 'Cement & Mineral Mining Corridor', transitTime: '9 Hours' },
+          { name: 'Kadapa & Proddatur', type: 'Gold Trade & Limestone Industrial Zone', transitTime: '8.5 Hours' },
+          { name: 'Ongole', type: 'Galaxy Granite Export Capital', transitTime: '7.5 Hours' },
+          { name: 'Eluru & Tadepalligudem', type: 'Aquaculture & Rice Mill Hub', transitTime: '10.5 Hours' },
+          { name: 'Srikakulam & Vizianagaram', type: 'North Coastal Jute & Marine Terminal', transitTime: '17 Hours' }
         ]
       },
       {
@@ -286,9 +330,10 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         transitTime: '3 - 5 Hours',
         serviceType: 'Daily Direct Express Consignments',
         districts: [
-          { name: 'Pondicherry City', type: 'UT Commercial & Industrial Estate', transitTime: '3.5 Hours' },
+          { name: 'Pondicherry City & Mettupalayam', type: 'UT Commercial & Industrial Estate', transitTime: '3.5 Hours' },
           { name: 'Karaikal Port', type: 'Seaport Freight & Chemical Terminal', transitTime: '5 Hours' },
-          { name: 'Yanam & Mahe', type: 'Special Coastal UT Enclaves', transitTime: '12 Hours' }
+          { name: 'Yanam', type: 'Godavari Coastal UT Enclave', transitTime: '12 Hours' },
+          { name: 'Mahe', type: 'Kerala Coast UT Enclave', transitTime: '10 Hours' }
         ]
       },
       {
@@ -304,8 +349,10 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
           { name: 'Rourkela', type: 'Steel Authority (SAIL) Industrial City', transitTime: '30 Hours' },
           { name: 'Paradip', type: 'Major Deepwater Seaport Cargo Terminal', transitTime: '26 Hours' },
           { name: 'Jharsuguda', type: 'Aluminium & Power Plant Hub', transitTime: '28 Hours' },
-          { name: 'Balasore & Berhampur', type: 'North & South Coastal Cargo Depot', transitTime: '27 Hours' },
-          { name: 'Angul & Sambalpur', type: 'Coal & Mineral Mining Hub', transitTime: '29 Hours' }
+          { name: 'Balasore & Bhadrak', type: 'North Coastal Defense & Agro Cargo Depot', transitTime: '27 Hours' },
+          { name: 'Berhampur & Gopalpur Port', type: 'South Odisha Marine Trade Port', transitTime: '23 Hours' },
+          { name: 'Angul & Talcher', type: 'Coal Mining & Power Complex', transitTime: '29 Hours' },
+          { name: 'Sambalpur & Bargarh', type: 'Handloom & Rice Processing Center', transitTime: '29.5 Hours' }
         ]
       },
       {
@@ -316,12 +363,14 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         transitTime: '32 - 38 Hours',
         serviceType: 'Seaport FTL, Railway & Parcel Line',
         districts: [
-          { name: 'Kolkata (Dankuni)', type: 'Eastern India Logistics Capital & Seaport', transitTime: '34 Hours' },
+          { name: 'Kolkata (Dankuni Hub)', type: 'Eastern India Logistics Capital & Seaport', transitTime: '34 Hours' },
           { name: 'Howrah', type: 'Engineering & Hardware Wholesale Market', transitTime: '34 Hours' },
           { name: 'Siliguri', type: 'North Bengal & North-East Gateway Junction', transitTime: '42 Hours' },
           { name: 'Asansol & Durgapur', type: 'Coal Mining & Steel Production Belt', transitTime: '36 Hours' },
           { name: 'Haldia', type: 'Petrochemical & Major Industrial Seaport', transitTime: '35 Hours' },
-          { name: 'Kharagpur & Malda', type: 'Railway Hub & Agro Trade Terminal', transitTime: '36 Hours' }
+          { name: 'Kharagpur', type: 'Railway Logistics & Metallurgical Center', transitTime: '35 Hours' },
+          { name: 'Malda & Murshidabad', type: 'Agro, Silk & Jute Trade Depot', transitTime: '39 Hours' },
+          { name: 'Bardhaman & Hooghly', type: 'Rice Bowl & Textile Manufacturing Zone', transitTime: '36 Hours' }
         ]
       },
       {
@@ -335,8 +384,10 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
           { name: 'Patna', type: 'State Capital & Main Commercial Consignment Hub', transitTime: '40 Hours' },
           { name: 'Muzaffarpur', type: 'North Bihar Trade & Distribution Center', transitTime: '42 Hours' },
           { name: 'Bhagalpur', type: 'Silk & Handloom Textile Hub', transitTime: '43 Hours' },
-          { name: 'Gaya & Darbhanga', type: 'Central & North Bihar Freight Hub', transitTime: '41 Hours' },
-          { name: 'Purnia & Begusarai', type: 'Agro Processing & Refinery Belt', transitTime: '44 Hours' }
+          { name: 'Gaya & Aurangabad', type: 'South Bihar Industrial Trade Hub', transitTime: '41 Hours' },
+          { name: 'Darbhanga & Samastipur', type: 'Agro Freight & Railway Junction', transitTime: '43 Hours' },
+          { name: 'Purnia & Katihar', type: 'Jute & Maize Commercial Center', transitTime: '45 Hours' },
+          { name: 'Begusarai & Barauni', type: 'Petrochemical Refinery & Industrial Belt', transitTime: '42 Hours' }
         ]
       },
       {
@@ -349,8 +400,10 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         districts: [
           { name: 'Ranchi', type: 'State Capital & Heavy Engineering (HEC) City', transitTime: '36 Hours' },
           { name: 'Jamshedpur (Tata Steel)', type: 'Automobile & Steel Industrial HQ', transitTime: '34 Hours' },
-          { name: 'Dhanbad & Bokaro', type: 'Coal Mining Capital & Steel City', transitTime: '36 Hours' },
-          { name: 'Hazaribagh & Deoghar', type: 'Mineral Mining & Trade Hub', transitTime: '37 Hours' }
+          { name: 'Dhanbad', type: 'Coal Capital of India & Mining Freight', transitTime: '36 Hours' },
+          { name: 'Bokaro Steel City', type: 'Major Steel & Thermal Energy Center', transitTime: '36 Hours' },
+          { name: 'Hazaribagh & Ramgarh', type: 'Refractory & Mineral Mining Hub', transitTime: '37 Hours' },
+          { name: 'Deoghar & Giridih', type: 'Mica Mining & Commercial Trade Depot', transitTime: '38 Hours' }
         ]
       },
       {
@@ -362,10 +415,11 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         serviceType: 'Seven-Sister Gateway Logistics Corridor',
         districts: [
           { name: 'Guwahati', type: 'Primary Freight Gateway to North-East India', transitTime: '52 Hours' },
-          { name: 'Dibrugarh & Tinsukia', type: 'Tea & Oil Refinery Industrial Belt', transitTime: '60 Hours' },
-          { name: 'Silchar', type: 'Barak Valley Commercial Hub', transitTime: '58 Hours' },
-          { name: 'Jorhat & Nagaon', type: 'Upper Assam Trade & Goods Depot', transitTime: '56 Hours' },
-          { name: 'Tezpur & Bongaigaon', type: 'Refinery & Transit Junction', transitTime: '54 Hours' }
+          { name: 'Dibrugarh & Tinsukia', type: 'Tea Export & Oil Refinery Industrial Belt', transitTime: '60 Hours' },
+          { name: 'Silchar', type: 'Barak Valley Commercial Trade Hub', transitTime: '58 Hours' },
+          { name: 'Jorhat & Sivasagar', type: 'Tea Garden & Petroleum Depot', transitTime: '56 Hours' },
+          { name: 'Nagaon & Tezpur', type: 'Central Assam Agro & Paper Terminal', transitTime: '55 Hours' },
+          { name: 'Bongaigaon & Dhubri', type: 'Refinery & International Border Gate', transitTime: '53 Hours' }
         ]
       },
       {
@@ -377,7 +431,8 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         serviceType: 'Border Trade & Dedicated Long-Haul Fleet',
         districts: [
           { name: 'Imphal', type: 'State Capital & Main Commercial Terminal', transitTime: '64 Hours' },
-          { name: 'Churachandpur & Thoubal', type: 'Regional Trade & Goods Center', transitTime: '66 Hours' }
+          { name: 'Churachandpur & Thoubal', type: 'Regional Trade & Goods Center', transitTime: '66 Hours' },
+          { name: 'Moreh', type: 'Myanmar Border Trade Gate', transitTime: '68 Hours' }
         ]
       },
       {
@@ -390,7 +445,7 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         districts: [
           { name: 'Shillong', type: 'State Capital & Main Commercial Hub', transitTime: '56 Hours' },
           { name: 'Tura & Jowai', type: 'Coal & Cement Industrial Belt', transitTime: '58 Hours' },
-          { name: 'Nongpoh', type: 'Assam-Meghalaya Border Highway Gate', transitTime: '54 Hours' }
+          { name: 'Nongpoh & Byrnihat', type: 'Assam-Meghalaya Border Industrial SIPCOT', transitTime: '54 Hours' }
         ]
       },
       {
@@ -436,16 +491,22 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         serviceType: 'Express Textile, Machinery & Agro Freight',
         districts: [
           { name: 'Tirupur (Knitting Capital)', type: 'Global Knitwear Export HQ & Cargo Hub', transitTime: 'Same Day' },
-          { name: 'Coimbatore', type: 'Pump, Textile Machinery & Heavy Foundry', transitTime: '1.5 Hours' },
-          { name: 'Erode', type: 'Turmeric & Powerloom Fabric Wholesale Belt', transitTime: '1.5 Hours' },
-          { name: 'Salem & Attur', type: 'Steel Plant, Sago & Textile Hub', transitTime: '2.5 Hours' },
+          { name: 'Coimbatore & Pollachi', type: 'Pump, Textile Machinery & Heavy Foundry', transitTime: '1.5 Hours' },
+          { name: 'Erode & Gobichettipalayam', type: 'Turmeric & Powerloom Fabric Wholesale Belt', transitTime: '1.5 Hours' },
+          { name: 'Salem & Mettur', type: 'Steel Plant, Chemical & Sago Hub', transitTime: '2.5 Hours' },
           { name: 'Karur', type: 'Home Textile Export & Bus Body Building Hub', transitTime: '2 Hours' },
-          { name: 'Namakkal', type: 'Poultry Capital & Heavy Trucking HQ', transitTime: '2 Hours' },
-          { name: 'Madurai', type: 'South TN Commercial Capital & Garment Center', transitTime: '3.5 Hours' },
-          { name: 'Dindigul', type: 'Lock, Leather & Agro Logistics Hub', transitTime: '3 Hours' },
-          { name: 'Tuticorin (Thoothukudi)', type: 'V O C Deepwater Seaport & Chemical Belt', transitTime: '5 Hours' },
-          { name: 'Virudhunagar & Sivakasi', type: 'Fireworks, Printing & Garment Hub', transitTime: '4.5 Hours' },
-          { name: 'Tirunelveli & Kanyakumari', type: 'Windmill, Spices & Southern Terminal', transitTime: '5.5 Hours' }
+          { name: 'Namakkal & Rasipuram', type: 'Poultry Capital & Heavy Trucking HQ', transitTime: '2 Hours' },
+          { name: 'Madurai & Melur', type: 'South TN Commercial Capital & Garment Center', transitTime: '3.5 Hours' },
+          { name: 'Dindigul & Palani', type: 'Lock, Leather & Agro Logistics Hub', transitTime: '3 Hours' },
+          { name: 'Tuticorin (Thoothukudi Port)', type: 'V O C Deepwater Seaport & Chemical Belt', transitTime: '5 Hours' },
+          { name: 'Virudhunagar & Rajapalayam', type: 'Surgical Cotton & Textile Mill Belt', transitTime: '4 Hours' },
+          { name: 'Sivakasi', type: 'World Printing, Paper & Match Industry HQ', transitTime: '4.5 Hours' },
+          { name: 'Tirunelveli & Tenkasi', type: 'Windmill, Spices & Southern Freight Hub', transitTime: '5 Hours' },
+          { name: 'Kanyakumari & Nagercoil', type: 'Southernmost Frontier Freight Terminal', transitTime: '6 Hours' },
+          { name: 'Trichy (Tiruchirappalli BHEL)', type: 'BHEL Heavy Boiler & Engineering Capital', transitTime: '3 Hours' },
+          { name: 'Thanjavur & Kumbakonam', type: 'Delta Agro & Food Grain Logistics Center', transitTime: '4 Hours' },
+          { name: 'Pudukkottai & Karaikudi', type: 'Granite & Chettinad Trade Center', transitTime: '4 Hours' },
+          { name: 'Perambalur & Ariyalur', type: 'Cement Manufacturing Industrial Belt', transitTime: '3.5 Hours' }
         ]
       },
       {
@@ -456,14 +517,19 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         transitTime: '6 - 14 Hours',
         serviceType: 'Interstate Daily Express Parcel',
         districts: [
-          { name: 'Kochi (Ernakulam)', type: 'Cochin Seaport, Vallarpadam Container Terminal', transitTime: '7 Hours' },
-          { name: 'Thiruvananthapuram', type: 'State Capital & Vizhinjam Seaport Complex', transitTime: '10 Hours' },
-          { name: 'Palakkad', type: 'KINFRA Industrial Park & Border Cargo Gate', transitTime: '3.5 Hours' },
-          { name: 'Kozhikode (Calicut)', type: 'Malabar Trade & Commercial Logistics', transitTime: '6 Hours' },
-          { name: 'Thrissur', type: 'Gold Jewellery Manufacturing & Commercial Hub', transitTime: '5 Hours' },
-          { name: 'Kannur & Kasaragod', type: 'Handloom & Textile Export Belt', transitTime: '8 Hours' },
-          { name: 'Kollam & Alappuzha', type: 'Cashew, Coir & Marine Cargo Hub', transitTime: '9 Hours' },
-          { name: 'Kottayam & Pathanamthitta', type: 'Rubber & Spices Commercial Depot', transitTime: '8.5 Hours' }
+          { name: 'Kochi (Ernakulam & Vallarpadam)', type: 'Cochin Seaport, International Container Hub', transitTime: '7 Hours' },
+          { name: 'Thiruvananthapuram & Vizhinjam', type: 'State Capital & Vizhinjam Seaport Complex', transitTime: '10 Hours' },
+          { name: 'Palakkad & KINFRA Park', type: 'Industrial Park & Border Cargo Gate', transitTime: '3.5 Hours' },
+          { name: 'Kozhikode (Calicut) & Beypore', type: 'Malabar Seaport & Commercial Logistics', transitTime: '6 Hours' },
+          { name: 'Thrissur & Guruvayur', type: 'Gold Jewellery Manufacturing & Commercial Hub', transitTime: '5 Hours' },
+          { name: 'Kannur & Thalassery', type: 'Handloom & Textile Export Belt', transitTime: '8 Hours' },
+          { name: 'Kasaragod & Kanhangad', type: 'Northern Kerala Border Freight Gate', transitTime: '9 Hours' },
+          { name: 'Kollam & Punalur', type: 'Cashew Export & Marine Cargo Hub', transitTime: '9 Hours' },
+          { name: 'Alappuzha & Cherthala', type: 'Coir Export & Seafood Processing Center', transitTime: '8.5 Hours' },
+          { name: 'Kottayam & Changanassery', type: 'Natural Rubber & Spices Commercial Depot', transitTime: '8 Hours' },
+          { name: 'Pathanamthitta & Adoor', type: 'Central Travancore Goods Terminal', transitTime: '9 Hours' },
+          { name: 'Malappuram & Manjeri', type: 'Commercial Trade & Consumer Goods Hub', transitTime: '6.5 Hours' },
+          { name: 'Wayanad (Kalpetta)', type: 'Hill Coffee & Spices Export Line', transitTime: '5.5 Hours' }
         ]
       },
       {
@@ -474,14 +540,16 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         transitTime: '40 - 46 Hours',
         serviceType: 'Textile & Leather Inter-State FTL',
         districts: [
-          { name: 'Kanpur', type: 'Leather Export Capital & Commercial Freight Hub', transitTime: '40 Hours' },
+          { name: 'Kanpur & Unnao', type: 'Leather Export Capital & Commercial Freight Hub', transitTime: '40 Hours' },
           { name: 'Lucknow', type: 'State Capital & Central UP Consignment HQ', transitTime: '42 Hours' },
-          { name: 'Varanasi', type: 'Silk Weaving & Handloom Trade Center', transitTime: '44 Hours' },
-          { name: 'Agra & Mathura', type: 'Footwear & Foundry Industrial Belt', transitTime: '41 Hours' },
-          { name: 'Moradabad', type: 'Brassware Export & Handicraft Terminal', transitTime: '45 Hours' },
-          { name: 'Meerut & Aligarh', type: 'Sports Goods & Hardware Lock Industry', transitTime: '42 Hours' },
+          { name: 'Varanasi & Bhadohi', type: 'Silk Weaving & Handloom Carpet Export Center', transitTime: '44 Hours' },
+          { name: 'Agra & Firozabad', type: 'Footwear Export & Glassware Industry', transitTime: '41 Hours' },
+          { name: 'Moradabad', type: 'World Brassware Export Capital', transitTime: '45 Hours' },
+          { name: 'Meerut & Saharanpur', type: 'Sports Goods, Wooden Carving & Hardware', transitTime: '42 Hours' },
+          { name: 'Aligarh', type: 'Hardware Lock & Metal Industry HQ', transitTime: '41.5 Hours' },
           { name: 'Gorakhpur & Ayodhya', type: 'East UP Trade & Consignment Junction', transitTime: '45 Hours' },
-          { name: 'Jhansi & Bareilly', type: 'Bundelkhand Transit & Agro Logistics', transitTime: '43 Hours' }
+          { name: 'Jhansi & Banda', type: 'Bundelkhand Transit & Stone Logistics', transitTime: '43 Hours' },
+          { name: 'Bareilly & Rampur', type: 'Zari Embroidery & Furniture Belt', transitTime: '44 Hours' }
         ]
       },
       {
@@ -506,9 +574,10 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         transitTime: '48 - 54 Hours',
         serviceType: 'Pharma & Agro Cold Freight Corridor',
         districts: [
-          { name: 'Baddi', type: 'Asia Largest Pharmaceutical Manufacturing Hub', transitTime: '48 Hours' },
+          { name: 'Baddi & Nalagarh', type: 'Asia Largest Pharmaceutical Manufacturing Hub', transitTime: '48 Hours' },
           { name: 'Shimla', type: 'State Capital & Fruit Logistics Center', transitTime: '52 Hours' },
-          { name: 'Solan & Kangra', type: 'Industrial & Trade Depot', transitTime: '50 Hours' },
+          { name: 'Solan & Parwanoo', type: 'Pharma & Industrial Gate', transitTime: '49 Hours' },
+          { name: 'Kangra & Dharamshala', type: 'North HP Trade Depot', transitTime: '51 Hours' },
           { name: 'Mandi & Kullu', type: 'Agro Goods & Hydro Project Logistics', transitTime: '53 Hours' }
         ]
       },
@@ -520,10 +589,11 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
         transitTime: '54 - 64 Hours',
         serviceType: 'All-Weather Pan-India Long-Haul Fleet',
         districts: [
-          { name: 'Jammu City', type: 'Railway Terminal & Trade Gateway', transitTime: '54 Hours' },
+          { name: 'Jammu City & Bari Brahmana', type: 'Railway Terminal & Industrial Estate', transitTime: '54 Hours' },
           { name: 'Srinagar', type: 'Kashmir Valley Saffron, Handicraft & Apple Hub', transitTime: '62 Hours' },
           { name: 'Samba & Kathua', type: 'Industrial SIPCOT Corridor', transitTime: '53 Hours' },
-          { name: 'Anantnag & Baramulla', type: 'Valley Trade & Goods Depot', transitTime: '64 Hours' }
+          { name: 'Anantnag & Pulwama', type: 'Valley Trade & Cold Storage Depot', transitTime: '63 Hours' },
+          { name: 'Baramulla & Sopore', type: 'Fruit & Timber Export Terminal', transitTime: '65 Hours' }
         ]
       },
       {

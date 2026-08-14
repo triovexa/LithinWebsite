@@ -43,20 +43,24 @@ interface BookingFormContentProps {
   title?: string;
   subtitle?: string;
   initialContainer?: string;
+  initialFrom?: string;
+  initialTo?: string;
 }
 
 export default function BookingFormContent({
   onSuccess,
   title = "LITHIN TRANSPORT",
   subtitle = "Container Booking Form",
-  initialContainer
+  initialContainer,
+  initialFrom,
+  initialTo
 }: BookingFormContentProps) {
   const [formData, setFormData] = useState({
     clientName: '',
     phone: '',
     material: '',
-    from: '',
-    to: '',
+    from: initialFrom || '',
+    to: initialTo || '',
     container: initialContainer ? initialContainer.toLowerCase().trim() : '20ft',
     quantity: '1 Container',
     pickupDate: new Date().toISOString().split('T')[0]
@@ -75,8 +79,36 @@ export default function BookingFormContent({
   const fromRef = useRef<HTMLDivElement>(null);
   const toRef = useRef<HTMLDivElement>(null);
 
-  // Auto-select container size when user clicks Book Truck in Gallery
+  // Listen for selectRoute & selectTruckFeet custom window events to auto-populate FROM, TO, & Container
   useEffect(() => {
+    // Immediately check if a route was selected recently via window property
+    const lastRoute = (window as any).lastSelectedRoute;
+    if (lastRoute) {
+      setFormData(prev => ({
+        ...prev,
+        from: lastRoute.from !== undefined ? lastRoute.from : prev.from,
+        to: lastRoute.to !== undefined ? lastRoute.to : prev.to
+      }));
+    }
+
+    const handleSelectRoute = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail) {
+        const { from, to, container } = customEvent.detail;
+        if (from || to) {
+          (window as any).lastSelectedRoute = { from, to };
+        }
+        setFormData(prev => ({
+          ...prev,
+          from: from !== undefined ? from : prev.from,
+          to: to !== undefined ? to : prev.to,
+          container: container && CONTAINER_SIZES.includes(container.toLowerCase().trim())
+            ? container.toLowerCase().trim()
+            : prev.container
+        }));
+      }
+    };
+
     const handleSelectFeet = (e: Event) => {
       const customEvent = e as CustomEvent;
       if (customEvent.detail) {
@@ -87,20 +119,27 @@ export default function BookingFormContent({
       }
     };
 
+    window.addEventListener('selectRoute', handleSelectRoute);
     window.addEventListener('selectTruckFeet', handleSelectFeet);
 
     const checkUrl = () => {
       const params = new URLSearchParams(window.location.search);
       const feetParam = params.get('feet');
-      if (feetParam && CONTAINER_SIZES.includes(feetParam.toLowerCase().trim())) {
-        setFormData(prev => ({ ...prev, container: feetParam.toLowerCase().trim() }));
-      }
+      const fromParam = params.get('from');
+      const toParam = params.get('to');
+      setFormData(prev => ({
+        ...prev,
+        container: feetParam && CONTAINER_SIZES.includes(feetParam.toLowerCase().trim()) ? feetParam.toLowerCase().trim() : prev.container,
+        from: fromParam || prev.from,
+        to: toParam || prev.to
+      }));
     };
 
     checkUrl();
     window.addEventListener('popstate', checkUrl);
 
     return () => {
+      window.removeEventListener('selectRoute', handleSelectRoute);
       window.removeEventListener('selectTruckFeet', handleSelectFeet);
       window.removeEventListener('popstate', checkUrl);
     };

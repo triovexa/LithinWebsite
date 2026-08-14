@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link as RouterLink, useLocation as useRouteLocation } from 'react-router-dom';
 import { Phone, Menu, X, HelpCircle, User, Send, Mail, ChevronDown } from 'lucide-react';
 import toast from 'react-hot-toast';
@@ -19,6 +19,21 @@ export default function Navbar() {
   });
   const [isQuerySubmitting, setIsQuerySubmitting] = useState(false);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
+
+  // Global event listener to trigger booking modal from any card button across website
+  useEffect(() => {
+    const handleOpenBooking = () => {
+      setBookingModalOpen(true);
+    };
+
+    window.addEventListener('openBookingModal', handleOpenBooking);
+    window.addEventListener('selectRoute', handleOpenBooking);
+
+    return () => {
+      window.removeEventListener('openBookingModal', handleOpenBooking);
+      window.removeEventListener('selectRoute', handleOpenBooking);
+    };
+  }, []);
 
   const handlePhoneClick = (e: React.MouseEvent) => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
