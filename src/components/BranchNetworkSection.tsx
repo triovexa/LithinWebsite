@@ -133,8 +133,6 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
 
             {branches.map((b) => {
               const isHovered = hoveredBranch?.id === b.id;
-              const isSelected = selectedBranch.id === b.id;
-              const active = isHovered || isSelected;
 
               return (
                 <div
@@ -143,6 +141,7 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
                   className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-20"
                   onMouseEnter={() => setHoveredBranch(b)}
                   onMouseLeave={() => setHoveredBranch(null)}
+                  onTouchStart={() => setHoveredBranch(isHovered ? null : b)}
                   onClick={() => handleHubSelect(b)}
                   title={b.name}
                 >
@@ -155,7 +154,7 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
                     <span
                       className={`relative w-4 h-4 rounded-full border-2 border-white shadow-xl transition-all duration-300 group-hover:scale-125 ${
                         b.isPrimary ? 'bg-amber-400 shadow-amber-500/90' : 'bg-emerald-400 shadow-emerald-500/90'
-                      } ${active ? 'scale-125 ring-4 ring-white/80' : ''}`}
+                      } ${isHovered ? 'scale-125 ring-4 ring-white/80' : ''}`}
                     />
                   </div>
 
@@ -164,10 +163,10 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
                       b.isPrimary
                         ? 'border-amber-400/80 shadow-[0_0_25px_rgba(245,158,11,0.5)]'
                         : 'border-emerald-400/80 shadow-[0_0_25px_rgba(16,185,129,0.5)]'
-                    } text-white pointer-events-auto transition-all duration-200 z-30 ${
-                      active
+                    } text-white pointer-events-auto transition-all duration-300 z-30 ${
+                      isHovered
                         ? 'opacity-100 scale-100 visible'
-                        : 'opacity-0 scale-95 invisible group-hover:opacity-100 group-hover:scale-100 group-hover:visible'
+                        : 'opacity-0 scale-95 invisible pointer-events-none'
                     }`}
                   >
                     <div
@@ -216,7 +215,7 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
         </div>
       )}
 
-      {/* 3 OFFICIAL OFFICE CARDS */}
+      {/* 3 OFFICIAL OFFICE CARDS WITH GOLDEN BLINKING GLOWING BORDERS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {branches.map((b) => {
           const isSelected = selectedBranch.id === b.id;
@@ -226,11 +225,13 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
               onClick={() => handleHubSelect(b)}
               className={`p-6 sm:p-8 rounded-3xl glass-panel border transition-all duration-300 cursor-pointer flex flex-col justify-between group relative overflow-hidden ${
                 isSelected
-                  ? 'border-emerald-400 bg-slate-950/90 shadow-[0_0_35px_rgba(16,185,129,0.35)] scale-[1.02]'
-                  : 'border-emerald-500/20 bg-slate-950/50 hover:border-emerald-400/60 hover:bg-slate-950/70'
+                  ? 'border-amber-400 bg-slate-950/95 shadow-[0_0_35px_rgba(245,158,11,0.45)] scale-[1.02]'
+                  : 'border-amber-400/35 bg-slate-950/70 hover:border-amber-300 hover:bg-slate-950/90 shadow-[0_0_20px_rgba(245,158,11,0.18)] hover:shadow-[0_0_35px_rgba(245,158,11,0.4)]'
               }`}
             >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl pointer-events-none" />
+              {/* Golden Ambient Top Pulsing Border Line */}
+              <span className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-90 animate-pulse" />
+              <div className="absolute top-0 right-0 w-28 h-28 bg-amber-500/10 rounded-full blur-xl group-hover:bg-amber-400/25 transition-all duration-500 pointer-events-none" />
 
               <div>
                 <div className="flex items-center justify-between pb-3 mb-4 border-b border-emerald-500/30">
@@ -246,13 +247,13 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
                   </span>
 
                   {isSelected && (
-                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-500 text-white text-[10px] font-black uppercase tracking-wider animate-pulse">
+                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-500 text-white text-[10px] font-black uppercase tracking-wider shadow-[0_0_12px_rgba(16,185,129,0.5)] animate-pulse">
                       Active Selected
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tight font-sans group-hover:text-emerald-400 transition-colors">
+                <h3 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tight font-sans group-hover:text-emerald-300 transition-colors">
                   {b.name.split(' (')[0]}
                 </h3>
                 <p className="text-xs text-emerald-400 font-bold mt-1 mb-4">{b.type}</p>
@@ -288,7 +289,8 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
 
       {/* FULL-WIDTH INLINE PAGE SECTION: HUB DESTINATIONS OR EXPANDED STATE PAGE */}
       {showExplorer ? (
-        <div className="p-6 sm:p-10 rounded-3xl glass-panel border border-emerald-500/30 bg-slate-950/80 backdrop-blur-2xl shadow-2xl flex flex-col gap-8 scroll-mt-28" id="hub-destination-explorer">
+        <div className="p-6 sm:p-10 rounded-3xl glass-panel border border-amber-400/40 bg-slate-950/85 backdrop-blur-2xl shadow-[0_0_40px_rgba(245,158,11,0.18)] flex flex-col gap-8 scroll-mt-28 relative overflow-hidden" id="hub-destination-explorer">
+          <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-80 animate-pulse" />
         
         {/* ========================================================================= */}
         {/* VIEW MODE A: STATE DETAILS PAGE INLINE VIEW (WHEN A STATE IS CLICKED)   */}
@@ -296,13 +298,13 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
         {selectedState ? (
           <div className="flex flex-col gap-8 animate-fade-in">
             {/* STATE VIEW TOP NAVIGATION BAR */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-emerald-500/20">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2">
               <button
                 onClick={() => setSelectedState(null)}
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500 border border-emerald-500/40 text-emerald-300 hover:text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md w-fit cursor-pointer group"
               >
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                <span>← Back to All {selectedBranch.name.split(' (')[0]} States ({activeHubData.states.length})</span>
+                <span>Back to All {selectedBranch.name.split(' (')[0]} States ({activeHubData.states.length})</span>
               </button>
 
               <div className="flex flex-wrap items-center gap-2">
@@ -349,56 +351,53 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
             </div>
 
             {/* FULL-WIDTH GRID OF DISTRICTS & CITIES CARDS ON THE PAGE (MATCHING SCREENSHOT 1) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
               {selectedState.districts
                 .filter(d => d.name.toLowerCase().includes(citySearchTerm.toLowerCase()) || d.type.toLowerCase().includes(citySearchTerm.toLowerCase()))
                 .map((dist, idx) => (
                   <div
                     key={idx}
-                    className="p-5 rounded-2xl glass-panel bg-slate-950/80 border border-emerald-500/30 hover:border-emerald-400/60 transition-all duration-300 flex flex-col justify-between shadow-xl group relative overflow-hidden"
+                    className="p-3.5 sm:p-4 rounded-xl glass-panel bg-slate-950/85 border border-amber-400/35 hover:border-amber-300 transition-all duration-300 flex flex-col justify-between shadow-[0_0_15px_rgba(245,158,11,0.15)] hover:shadow-[0_0_25px_rgba(245,158,11,0.35)] group relative overflow-hidden hover:scale-[1.01]"
                   >
+                    {/* Golden Ambient Top Pulsing Border Line */}
+                    <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-90 animate-pulse" />
+
                     <div>
                       {/* CITY NAME HEADER WITH GREEN MAP PIN */}
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <MapPin className="w-4 h-4 text-emerald-400 shrink-0" />
-                        <h4 className="text-base sm:text-lg font-black text-white uppercase tracking-wide group-hover:text-emerald-300 transition-colors font-sans">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                        <h4 className="text-xs sm:text-sm font-black text-white uppercase tracking-wide group-hover:text-emerald-300 transition-colors font-sans truncate">
                           {dist.name}
                         </h4>
                       </div>
 
                       {/* HUB INDUSTRIAL FOCUS / DESCRIPTION */}
-                      <p className="text-xs text-emerald-400 font-semibold mb-3 leading-snug">
+                      <p className="text-[11px] text-emerald-400 font-semibold mb-2 leading-tight truncate">
                         {dist.type}
                       </p>
 
                       {/* SERVICE BADGES */}
-                      <div className="flex flex-wrap gap-1.5 mb-2">
-                        <span className="px-2.5 py-1 rounded-md bg-slate-900 border border-white/10 text-gray-300 text-[10px] font-bold">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <span className="px-2 py-0.5 rounded-md bg-slate-900 border border-white/10 text-gray-300 text-[9px] font-bold">
                           Full Truck Load (FTL)
                         </span>
-                        <span className="px-2.5 py-1 rounded-md bg-slate-900 border border-white/10 text-gray-300 text-[10px] font-bold">
+                        <span className="px-2 py-0.5 rounded-md bg-slate-900 border border-white/10 text-gray-300 text-[9px] font-bold">
                           Part Load (PTL)
-                        </span>
-                        <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[10px] font-extrabold">
-                          Doorstep Pickup
                         </span>
                       </div>
                     </div>
 
-                    {/* ACTION FOOTER BAR WITH SOLID BRIGHT GREEN BOOK PARCEL BUTTON */}
-                    <div>
-                      <div className="border-t border-white/10 my-3" />
-                      <div className="flex items-center justify-between gap-2 text-xs">
-                        <span className="text-xs text-gray-400 font-medium">Daily Direct Fleet</span>
-                        <button
-                          type="button"
-                          onClick={(e) => handleBookingRouteClick(e, activeHubData.hubName.split(' (')[0], dist.name)}
-                          className="px-4 py-1.5 rounded-full bg-[#00d68f] hover:bg-emerald-300 text-[#060a1c] font-black text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(16,185,129,0.4)] flex items-center gap-1 hover:scale-105 cursor-pointer"
-                        >
-                          <span>BOOK PARCEL</span>
-                          <ChevronRight className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
+                    {/* ACTION FOOTER BAR WITH MASS BLINKING GOLDEN BOOK PARCEL BUTTON */}
+                    <div className="pt-2 mt-2 border-t border-white/10 flex items-center justify-between gap-2 text-[11px]">
+                      <span className="text-[10px] text-gray-400 font-medium">Daily Direct Fleet</span>
+                      <button
+                        type="button"
+                        onClick={(e) => handleBookingRouteClick(e, activeHubData.hubName.split(' (')[0], dist.name)}
+                        className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-[10px] uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(245,158,11,0.5)] hover:shadow-[0_0_22px_rgba(245,158,11,0.8)] flex items-center gap-0.5 hover:scale-105 cursor-pointer animate-pulse"
+                      >
+                        <span>BOOK PARCEL</span>
+                        <ChevronRight className="w-3 h-3 text-slate-950" />
+                      </button>
                     </div>
                   </div>
                 ))}
@@ -411,7 +410,7 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-white/10 text-white font-extrabold text-xs uppercase tracking-wider transition-colors cursor-pointer"
               >
                 <ArrowLeft className="w-4 h-4" />
-                <span>← Back to All {selectedBranch.name.split(' (')[0]} States</span>
+                <span>Back to All {selectedBranch.name.split(' (')[0]} States</span>
               </button>
             </div>
           </div>
@@ -444,7 +443,7 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
               </div>
             </div>
 
-            {/* STATES GRID */}
+            {/* STATES GRID WITH GOLDEN BLINKING GLOWING BORDERS */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredStates.map((st) => (
                 <div
@@ -453,9 +452,11 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
                     setSelectedState(st);
                     setCitySearchTerm('');
                   }}
-                  className="group p-5 rounded-2xl bg-slate-950/70 border border-emerald-500/20 hover:border-emerald-400/60 hover:bg-slate-950 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-xl hover:-translate-y-1 relative overflow-hidden"
+                  className="group p-5 rounded-2xl bg-slate-950/85 border border-amber-400/40 hover:border-amber-300 transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-[0_0_20px_rgba(245,158,11,0.18)] hover:shadow-[0_0_35px_rgba(245,158,11,0.45)] hover:-translate-y-1 relative overflow-hidden"
                 >
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-emerald-500/5 rounded-full blur-lg group-hover:bg-emerald-500/15 transition-all pointer-events-none" />
+                  {/* Golden Ambient Top Pulsing Border Line */}
+                  <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-90 animate-pulse" />
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-full blur-xl group-hover:bg-amber-400/25 transition-all duration-500 pointer-events-none" />
 
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-3">
