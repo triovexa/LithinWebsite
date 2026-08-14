@@ -11,7 +11,7 @@ interface ContactSectionProps {
 export default function ContactSection({ id, isModal = false }: ContactSectionProps) {
   const primaryPhone = "+91 95667 38884";
   const secondaryPhone = "+91 93423 17996";
-  const email = "lithintransports@gmail.com";
+  const email = "admin@lithintransport.in";
   const website = "www.lithintransport.in";
   const address = "4/252, Vedivattam, Agraharam vill and po, Natrampalli TK, Tirupattur DT. 635651";
   const gstin = "33FFSPP0139H1Z8";

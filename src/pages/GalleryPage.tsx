@@ -218,11 +218,10 @@ export default function GalleryPage() {
 
   const handleBookVehicle = (feet: string) => {
     setSelectedVehicle(null);
-    const cleanFeet = feet.toLowerCase().trim(); // '7ft', '14ft', '32ft', etc.
+    const cleanFeet = feet.toLowerCase().trim();
     setBookingVehicleFeet(cleanFeet);
   };
 
-  // Helper component for fallback images
   const FleetImage = ({ sources, alt, className }: { sources: string[]; alt: string; className: string }) => {
     const [srcIndex, setSrcIndex] = useState(0);
 
@@ -241,9 +240,8 @@ export default function GalleryPage() {
   };
 
   return (
-    <div className="relative min-h-screen pt-28 pb-16 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col gap-10">
+    <div className="relative min-h-screen pt-28 sm:pt-32 md:pt-36 pb-16 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col gap-10">
 
-      {/* Header Banner */}
       <div className="text-center max-w-3xl mx-auto">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-extrabold uppercase tracking-wider">
           <Truck className="w-4 h-4 text-emerald-400" />
@@ -256,8 +254,6 @@ export default function GalleryPage() {
           Explore our heavy-duty commercial freight container trucks (7ft to 32ft) and our corporate offices and warehouse infrastructure.
         </p>
       </div>
-
-      {/* Main Filter Buttons: ALL FLEETS vs OFFICE & WAREHOUSE */}
       <div className="flex items-center justify-center gap-3 sm:gap-4 p-2 rounded-2xl bg-[#090d24]/90 border border-emerald-500/30 max-w-xl mx-auto shadow-2xl backdrop-blur-md">
         <button
           onClick={() => setMainTab('fleet')}
@@ -282,10 +278,8 @@ export default function GalleryPage() {
         </button>
       </div>
 
-      {/* FLEET TRUCKS VIEW */}
       {mainTab === 'fleet' && (
         <>
-          {/* Sub Feet Filter Tabs */}
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
             {feetTabs.map((tab) => (
               <button

@@ -34,8 +34,7 @@ export const CONTAINER_SIZES = [
   '20ft',
   '22ft',
   '24ft',
-  '32ft',
-  '40ft'
+  '32ft'
 ];
 
 interface BookingFormContentProps {
@@ -43,24 +42,37 @@ interface BookingFormContentProps {
   title?: string;
   subtitle?: string;
   initialContainer?: string;
+  initialFrom?: string;
+  initialTo?: string;
 }
 
 export default function BookingFormContent({
   onSuccess,
   title = "LITHIN TRANSPORT",
   subtitle = "Container Booking Form",
-  initialContainer
+  initialContainer,
+  initialFrom,
+  initialTo
 }: BookingFormContentProps) {
   const [formData, setFormData] = useState({
     clientName: '',
     phone: '',
     material: '',
-    from: '',
-    to: '',
+    from: initialFrom ? initialFrom.trim() : '',
+    to: initialTo ? initialTo.trim() : '',
     container: initialContainer ? initialContainer.toLowerCase().trim() : '20ft',
     quantity: '1 Container',
     pickupDate: new Date().toISOString().split('T')[0]
   });
+
+  useEffect(() => {
+    if (initialFrom) {
+      setFormData(prev => ({ ...prev, from: initialFrom.trim() }));
+    }
+    if (initialTo) {
+      setFormData(prev => ({ ...prev, to: initialTo.trim() }));
+    }
+  }, [initialFrom, initialTo]);
 
   useEffect(() => {
     if (initialContainer && CONTAINER_SIZES.includes(initialContainer.toLowerCase().trim())) {

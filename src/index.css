@@ -201,6 +201,13 @@
   animation: snakeBorderGlow 2.5s ease infinite;
 }
 
+/* Animated Sparkle UI Gradient Border matching SparkleHeading Theme */
+.animate-sparkle-border {
+  background: linear-gradient(90deg, #34d399, #fcd34d, #5eead4, #38bdf8, #34d399);
+  background-size: 300% 300%;
+  animation: snakeBorderGlow 3s ease infinite;
+}
+
 /* HIDE ALL GOOGLE TRANSLATE BANNERS, TOOLBARS & OVERLAYS */
 .goog-te-banner-frame,
 .goog-te-banner-frame.skiptranslate,

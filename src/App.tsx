@@ -5,6 +5,7 @@ import ParticleBackground from './components/ParticleBackground';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import GlobalBookingModal from './components/GlobalBookingModal';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
@@ -84,6 +85,9 @@ export default function App() {
 
         {/* Floating WhatsApp Action Button */}
         <FloatingWhatsApp />
+
+        {/* Global Booking Modal Triggered by Route Cards & Book Buttons */}
+        <GlobalBookingModal />
 
         {/* Main Footer */}
         <div className="relative z-10">

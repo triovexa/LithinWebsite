@@ -382,8 +382,8 @@ export default function Footer() {
                   >
                     Phone: +91 95667 38884
                   </a>
-                  <span className="text-emerald-300 font-semibold text-[9.5px]">
-                    Email: arul.p@lithintransport.in | deepu@lithintransport.in | admin@lithintransport.in
+                  <span className="text-emerald-300 font-bold text-[10px]">
+                    Email: admin@lithintransport.in
                   </span>
                 </div>
               </div>
@@ -411,8 +411,8 @@ export default function Footer() {
                 <p className="text-[11px] text-gray-300 font-normal leading-snug mt-0.5">
                   13/162, Amman Nagar, 1st Street, Rakkiyapalayam, Avinashi, Tirupur, Tamil Nadu - 641654
                 </p>
-                <div className="mt-1 text-[9.5px] text-emerald-300 font-semibold leading-tight">
-                  Email: arul.p@lithintransport.in | deepu@lithintransport.in | admin@lithintransport.in
+                <div className="mt-1 text-[10px] text-emerald-300 font-bold leading-tight">
+                  Email: deepak@lithintransport.in
                 </div>
               </div>
 
@@ -439,8 +439,8 @@ export default function Footer() {
                 <p className="text-[11px] text-gray-300 font-normal leading-snug mt-0.5">
                   Siva Sakthi Enterprises, No.5, Madhavaram Redhills High Road, Vadaperumbakkam, Chennai, Tamil Nadu - 600060 (GST: 33AKEPT5983B1Z2)
                 </p>
-                <div className="mt-1 text-[9.5px] text-emerald-300 font-semibold leading-tight">
-                  Email: arul.p@lithintransport.in | deepu@lithintransport.in | admin@lithintransport.in
+                <div className="mt-1 text-[10px] text-emerald-300 font-bold leading-tight">
+                  Email: arul.p@lithintransport.in
                 </div>
               </div>
             </div>

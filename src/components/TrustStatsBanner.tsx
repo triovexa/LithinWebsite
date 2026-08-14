@@ -1,4 +1,5 @@
 import { PackageCheck, Truck, Users, MapPin, Clock } from 'lucide-react';
+import SparkleHeading from './SparkleHeading';
 
 export default function TrustStatsBanner() {
   const stats = [
@@ -34,11 +35,8 @@ export default function TrustStatsBanner() {
       {/* Outer Panel Container */}
       <div className="flex flex-col items-center gap-6">
 
-        {/* Section Title Header */}
-        <h2 className="text-xl sm:text-3xl font-black text-white uppercase tracking-tight text-center font-sans flex items-center gap-2">
-          <span>Goods Transport Services</span>
-          <span className="text-emerald-400">Trusted Across India</span>
-        </h2>
+        {/* Animated Fire Sparkles Gradient Section Title Header */}
+        <SparkleHeading text="Goods Transport Services Trusted Across India" />
 
         {/* Mass Dark Glassmorphic Stat Bar */}
         <div className="w-full glass-panel bg-slate-950/85 backdrop-blur-2xl border border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-[0_12px_40px_rgba(0,0,0,0.75),0_0_25px_rgba(16,185,129,0.15)] relative overflow-hidden">

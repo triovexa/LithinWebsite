@@ -3,7 +3,7 @@ import { Building2, MapPin, Calendar, ShieldCheck } from 'lucide-react';
 export default function AboutPage() {
 
   return (
-    <div className="relative min-h-screen pt-24 pb-16 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col gap-10">
+    <div className="relative min-h-screen pt-28 sm:pt-32 md:pt-36 pb-16 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col gap-10">
 
       {/* PAGE HEADER & SUBTITLE */}
       <div className="text-center max-w-3xl mx-auto">
@@ -13,17 +13,14 @@ export default function AboutPage() {
         <h1 className="text-4xl sm:text-6xl font-black text-white mt-3 tracking-tight uppercase font-sans">
           ABOUT <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500">LITHIN TRANSPORT</span>
         </h1>
-        <p className="text-gray-300 mt-3 text-base sm:text-lg leading-relaxed font-normal">
-          Reliable Transport Contractor & Freight Booking Agency serving commercial industries across India since 2020.
-        </p>
       </div>
 
-      {/* TOP HERO BANNER (Full Trucks Display with 0 Black Overlay & Full Mobile View) */}
-      <div className="relative w-full aspect-[16/9] sm:aspect-auto sm:h-[460px] rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-emerald-500/30 shadow-2xl bg-[#060b1e] group flex items-center justify-center">
+      {/* TOP HERO BANNER (Full Trucks Display with 0 Gaps & Zoomed Mobile View) */}
+      <div className="relative w-full aspect-[16/10] sm:aspect-auto sm:h-[460px] rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-emerald-500/30 shadow-2xl bg-[#060b1e] group flex items-center justify-center">
         <img
           src="/office2.png"
           alt="Lithin Transport Operations Fleet & Headquarters"
-          className="w-full h-full object-contain sm:object-cover object-center group-hover:scale-103 transition-transform duration-700"
+          className="w-full h-full object-cover object-center scale-[1.08] sm:scale-100 group-hover:scale-110 transition-transform duration-700"
         />
 
         {/* Top-Left Glassmorphic Badge */}

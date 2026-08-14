@@ -217,7 +217,7 @@ export default function Navbar() {
 
                 {/* 3. Email Action */}
                 <a
-                  href="mailto:lithintransports@gmail.com"
+                  href="mailto:admin@lithintransport.in"
                   onClick={() => setSupportDropdownOpen(false)}
                   className="p-3 rounded-xl bg-white/5 hover:bg-emerald-500/15 border border-emerald-500/20 hover:border-emerald-400 transition-all flex items-center justify-between group"
                 >
@@ -230,7 +230,7 @@ export default function Navbar() {
                         Official Email
                       </span>
                       <span className="text-[11px] font-bold text-white group-hover:text-emerald-300 transition-colors">
-                        lithintransports@gmail.com
+                        admin@lithintransport.in
                       </span>
                     </div>
                   </div>
@@ -259,8 +259,6 @@ export default function Navbar() {
 
         {/* Mobile Hamburger & Query Buttons */}
         <div className="flex items-center gap-2 lg:hidden">
-          <LanguageSelector />
-
           <button
             onClick={() => setQueryOpen(true)}
             className="p-2.5 rounded-xl bg-transparent border border-white/15 text-white hover:bg-white/10 cursor-pointer"
@@ -309,12 +307,16 @@ export default function Navbar() {
             );
           })}
           <hr className="border-white/10 my-1" />
+          
+          {/* Mobile Language / Translate Option */}
+          <LanguageSelector isMobileDrawer={true} onSelectCallback={() => setMobileMenuOpen(false)} />
+
           <button
             onClick={() => {
               setMobileMenuOpen(false);
               setQueryOpen(true);
             }}
-            className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-xl text-white text-xs font-bold w-full text-left"
+            className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-xl text-white text-xs font-bold w-full text-left cursor-pointer"
           >
             <HelpCircle className="w-4 h-4 text-emerald-400" />
             <span>Ask a Query</span>
@@ -335,7 +337,6 @@ export default function Navbar() {
               </div>
             </div>
             <Phone className="w-4 h-4 text-emerald-400" />
-            <span>+91 95667 38884</span>
           </a>
           <button
             onClick={() => {
