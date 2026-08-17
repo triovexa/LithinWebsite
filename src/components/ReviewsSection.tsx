@@ -242,12 +242,12 @@ export default function ReviewsSection() {
     setCurrentIndex((prev) => (prev <= 0 ? maxIndex - 1 : prev - 1));
   };
 
-  // Ultra Fast 0.5-Second Auto Scroll Effect as Requested (500ms)
+  // Smooth 1-Second Auto Scroll Glide Effect (1000ms slide duration)
   useEffect(() => {
     if (!isAutoScrolling) return;
     const interval = setInterval(() => {
       nextSlide();
-    }, 500); // 0.5 SECONDS ULTRA FAST SCROLLING
+    }, 2500); // 2.5s slide interval with 1s smooth glide transition
     return () => clearInterval(interval);
   }, [isAutoScrolling, maxIndex]);
 
@@ -282,7 +282,7 @@ export default function ReviewsSection() {
   return (
     <section id="reviews" className="w-screen relative left-1/2 -translate-x-1/2 my-10 sm:my-14 scroll-mt-28 flex flex-col gap-6 sm:gap-8 z-10 overflow-hidden px-4 sm:px-10">
       
-      {/* SECTION HEADER (Directly on Page Background - 100% Full Width Screen Spanning) */}
+      {/* SECTION HEADER */}
       <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto w-full mb-2">
         <SparkleHeading text="Truck Booking Reviews" />
       </div>
@@ -304,33 +304,35 @@ export default function ReviewsSection() {
         {/* Floating Left Arrow Button */}
         <button
           onClick={prevSlide}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/90 hover:bg-emerald-400 text-slate-900 hover:text-slate-950 border border-slate-200 shadow-2xl flex items-center justify-center transition-all cursor-pointer hover:scale-110"
+          className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-emerald-400 text-slate-900 hover:text-slate-950 border border-slate-200 shadow-2xl flex items-center justify-center transition-all cursor-pointer hover:scale-110"
           title="Previous Review"
         >
-          <ChevronLeft className="w-6 h-6 font-bold" />
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 font-bold" />
         </button>
 
         {/* Floating Right Arrow Button */}
         <button
           onClick={nextSlide}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/90 hover:bg-emerald-400 text-slate-900 hover:text-slate-950 border border-slate-200 shadow-2xl flex items-center justify-center transition-all cursor-pointer hover:scale-110"
+          className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-emerald-400 text-slate-900 hover:text-slate-950 border border-slate-200 shadow-2xl flex items-center justify-center transition-all cursor-pointer hover:scale-110"
           title="Next Review"
         >
-          <ChevronRight className="w-6 h-6 font-bold" />
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 font-bold" />
         </button>
 
-        {/* CAROUSEL SLIDES (Continuous Smooth Motion 0.5s Fast Slide) */}
+        {/* CAROUSEL SLIDES (App-like Smooth 1-Second Glide Animation & Zero Mobile Cut-off) */}
         <div className="overflow-hidden py-4 w-full">
           <div
-            className="flex gap-5 sm:gap-6 transition-transform duration-500 ease-out"
+            className="flex gap-5 sm:gap-6 transition-transform duration-1000 ease-in-out"
             style={{
-              transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
+              transform: itemsPerPage === 1 
+                ? `translateX(calc(-${currentIndex} * (100% + 1.25rem)))`
+                : `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
             }}
           >
             {displayList.map((rev, idx) => (
               <div
                 key={`${rev.id}-${idx}`}
-                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)] shrink-0 flex flex-col justify-between p-5 sm:p-6 rounded-3xl glass-panel bg-[#060b1e]/25 backdrop-blur-2xl border border-emerald-500/35 hover:border-emerald-400 hover:bg-[#060b1e]/50 shadow-2xl transition-all duration-300 group hover:-translate-y-1"
+                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)] shrink-0 flex flex-col justify-between p-5 sm:p-6 rounded-3xl glass-panel bg-[#060b1e]/35 backdrop-blur-2xl border border-emerald-500/35 hover:border-emerald-400 hover:bg-[#060b1e]/60 shadow-2xl transition-all duration-300 group hover:-translate-y-1"
               >
                 <div className="flex flex-col gap-2.5">
                   {/* Top Row: Company Name & Rating (Underline Removed) */}

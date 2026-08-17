@@ -208,6 +208,20 @@
   animation: snakeBorderGlow 3s ease infinite;
 }
 
+/* Slow Smooth Spinning Animation for Cyberpunk Ring */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 8s linear infinite;
+}
+
 /* HIDE ALL GOOGLE TRANSLATE BANNERS, TOOLBARS & OVERLAYS */
 .goog-te-banner-frame,
 .goog-te-banner-frame.skiptranslate,

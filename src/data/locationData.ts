@@ -479,7 +479,7 @@ export const ALL_HUB_COVERAGE: HubCoverage[] = [
     hubName: 'Tirupur (Branch Office & Textile Cargo Hub)',
     badge: 'Garment Export Capital & All-India Textile Terminal',
     tagline: 'World-renowned garment export corridor connecting Southern Tamil Nadu, Kerala, UP, North & Himalayan States',
-    phone: '+91 95667 38884 / +91 93423 17996',
+    phone: '+91 96552 37104',
     email: 'deepak@lithintransport.in',
     states: [
       {

@@ -51,7 +51,7 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
       type: 'Regional Branch Office & Textile Freight Terminal',
       address: '13/162, Amman Nagar, 1st Street, Rakkiyapalayam, Avinashi, Tirupur, Tamil Nadu - 641654',
       email: 'deepak@lithintransport.in',
-      phone: '+91 95667 38884 / +91 93423 17996',
+      phone: '+91 96552 37104',
       cx: 32.5,
       cy: 85.0,
       isPrimary: false,
@@ -89,20 +89,22 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
     }
   };
 
-  // Change hub & reset state view with smooth scroll to cities list below
-  const handleHubSelect = (branch: BranchInfo) => {
+  // Change hub & reset state view (shouldScroll = true only for bottom branch card clicks)
+  const handleHubSelect = (branch: BranchInfo, shouldScroll: boolean = false) => {
     setSelectedBranch(branch);
     setSelectedState(null);
     setLocationSearchTerm('');
     setCitySearchTerm('');
 
-    // Smooth scroll to the Cities List / Dispatch Explorer section below
-    setTimeout(() => {
-      const explorerElem = document.getElementById('hub-destination-explorer');
-      if (explorerElem) {
-        explorerElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 60);
+    // Smooth scroll to the Cities List / Dispatch Explorer section only if triggered from bottom cards
+    if (shouldScroll) {
+      setTimeout(() => {
+        const explorerElem = document.getElementById('hub-destination-explorer');
+        if (explorerElem) {
+          explorerElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 60);
+    }
   };
 
   // Filter states by search
@@ -131,9 +133,7 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
           OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500">HEAD OFFICE & BRANCHES</span>
         </h1>
 
-        <p className="text-gray-300 mt-3 text-sm sm:text-base leading-relaxed font-normal max-w-2xl">
-          Explore our Bangalore Corporate Headquarters and regional dispatch terminals in Chennai and Tirupur connecting 500+ industrial hubs across India.
-        </p>
+        
       </div>
 
       {/* CENTERED MAP CONTAINER - UNBOXED & FLOATING FREELY ON BACKGROUND */}
@@ -157,7 +157,7 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
                   onMouseEnter={() => setHoveredBranch(b)}
                   onMouseLeave={() => setHoveredBranch(null)}
                   onTouchStart={() => setHoveredBranch(isHovered ? null : b)}
-                  onClick={() => handleHubSelect(b)}
+                  onClick={() => handleHubSelect(b, false)}
                   title={b.name}
                 >
                   <div className="relative flex items-center justify-center p-2">
@@ -237,7 +237,7 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
           return (
             <div
               key={b.id}
-              onClick={() => handleHubSelect(b)}
+              onClick={() => handleHubSelect(b, true)}
               className={`p-6 sm:p-8 rounded-3xl glass-panel border transition-all duration-300 cursor-pointer flex flex-col justify-between group relative overflow-hidden ${
                 isSelected
                   ? 'border-amber-400 bg-slate-950/95 shadow-[0_0_35px_rgba(245,158,11,0.45)] scale-[1.02]'
@@ -278,12 +278,6 @@ export default function BranchNetworkSection({ showMap = true, showExplorer = tr
                     <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
                     <a href={`tel:${b.phone}`} className="hover:text-emerald-300 font-bold">
                       {b.phone}
-                    </a>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <a href={`mailto:${b.email}`} className="hover:text-emerald-300 font-semibold">
-                      {b.email}
                     </a>
                   </div>
                   <div className="flex items-start gap-2 pt-2 border-t border-white/10 text-gray-300">

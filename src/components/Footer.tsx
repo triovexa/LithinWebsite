@@ -23,6 +23,7 @@ export default function Footer() {
       name: 'TIRUPUR BRANCH',
       shortName: 'Tirupur Branch',
       address: '13/162, Amman Nagar, 1st Street, Rakkiyapalayam, Avinashi, Tirupur, Tamil Nadu - 641654',
+      phone: '+91 96552 37104',
       mapEmbedUrl: 'https://maps.google.com/maps?q=13%2F162%2C%20Amman%20Nagar%2C1%20ST%20Street%2C%20Rakkiyapalayam%2C%20Avinashi%2C%20Tirupur%20641654&t=&z=15&ie=UTF8&iwloc=&output=embed',
       googleMapsLink: 'https://www.google.com/maps/search/?api=1&query=13/162+Amman+Nagar+1st+Street+Rakkiyapalayam+Avinashi+Tirupur+641654',
     },
@@ -30,6 +31,7 @@ export default function Footer() {
       name: 'CHENNAI BRANCH',
       shortName: 'Chennai Branch',
       address: 'Siva Sakthi Enterprises, No.5, Madhavaram Redhills High Road, Vadaperumbakkam, Chennai, Tamil Nadu - 600060 (GST: 33AKEPT5983B1Z2)',
+      phone: '+91 93423 17996',
       mapEmbedUrl: 'https://maps.google.com/maps?q=No.5%20Madhavaram%20Redhils%20High%20Road%20Vadaperumbakkam%20Chennai%20600060&t=&z=15&ie=UTF8&iwloc=&output=embed',
       googleMapsLink: 'https://www.google.com/maps/search/?api=1&query=No+5+Madhavaram+Redhills+High+Road+Vadaperumbakkam+Chennai+600060',
     },
@@ -382,9 +384,6 @@ export default function Footer() {
                   >
                     Phone: +91 95667 38884
                   </a>
-                  <span className="text-emerald-300 font-bold text-[10px]">
-                    Email: admin@lithintransport.in
-                  </span>
                 </div>
               </div>
 
@@ -411,8 +410,14 @@ export default function Footer() {
                 <p className="text-[11px] text-gray-300 font-normal leading-snug mt-0.5">
                   13/162, Amman Nagar, 1st Street, Rakkiyapalayam, Avinashi, Tirupur, Tamil Nadu - 641654
                 </p>
-                <div className="mt-1 text-[10px] text-emerald-300 font-bold leading-tight">
-                  Email: deepak@lithintransport.in
+                <div className="flex flex-col gap-0.5 mt-1 text-[10px]">
+                  <a
+                    href="tel:+919655237104"
+                    onClick={(e) => handlePhoneClick(e, '+91 96552 37104')}
+                    className="font-bold text-white hover:text-emerald-400 transition-colors"
+                  >
+                    Phone: +91 96552 37104
+                  </a>
                 </div>
               </div>
 
@@ -439,8 +444,14 @@ export default function Footer() {
                 <p className="text-[11px] text-gray-300 font-normal leading-snug mt-0.5">
                   Siva Sakthi Enterprises, No.5, Madhavaram Redhills High Road, Vadaperumbakkam, Chennai, Tamil Nadu - 600060 (GST: 33AKEPT5983B1Z2)
                 </p>
-                <div className="mt-1 text-[10px] text-emerald-300 font-bold leading-tight">
-                  Email: arul.p@lithintransport.in
+                <div className="flex flex-col gap-0.5 mt-1 text-[10px]">
+                  <a
+                    href="tel:+919342317996"
+                    onClick={(e) => handlePhoneClick(e, '+91 93423 17996')}
+                    className="font-bold text-white hover:text-emerald-400 transition-colors"
+                  >
+                    Phone: +91 93423 17996
+                  </a>
                 </div>
               </div>
             </div>
